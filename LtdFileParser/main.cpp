@@ -68,7 +68,7 @@ int main() {
 
         if (line.find("$$")) {
             cout << "Need to process : " << line << endl;
-            cout<< "Variable : "<<
+            cout << "Variable : " << line.substr(line.find(delimiter), line.find(delimiter, 2)) << endl;
         } else {
             cout << "Process Finished : " << line << endl;
         }
