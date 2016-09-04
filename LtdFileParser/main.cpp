@@ -2,6 +2,7 @@
 #include <dirent.h>
 #include <vector>
 #include <fstream>
+#include "FileProcessor.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ int main() {
     vector<string> fileList;
     vector<string> ipFile;
     vector<string> opFile;
+    vector<FileProcessor> fileProc;
     string ipFileName;
     string opFileName;
     string delimiter = "$$";
@@ -64,20 +66,47 @@ int main() {
     ipStream.close();
 
 /* --------------------------------------------  4.process file and check for variables  -----------------------------*/
+    int lineNo = 0;
     for (string &line:ipFile) {
-
-        if (line.find("$$")) {
-            cout << "Need to process : " << line << endl;
-            cout << "Variable : " << line.substr(line.find(delimiter), line.find(delimiter, 2)) << endl;
-        } else {
-            cout << "Process Finished : " << line << endl;
+        lineNo++;
+        int pos = line.find(delimiter, 0);
+        int loopCount = 1;
+        int startPos = 0;
+        while (pos != string::npos) {
+            if (loopCount % 2 != 0) {
+                //odd
+                startPos = pos;
+//                cout << "Start Pos :" << pos << endl;
+            } else {
+                //even
+//                 cout << "End Pos :" << pos << endl;
+//                cout << "Variable is : " << line.substr(startPos, pos - startPos + 2) << endl << endl;
+                FileProcessor obj = FileProcessor();
+                obj.setLineNo(lineNo);
+                obj.setLineText(line);
+                obj.setVarStartPos(startPos);
+                obj.setVarEndPos(pos - startPos + 2);
+                obj.setVarName(line.substr(startPos, pos - startPos + 2));
+                fileProc.push_back(obj);
+            }
+            pos = line.find(delimiter, pos + 1);
+            loopCount++;
         }
-
     }
 
-
-
 /* --------------------------------------------  5.ask user to enter variables ---------------------------------------*/
+    cout << "--------------- Enter value of following Parameters ------------------" << endl;
+    string temp;
+    for (FileProcessor &obj: fileProc) {
+        cout << obj.getVarName().substr(2, obj.getVarName().length() - 4) << " : ";
+        cin >> temp;
+        obj.setVarValue(temp);
+    }
+
+    cout << "FINAL OUTPUT" << endl;
+    for (FileProcessor &obj: fileProc) {
+        cout << obj.getVarName() << " : " << obj.getVarValue() << endl;
+    }
 /* --------------------------------------------  6.prepare output file -----------------------------------------------*/
     opFile = ipFile;
 /* --------------------------------------------  7.create output -----------------------------------------------------*/

@@ -7,7 +7,8 @@ using namespace std;
 
 class FileProcessor {
 public:
-    FileProcessor(int lineNo);
+
+    FileProcessor();
 
     int getLineNo() const;
 

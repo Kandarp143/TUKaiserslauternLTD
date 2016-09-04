@@ -53,3 +53,5 @@ void FileProcessor::setVarValue(const string &varValue) {
     FileProcessor::varValue = varValue;
 }
 
+FileProcessor::FileProcessor() {}
+
