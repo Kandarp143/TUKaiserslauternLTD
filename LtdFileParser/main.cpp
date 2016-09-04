@@ -19,6 +19,7 @@ int main() {
     vector<string> opFile;
     string ipFileName;
     string opFileName;
+    string delimiter = "$$";
 
 
 /* --------------------------------------------  1.list out input files from given dir -------------------------------*/
@@ -63,6 +64,19 @@ int main() {
     ipStream.close();
 
 /* --------------------------------------------  4.process file and check for variables  -----------------------------*/
+    for (string &line:ipFile) {
+
+        if (line.find("$$")) {
+            cout << "Need to process : " << line << endl;
+            cout<< "Variable : "<<
+        } else {
+            cout << "Process Finished : " << line << endl;
+        }
+
+    }
+
+
+
 /* --------------------------------------------  5.ask user to enter variables ---------------------------------------*/
 /* --------------------------------------------  6.prepare output file -----------------------------------------------*/
     opFile = ipFile;
