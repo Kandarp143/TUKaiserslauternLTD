@@ -101,26 +101,28 @@ int main() {
     cout << "--------------- Enter value of following Parameters ------------------" << endl;
     string temp;
     for (FileProcessor &obj: fileProc) {
-        cout << obj.getVarName().substr(2, obj.getVarName().length() - 4) << " : " << endl;
-        getline(cin, temp);
+        cout << obj.getVarName().substr(2, obj.getVarName().length() - 4) << " : ";
+        cin >> temp;
         obj.setVarValue(temp);
     }
+
 
     cout << "FINAL OUTPUT" << endl;
     for (FileProcessor &obj: fileProc) {
         cout << obj.getVarName() << " : " << obj.getVarValue() << endl;
     }
 /* --------------------------------------------  6.prepare output file -----------------------------------------------*/
+    cout << "--------------- Prepareing output from user input ------------------" << endl;
     opFile = ipFile;
     int tempCount = 1;
     for (string &line:opFile) {
+        cout << "ORG : " << line << endl;
         for (FileProcessor &obj:fileProc) {
             if (tempCount == obj.getLineNo()) {
-                cout << "ORG : " << line << endl;
                 ReplaceStringInPlace(line, obj.getVarName(), obj.getVarValue());
-                cout << "REP : " << line << endl;
             }
         }
+        cout << "REP : " << line << endl;
         tempCount++;
     }
 /* --------------------------------------------  7.create output -----------------------------------------------------*/
@@ -128,7 +130,7 @@ int main() {
     ofstream opStream;
     opFileName = currentDateTime() + "-" + ipFileName;
     opStream.open(opfilePath + opFileName);
-    cout << "Generating output file" << endl;
+    cout << "------------------------Generating output file-------------------------------" << endl;
     // write inputted data into the file.
     for (string &line : ipFile) {
         opStream << line << endl;
