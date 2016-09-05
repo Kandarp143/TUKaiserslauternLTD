@@ -9,6 +9,9 @@ using namespace std;
 /* --------------------------------------------  0.declaration of function -------------------------------------------*/
 const string currentDateTime();
 
+void ReplaceStringInPlace(string &subject, const string &search,
+                          const string &replace);
+
 int main() {
 
 /* --------------------------------------------  0.declaration of variables -------------------------------------------*/
@@ -98,8 +101,8 @@ int main() {
     cout << "--------------- Enter value of following Parameters ------------------" << endl;
     string temp;
     for (FileProcessor &obj: fileProc) {
-        cout << obj.getVarName().substr(2, obj.getVarName().length() - 4) << " : ";
-        cin >> temp;
+        cout << obj.getVarName().substr(2, obj.getVarName().length() - 4) << " : " << endl;
+        getline(cin, temp);
         obj.setVarValue(temp);
     }
 
@@ -109,6 +112,17 @@ int main() {
     }
 /* --------------------------------------------  6.prepare output file -----------------------------------------------*/
     opFile = ipFile;
+    int tempCount = 1;
+    for (string &line:opFile) {
+        for (FileProcessor &obj:fileProc) {
+            if (tempCount == obj.getLineNo()) {
+                cout << "ORG : " << line << endl;
+                ReplaceStringInPlace(line, obj.getVarName(), obj.getVarValue());
+                cout << "REP : " << line << endl;
+            }
+        }
+        tempCount++;
+    }
 /* --------------------------------------------  7.create output -----------------------------------------------------*/
     // open a file in write mode.
     ofstream opStream;
@@ -132,4 +146,14 @@ const string currentDateTime() {
     // for more information about date/time format
     strftime(buf, sizeof(buf), "%d-%m-%Y.%X", &tstruct);
     return buf;
+}
+
+// Replace string method
+void ReplaceStringInPlace(string &subject, const string &search,
+                          const string &replace) {
+    size_t pos = 0;
+    while ((pos = subject.find(search, pos)) != string::npos) {
+        subject.replace(pos, search.length(), replace);
+        pos += replace.length();
+    }
 }
