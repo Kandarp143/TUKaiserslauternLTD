@@ -1,0 +1,51 @@
+log            log.relaxSubstrate
+
+# to equlibrate the Substrate for surface (100) for scratching in [0-1-1] direction
+
+variable        tmp equal 54
+
+units           metal
+molecule        32 ../Solid.molecule
+dimension       3
+atom_style      template 32
+atom_modify	map array
+boundary        p p s
+neighbor        2.0 bin
+neigh_modify    delay 5
+
+lattice         bcc 2.855324 orient x 0 -1 1 orient y 0 -1 -1 orient z 1 0 0
+region          target block 0 84 0 109 0 85  # 0 84 0 109 0 85
+
+create_box      1 target
+create_atoms    0 region target	mol 32 47
+
+mass            1 55.845
+
+pair_style      eam/fs
+pair_coeff      * * ../Fe_mm.eam.fs Fe
+
+timestep	2000 # 0.001 
+thermo          100
+thermo_style    custom step temp pe ke etotal press vol lx ly lz pxx pyy pzz pxy pxz pyz
+
+compute         ke all ke/atom
+compute         pe all pe/atom
+variable	etotal atom (c_ke+c_pe)
+#compute         stress all stress/atom
+compute         cna all cna/atom 3.45
+compute         centro all centro/atom bcc
+#compute		ackland all ackland/atom
+#compute		virial all virial/atom
+#compute		avg all avg/atom
+
+velocity        all create ${tmp} 47 mom yes rot yes dist gaussian
+fix             NpT all npt temp ${tmp} ${tmp} 0.1 x 0.0 0.0 100.0 y 0.0 0.0 100.0 drag 15.0
+dump		1 all custom 5000 dump.relaxSubstrate type id xs ys zs c_cna
+run             20000 # 200000
+unfix		NpT
+
+
+write_data      data.relaxSubstrate_${tmp}K
+
+shell           ./Skript_postRelaxSubstrate.sh
+shell           rm log.lammps
