@@ -19,7 +19,7 @@ string trim(string &str);
 void ReplaceStringInPlace(string &subject, const string &search, const string &replace);
 
 //copy one file to current dir
-void copyFile(string filePath);
+void copyFile(string fileName);
 
 //get current dir
 string ExePath();
@@ -27,18 +27,22 @@ string ExePath();
 /* --------------------------------------------- declaration global variable -----------------------------------------*/
 //sequence of files to be execute
 string ipFiles[] = {"in.relaxSubstrate", "in.relaxFluid", "in.Indent", "in.Scratch", "in.Remove"};
+
 //static path of i/p o/p files
 string ipfilePath = "/Users/Kandarp/ClionProjects/SimulationParser/input/";
 string opfilePath = ExePath();
 string forcefilePath = "/Users/Kandarp/ClionProjects/SimulationParser/forcefield/";
+
 //list of Delimiter
 string varStoreDelimiter = "$S$";
 string varDelimiter = "$V$";
 string varPathDelimiter = "$P$";
 string varCalDelimiter = "$C$";
+
 //process variables
 vector<FileProcessor> fileProc;
 unordered_map<string, string> storeVars;
+vector<string> forcedFiles;
 vector<vector<string>> ipFilesContent;
 vector<vector<string>> opFilesContent;
 
@@ -108,8 +112,18 @@ int main() {
             temp = obj.getVarName();
             //change path
             ReplaceStringInPlace(temp, "../", "./");
-            //copy file to current dir
-            copyFile(temp);
+            //geting actual file name
+            string fileName = temp;
+            ReplaceStringInPlace(fileName, "./", "");
+            trim(fileName);
+            //if file is not exist already
+            if (!(find(forcedFiles.begin(), forcedFiles.end(), fileName) != forcedFiles.end())) {
+                //copy file to current dir
+                copyFile(fileName);
+                //insert into existance list
+                forcedFiles.push_back(fileName);
+            }
+
         }
         //finally set value
         obj.setVarValue(temp);
@@ -230,8 +244,8 @@ string ExePath() {
     }
 }
 
-void copyFile(string raw) {
-    ReplaceStringInPlace(raw, "./", "");
+void copyFile(string fileName) {
+
     vector<string> fileContent;
     ifstream ipStream;
     ipStream.open(forcefilePath + raw);
