@@ -6,50 +6,48 @@
 #include <unordered_map>
 #include <unistd.h>
 
-char *getcwd(char *buf, size_t size);
-
 using namespace std;
 
-//function
+/* --------------------------------------------- declaration of functions --------------------------------------------*/
+//find variable in line based on delimiter
 void findVariable(int fileNo, string fileName, int lineNo, string line, string delimiter);
 
+//trim string
 string trim(string &str);
 
+//replace string
 void ReplaceStringInPlace(string &subject, const string &search, const string &replace);
 
-
+//copy one file to current dir
 void copyFile(string filePath);
 
 //get current dir
 string ExePath();
 
-//variable
+/* --------------------------------------------- declaration global variable -----------------------------------------*/
+//sequence of files to be execute
+string ipFiles[] = {"in.relaxSubstrate", "in.relaxFluid", "in.Indent", "in.Scratch", "in.Remove"};
+//static path of i/p o/p files
+string ipfilePath = "/Users/Kandarp/ClionProjects/SimulationParser/input/";
+string opfilePath = ExePath();
+string forcefilePath = "/Users/Kandarp/ClionProjects/SimulationParser/forcefield/";
+//list of Delimiter
+string varStoreDelimiter = "$S$";
+string varDelimiter = "$V$";
+string varPathDelimiter = "$P$";
+string varCalDelimiter = "$C$";
+//process variables
 vector<FileProcessor> fileProc;
 unordered_map<string, string> storeVars;
+vector<vector<string>> ipFilesContent;
+vector<vector<string>> opFilesContent;
 
-string forcefilePath = "/Users/Kandarp/ClionProjects/SimulationParser/forcefield/";
-string ipfilePath = "/Users/Kandarp/ClionProjects/SimulationParser/input/";
-string opfilePath;
 
 int main() {
-/* --------------------------------------------  0.declaration of variables -------------------------------------------*/
-
-
-
-//    opfilePath = "/Users/Kandarp/ClionProjects/SimulationParser/output/";
-    opfilePath = ExePath();
-    string ipFiles[] = {"in.relaxSubstrate", "in.relaxFluid", "in.Indent", "in.Scratch", "in.Remove"};
-    string varStoreDelimiter = "$S$";
-    string varDelimiter = "$V$";
-    string varPathDelimiter = "$P$";
-    string varCalDelimiter = "$C$";
-    vector<vector<string>> ipFilesContent;
-    vector<vector<string>> opFilesContent;
-
-
-/* --------------------------------------------  3.open file and convert to lines ------------------------------------*/
+/* --------------------------------------------- read and store i/p files in variable --------------------------------*/
     ifstream ipStream;
     for (string &ipFileName :ipFiles) {
+        //for each file
         vector<string> fileContent;
         ipStream.open(ipfilePath + ipFileName);
         string tempLine;
@@ -61,17 +59,20 @@ int main() {
         } else {
             cerr << "Unable to open File" << endl;
         }
+        //push each file into list of files
         ipFilesContent.push_back(fileContent);
         ipStream.close();
     }
-/* --------------------------------------------  3.open file and detect variables ------------------------------------*/
+/* --------------------------------------------- find variables in all i/p files  ------------------------------------*/
+    //temp holders
     int fileNo = 0;
     int lineNo = 0;
     string fileName;
+    //for each file
     for (vector<string> &fileContent:ipFilesContent) {
         lineNo = 0;
         fileName = ipFiles[fileNo++];
-//        cout << "Reading File .................................................... " << fileName << endl;
+        //for each line
         for (string &line:fileContent) {
             lineNo++;
             //find store variable
@@ -80,82 +81,79 @@ int main() {
             findVariable(fileNo, fileName, lineNo, line, varDelimiter);
             //find path variable
             findVariable(fileNo, fileName, lineNo, line, varPathDelimiter);
-
         }
     }
 
-/* --------------------------------------------  3.print ------------------------------------*/
-    for (FileProcessor &obj:fileProc) {
-        cout << obj.getFileIndex() << "............................." << obj.getFileName() << endl;
-        cout << "Variables :" << obj.getVarName() << endl;
-    }
-/* --------------------------------------------  5.ask user to enter variables ---------------------------------------*/
+/* --------------------------------------------- ask user to input value of variable  --------------------------------*/
     cout << "--------------- Enter value of following Parameters ------------------" << endl;
     string temp;
     for (FileProcessor &obj: fileProc) {
-        //for normal var - if var value exsist
+        //for normal var - if var exist in storevar array
         if (storeVars.count(obj.getVarName()) && obj.getVarType() != varPathDelimiter) {
-            //cout << "KEY EXSIST : " << storeVars.at(obj.getVarName()) << endl;
             temp = storeVars.at(obj.getVarName());
         } else {
-            //if not
+            //if var is not path var
             if (obj.getVarType() != varPathDelimiter) {
-                cout << obj.getVarType() << " --- " << obj.getVarName() << " : ";
+                //ask and store user input
+                cout << obj.getVarName() << " : ";
                 cin >> temp;
                 if (obj.getVarType() == varStoreDelimiter) {
-//                cout << "storing value" << endl;
+                    //if vartype is store var
                     storeVars.insert(make_pair(obj.getVarName(), temp));
-//                cout << "Value Stored :" << storeVars.size() << endl;
                 }
             }
         }
-        //for path variable
+        //process path var
         if (obj.getVarType() == varPathDelimiter) {
             temp = obj.getVarName();
+            //change path
             ReplaceStringInPlace(temp, "../", "./");
+            //copy file to current dir
             copyFile(temp);
         }
-
-//        cout << "seting value :" << obj.getFileName() << ":" << obj.getVarName() << temp << endl;
+        //finally set value
         obj.setVarValue(temp);
     }
-/* --------------------------------------------  6.prepare output file -----------------------------------------------*/
+/* --------------------------------------------- prepare o/p - replace var string with values  -----------------------*/
     cout << "--------------- Prepareing output from user input ------------------" << endl;
-
     int tempFileIndex = 1;
     int tempLine = 1;
+    //for  each file
     for (vector<string> &fileContent:ipFilesContent) {
-        //for  each file
         tempLine = 1;
         vector<string> opFile;
+        //for each line
         for (string &line:fileContent) {
-            //for each line
+            //for each obj of processed list
             for (FileProcessor &obj:fileProc) {
+                //if i/p file and processed file is same
                 if (obj.getFileIndex() == tempFileIndex) {
+                    //if both line is same
                     if (tempLine == obj.getLineNo()) {
+                        //replace varString with value
                         ReplaceStringInPlace(line, obj.getVarString(), obj.getVarValue());
                     }
                 }
             }
+            //put processed line into op file
             opFile.push_back(line);
             tempLine++;
 
         }
         tempFileIndex++;
+        //finally put o/p file into list of ops
         opFilesContent.push_back(opFile);
     }
-    /* --------------------------------------------  7.create output -----------------------------------------------------*/
+/* --------------------------------------------- generate output files with processed content  -----------------------*/
 
     cout << "------------------------Generating output file-------------------------------" << endl;
-//    // open a file in write mode.
-
     int tempFileno = 0;
+    //for each file
     for (vector<string> &fileContent:opFilesContent) {
-        //for  each file
         ofstream opStream;
+        //create new file
         opStream.open(ipFiles[tempFileno]);
-        //opStream.open(opfilePath + ipFiles[tempFileno]);
-        // write inputted data into the file.
+        // write date to that file.
         for (string &line : fileContent) {
             opStream << line << endl;
         }
@@ -167,6 +165,8 @@ int main() {
 
 }
 
+
+/* --------------------------------------------- function's implementations -----------------------------------------*/
 
 void findVariable(int fileNo, string fileName, int lineNo, string line, string delimiter) {
     int pos = line.find(delimiter, 0);
