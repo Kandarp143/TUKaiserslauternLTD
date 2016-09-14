@@ -17,6 +17,9 @@ string trim(string &str);
 
 void ReplaceStringInPlace(string &subject, const string &search, const string &replace);
 
+
+void copyFile(string filePath);
+
 //get current dir
 string ExePath();
 
@@ -24,12 +27,17 @@ string ExePath();
 vector<FileProcessor> fileProc;
 unordered_map<string, string> storeVars;
 
+string forcefilePath = "/Users/Kandarp/ClionProjects/SimulationParser/forcefield/";
+string ipfilePath = "/Users/Kandarp/ClionProjects/SimulationParser/input/";
+string opfilePath;
 
 int main() {
 /* --------------------------------------------  0.declaration of variables -------------------------------------------*/
-    string ipfilePath = "/Users/Kandarp/ClionProjects/SimulationParser/input/";
-    string opfilePath;
-    opfilePath = "/Users/Kandarp/ClionProjects/SimulationParser/output/";
+
+
+
+//    opfilePath = "/Users/Kandarp/ClionProjects/SimulationParser/output/";
+    opfilePath = ExePath();
     string ipFiles[] = {"in.relaxSubstrate", "in.relaxFluid", "in.Indent", "in.Scratch", "in.Remove"};
     string varStoreDelimiter = "$S$";
     string varDelimiter = "$V$";
@@ -85,20 +93,29 @@ int main() {
     cout << "--------------- Enter value of following Parameters ------------------" << endl;
     string temp;
     for (FileProcessor &obj: fileProc) {
-        //if value exsist
-        if (storeVars.count(obj.getVarName())) {
+        //for normal var - if var value exsist
+        if (storeVars.count(obj.getVarName()) && obj.getVarType() != varPathDelimiter) {
             //cout << "KEY EXSIST : " << storeVars.at(obj.getVarName()) << endl;
             temp = storeVars.at(obj.getVarName());
         } else {
             //if not
-            cout << obj.getVarType() << " --- " << obj.getVarName() << " : ";
-            cin >> temp;
-            if (obj.getVarType() == varStoreDelimiter) {
+            if (obj.getVarType() != varPathDelimiter) {
+                cout << obj.getVarType() << " --- " << obj.getVarName() << " : ";
+                cin >> temp;
+                if (obj.getVarType() == varStoreDelimiter) {
 //                cout << "storing value" << endl;
-                storeVars.insert(make_pair(obj.getVarName(), temp));
+                    storeVars.insert(make_pair(obj.getVarName(), temp));
 //                cout << "Value Stored :" << storeVars.size() << endl;
+                }
             }
         }
+        //for path variable
+        if (obj.getVarType() == varPathDelimiter) {
+            temp = obj.getVarName();
+            ReplaceStringInPlace(temp, "../", "./");
+            copyFile(temp);
+        }
+
 //        cout << "seting value :" << obj.getFileName() << ":" << obj.getVarName() << temp << endl;
         obj.setVarValue(temp);
     }
@@ -136,7 +153,8 @@ int main() {
     for (vector<string> &fileContent:opFilesContent) {
         //for  each file
         ofstream opStream;
-        opStream.open(opfilePath + ipFiles[tempFileno]);
+        opStream.open(ipFiles[tempFileno]);
+        //opStream.open(opfilePath + ipFiles[tempFileno]);
         // write inputted data into the file.
         for (string &line : fileContent) {
             opStream << line << endl;
@@ -210,4 +228,31 @@ string ExePath() {
         perror("getcwd() error");
         return 0;
     }
+}
+
+void copyFile(string raw) {
+    ReplaceStringInPlace(raw, "./", "");
+    vector<string> fileContent;
+    ifstream ipStream;
+    ipStream.open(forcefilePath + raw);
+    string tempLine;
+    /* While there is still a line. */
+    if (ipStream.is_open()) {
+        while (getline(ipStream, tempLine)) {
+            fileContent.push_back(tempLine);
+        }
+    } else {
+        cerr << "Unable to open File" << endl;
+    }
+    ipStream.close();
+
+    // open a file in write mode.
+    ofstream opStream;
+    opStream.open(raw);
+    // write inputted data into the file.
+    for (string &line : fileContent) {
+        opStream << line << endl;
+    }
+    cout << "File Copied :" << raw << endl;
+
 }
