@@ -248,7 +248,7 @@ void copyFile(string fileName) {
 
     vector<string> fileContent;
     ifstream ipStream;
-    ipStream.open(forcefilePath + raw);
+    ipStream.open(forcefilePath + fileName);
     string tempLine;
     /* While there is still a line. */
     if (ipStream.is_open()) {
@@ -262,11 +262,11 @@ void copyFile(string fileName) {
 
     // open a file in write mode.
     ofstream opStream;
-    opStream.open(raw);
+    opStream.open(fileName);
     // write inputted data into the file.
     for (string &line : fileContent) {
         opStream << line << endl;
     }
-    cout << "File Copied :" << raw << endl;
+    cout << "File Copied :" << fileName << endl;
 
 }

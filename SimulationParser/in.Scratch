@@ -1,0 +1,196 @@
+log             log.Scratch
+
+# Indentation Simulation
+
+variable        tmp equal 1000
+variable        zzend equal $$ # 200
+
+
+units           metal
+dimension       3
+boundary        p p sm
+molecule        33 ./Ethan.molecule  ./Solid.molecule ./Solid.molecule
+atom_style	template 33
+special_bonds   extra 1
+
+# Koordinaten von Substrat
+
+variable        dz equal 32 #25.5
+variable        Radius equal 232 # 10
+variable        xxlo equal ?
+variable        xxhi equal ?
+variable        yylo equal ?
+variable        yyhi equal ?
+variable        zzlo equal ?
+variable        zzhi equal ?
+variable        xxhiInnen equal ${xxhi}-3
+variable        yyhiInnen equal ${yyhi}-3
+variable        xxhiIInnen equal ${xxhi}-8
+variable        yyhiIInnen equal ${yyhi}-8
+variable        zzFluid equal ${zzhi}+4
+variable        zzendFluid equal ${zzend}-2.5
+variable        xxloFluid equal ${xxlo}+2.5
+variable        xxhiFluid equal ${xxhi}-2.5
+variable        yyloFluid equal ${yylo}+2.5
+variable        yyhiFluid equal ${yyhi}-2.5
+variable        VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * (v_zzend - v_zzhi) - 4/3 * PI * v_Radius^3"
+
+
+read_data	./data.Indent_${tmp}K 
+
+
+mass            1 212
+mass            2 212
+mass            3 212
+mass            4 23
+mass            5 2313 #15.03
+
+
+# Fixed boundaries
+
+#region          bottom block ${xxlo} ${xxhi} ${yylo} ${yyhi} ${zzlo} 3.0            units box
+#region          sidex1 block ${xxlo} ${xxhi} ${yylo} 3.0 3.0 ${zzhi}               units box
+#region          sidey1 block ${xxhiInnen} ${xxhi} 3.0 ${yyhiInnen} 3.0 ${zzhi}              units box
+#region          sidex2 block ${xxlo} ${xxhi} ${yyhiInnen} ${yyhi} 3.0 ${zzhi}        units box
+#region          sidey2 block ${xxlo} 3.0 3.0 ${yyhiInnen} 3.0 ${zzhi}                units box
+
+# Thermostat layers
+
+#region          bottom2 block 3.0 ${xxhiInnen} 3.0 ${yyhiInnen} 3.0 8.0                units box
+#region          sidex11 block 3.0 ${xxhiInnen} 3.0 8.0 8.0 ${zzhi}                  units box
+#region          sidey11 block ${xxhiIInnen} ${xxhiInnen} 8.0 ${yyhiInnen} 8.0 ${zzhi}        units box
+#region          sidex22 block 3.0 ${xxhiIInnen} ${yyhiIInnen} ${yyhiInnen} 8.0 ${zzhi}        units box
+#region          sidey22 block 3.0 8.0 8.0 ${yyhiIInnen} 8.0 ${zzhi}                  units box
+
+#region          body block 8.0 ${xxhiIInnen} 8.0 ${yyhiIInnen} 8.0 ${zzhi}                units box
+
+
+#group           bottom region bottom
+#group           sidex1 region sidex1
+#group           sidey1 region sidey1
+#group           sidex2 region sidex2
+#group           sidey2 region sidey2
+
+#group           bottom2 region bottom2
+#group           sidex11 region sidex11
+#group           sidey11 region sidey11
+#group           sidex22 region sidex22
+#group           sidey22 region sidey22
+
+#group           fixedlayer union bottom sidex1 sidey1 sidex2 sidey2
+#group           boundary union bottom2 sidex11 sidey11 sidex22 sidey22
+#group           body region body
+
+group           fixedlayer type 1
+group           boundary type 2
+group           body type 3
+group           sphere1 type 4
+group           Fluid type 5
+group           mobile union boundary body Fluid
+
+region          dumpBox block ? 100 250 100 250 150 300	   units box
+group           Koor dynamic all region dumpBox
+
+pair_style      hybrid eam/fs lj/cut $$ tersoff #10
+#pair_modify     shift yes
+pair_coeff      * * eam/fs ../Fe_mm.eam.fs Fe Fe Fe NULL NULL
+pair_coeff      * * tersoff ../SiC.tersoff NULL NULL NULL C NULL
+pair_coeff      5 5 lj/cut $$$ #0.008976 3.775 
+pair_coeff      1*3 4 lj/cut $$ #0.02495 3.7 4.2
+pair_coeff	1*3 5 lj/cut $$ #0.02495 3.7 4.2
+pair_coeff	4 5 lj/cut $$ #0.02495 3.7 4.2
+#pair_modify     pair lj/cut 2 shift yes
+
+$$$
+bond_style	harmonic
+bond_coeff      1 13.75563 1.507
+# ---- braucht man diese beiden hier nochmal ?!?!
+
+#pair_modify     mix arithmetic
+#pair_modify     tail yes
+
+
+compute		boundaryTEMP boundary temp
+
+fix             1 mobile nve
+fix             2 fixedlayer setforce 0.0 0.0 0.0
+fix             3 sphere1 setforce 0.0 0.0 0.0
+fix             4 boundary temp/rescale 100 v_tmp 1 0.01 1.0
+fix_modify      4 temp boundaryTEMP
+$$ fix             5 sphere1 rigid single
+fix             Wand all wall/harmonic zhi v_zzend 1.0 0.0 5.0  units box
+#fix             Wand all wall/reflect zhi v_zzend units box
+
+
+# Run Indentation
+
+compute         ke all ke/atom
+compute         pe all pe/atom
+variable        etotal atom (c_ke+c_pe)
+#compute         stress all stress/atom
+#compute         cna all cna/atom 3.45
+#compute         centro all centro/atom bcc
+
+#compute         forceZ body property/atom fz
+#compute         Fz body reduce sum c_forceZ
+#compute         forceX body property/atom fx
+#compute         Fx body reduce sum c_forceX
+#compute         forceY body property/atom fy
+#compute         Fy body reduce sum c_forceY
+
+variable         MassFluid equal "mass(Fluid)"
+variable         DensFluid equal "v_MassFluid / v_VolFluid"
+compute          TempFluid Fluid temp
+
+#compute         peratom all stress/atom NULL
+
+# spatial evaluation
+variable       binwidth equal "12312"  # 8
+variable       xstart equal "((xhi + xlo)/2)-0.5*v_binwidth"
+variable       xboundHi2 equal "0.6*v_binwidth+v_xstart"
+variable       xboundLo2 equal "-0.6*v_binwidth+v_xstart"
+compute        Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower 31231 z lower 231231 bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
+fix            8 all ave/chunk 1 23123 1231 Kaesten2 temp density/mass file profile.Scratch3D_${tmp}   # 500 10000
+
+
+neighbor        5 bin
+neigh_modify    delay 5 one 50000 page 500000
+
+
+# Indentation
+
+
+timestep        3123 #0.00012
+
+#group           Substrat type 3
+#group           Indenter type 4
+#group           Fluid    type 5
+compute         f_IndSub sphere1 group/group body
+compute         f_IndFl  sphere1 group/group Fluid
+#variable        f_Ind     equal "sqrt( (c_f_IndSub[1]+c_f_IndFl[1])^2 + (c_f_IndSub[2]+c_f_IndFl[2])^2 + (c_f_IndSub[3]+c_f_IndFl[3])^2 )"
+variable        f_Ind1   equal "c_f_IndSub[1]+c_f_IndFl[1]"
+variable        f_Ind2   equal "c_f_IndSub[2]+c_f_IndFl[2]"
+variable        f_Ind3   equal "c_f_IndSub[3]+c_f_IndFl[3]"
+
+
+variable        vscratch         equal 32323 #0.2
+variable        length           equal v_vscratch*step*dt
+variable        scratch_length   equal 23 #5
+variable        run_scratch        equal round((v_scratch_length)/(v_vscratch*dt))
+
+velocity        sphere1 set 0.0 v_vscratch 0.0                              units box
+velocity        fixedlayer set 0.0 0.0 0.0                          units box
+
+
+thermo          3 100
+thermo_style    custom step atoms c_TempFluid v_VolFluid v_DensFluid v_length c_f_IndSub[1] c_f_IndSub[2] c_f_IndSub[3] v_f_Ind1 v_f_Ind2 v_f_Ind3
+dump            1 all custom $$ dump.Scratch type id xs ys zs #c_cna  #30000
+dump      	2 Koor xyz $$ Scratch.xyz  #1000
+dump_modify     2 element Fe Fe Fe C O
+print           "Number of timesteps = ${run_scratch}" screen yes
+run             ${run_scratch}
+write_data      data.Scratch_${tmp}K
+undump          1
+undump          2
+shell           rm log.lammps
+shell           ./Skript_postScratch.sh
