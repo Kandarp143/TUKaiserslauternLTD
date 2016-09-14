@@ -2,21 +2,21 @@ log             log.Scratch
 
 # Indentation Simulation
 
-variable        tmp equal $$
+variable        tmp equal $V$ tmp $V$
 variable        zzend equal $$ # 200
 
 
 units           metal
 dimension       3
 boundary        p p sm
-molecule        33 $$../Ethan.molecule ../Solid.molecule ../Solid.molecule
+molecule        33 $P$../Ethan.molecule $P$  $P$../Solid.molecule $P$ $P$../Solid.molecule $P$
 atom_style	template 33
 special_bonds   extra 1
 
 # Koordinaten von Substrat
 
-variable        dz equal $$ #25.5
-variable        Radius equal $$ # 10
+variable        dz equal $V$ dz $V$ #25.5
+variable        Radius equal $V$ Radius $V$ # 10
 variable        xxlo equal ?
 variable        xxhi equal ?
 variable        yylo equal ?
@@ -39,11 +39,11 @@ variable        VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * (v_zzend
 read_data	./data.Indent_${tmp}K 
 
 
-mass            1 55.845
-mass            2 55.845
-mass            3 55.845
-mass            4 12
-mass            5 $$$ #15.03
+mass            1 $V$ mass1 $V$
+mass            2 $V$ mass1 $V$
+mass            3 $V$ mass1 $V$
+mass            4 $V$ mass4 $V$
+mass            5 $V$ mass5 $V$ #15.03
 
 
 # Fixed boundaries
@@ -145,12 +145,12 @@ compute          TempFluid Fluid temp
 #compute         peratom all stress/atom NULL
 
 # spatial evaluation
-variable       binwidth equal "$$"  # 8
+variable       binwidth equal "$V$ binwidth $V$"  # 8
 variable       xstart equal "((xhi + xlo)/2)-0.5*v_binwidth"
 variable       xboundHi2 equal "0.6*v_binwidth+v_xstart"
 variable       xboundLo2 equal "-0.6*v_binwidth+v_xstart"
-compute        Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower $$ z lower $$ bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
-fix            8 all ave/chunk 1 $$ $$ Kaesten2 temp density/mass file profile.Scratch3D_${tmp}   # 500 10000
+compute        Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower $S$ Ylower $S$ z lower $S$ Zlower $S$ bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
+fix            8 all ave/chunk 1 $S$ fix1 $S$ $S$ fix2 $S$ Kaesten2 temp density/mass file profile.Scratch3D_${tmp}   # 500 10000
 
 
 neighbor        5 bin
@@ -160,7 +160,7 @@ neigh_modify    delay 5 one 50000 page 500000
 # Indentation
 
 
-timestep        $$ #0.00012
+timestep        $V$ timestep $V$ #0.00012
 
 #group           Substrat type 3
 #group           Indenter type 4
@@ -173,16 +173,16 @@ variable        f_Ind2   equal "c_f_IndSub[2]+c_f_IndFl[2]"
 variable        f_Ind3   equal "c_f_IndSub[3]+c_f_IndFl[3]"
 
 
-variable        vscratch         equal $$ #0.2
+variable        vscratch         equal $V$ vscratch $V$ #0.2
 variable        length           equal v_vscratch*step*dt
-variable        scratch_length   equal $$ #5
+variable        scratch_length   equal $V$ scratch_length $V$ #5
 variable        run_scratch        equal round((v_scratch_length)/(v_vscratch*dt))
 
 velocity        sphere1 set 0.0 v_vscratch 0.0                              units box
 velocity        fixedlayer set 0.0 0.0 0.0                          units box
 
 
-thermo          $$ 100
+thermo          $V$ thermo $V$ 100
 thermo_style    custom step atoms c_TempFluid v_VolFluid v_DensFluid v_length c_f_IndSub[1] c_f_IndSub[2] c_f_IndSub[3] v_f_Ind1 v_f_Ind2 v_f_Ind3
 dump            1 all custom $$ dump.Scratch type id xs ys zs #c_cna  #30000
 dump      	2 Koor xyz $$ Scratch.xyz  #1000
