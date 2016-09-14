@@ -1,0 +1,87 @@
+##Lammps input
+
+variable        tmp index 298
+variable        press index 41
+variable        pss equal ${press}*9.86923
+log             nC4H10_OPLSAmb_p${press}t${tmp}_equ.log
+
+dimension 3
+units real
+boundary p p p
+
+
+molecule        33 molecule.txt
+
+atom_style      template 33
+
+lattice         sc 7
+
+region          Kiste block 0 8 0 8 0 8 units lattice
+create_box      2 Kiste bond/types 1 angle/types 1 dihedral/types 1
+
+pair_style	lj/cut 14.0
+pair_coeff      1 1 0.118 3.905
+pair_coeff     2 2 0.174993 3.905
+pair_modify     mix arithmetic
+pair_modify     tail yes
+
+
+
+
+mass            1 14.03
+
+
+mass            2 15.03
+
+bond_style	harmonic
+bond_coeff	1 317.212344 1.507
+
+angle_style     harmonic
+angle_coeff     1 62.1001129 112
+
+dihedral_style  multi/harmonic
+dihedral_coeff  * 2.049522317 -4.0495633 0.3150115 6.4140971 0.0
+
+
+create_atoms    0 box mol 33 2
+
+
+velocity        all create ${tmp} 47
+timestep        0.12
+thermo          5000
+
+variable        Druck equal press/9.86923
+variable        MolE equal emol*4184/512
+variable        Dichte equal density
+variable        PotE equal pe*4184/512
+variable        Temp equal temp
+
+fix             MDruck all ave/time 1 5000 5000 v_Druck
+fix             MDichte all ave/time 1 5000 5000 v_Dichte
+fix             MTemp all ave/time 1 5000 5000 v_Temp
+fix             MPotE all ave/time 1 5000 5000 v_PotE
+fix             MMolE all ave/time 1 5000 5000 v_MolE
+
+thermo_style    custom step f_MTemp f_MDruck f_MDichte f_MMolE f_MPotE press temp pe
+
+
+
+
+
+
+# Equilibrierung:
+
+
+fix             NVT_Equ all nvt temp ${tmp} ${tmp} 100
+run             2500000
+unfix           NVT_Equ
+
+fix             NpT all npt temp ${tmp} ${tmp} 100 iso ${pss} ${pss} 500
+run             2500000
+
+
+#dump            Trajek all custom 500 nC4H10_OPLSAmb_p${press}t${tmp}.dump id type x y z
+
+# RUN:
+log             nC4H10_OPLSAmb_p${press}t${tmp}.log
+run             10000000
