@@ -11,6 +11,13 @@ private:
     string fileName;
     int lineNo;
     string lineText;
+    string varString;
+public:
+    const string &getVarString() const;
+
+    void setVarString(const string &varString);
+
+private:
     string varName;
     string varType;
     string varValue;

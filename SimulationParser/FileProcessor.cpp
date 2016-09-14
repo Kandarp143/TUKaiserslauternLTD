@@ -75,3 +75,11 @@ int FileProcessor::getVarEndPos() const {
 void FileProcessor::setVarEndPos(int varEndPos) {
     FileProcessor::varEndPos = varEndPos;
 }
+
+const string &FileProcessor::getVarString() const {
+    return varString;
+}
+
+void FileProcessor::setVarString(const string &varString) {
+    FileProcessor::varString = varString;
+}
