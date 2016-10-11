@@ -1,4 +1,0 @@
-Name        : Kandarp Patel
-Address     : 117 Meisenweg Kaiserslautern 676663
-Course      : Masters
-University  : Kandarp
