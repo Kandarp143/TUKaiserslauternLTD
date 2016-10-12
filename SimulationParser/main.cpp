@@ -28,6 +28,9 @@ string ExePath();
 //to update value user error
 void updateVarValue(string varName, string newVal);
 
+//to update Cylinder or Sphere
+void updateRelaxFluid(string choice);
+
 
 
 /* --------------------------------------------- declaration global variable -----------------------------------------*/
@@ -37,7 +40,7 @@ string ipFiles[] = {"in.relaxSubstrate", "in.relaxFluid", "in.Indent", "in.Scrat
 
 //global asking question
 string globalQue[] = {
-        "Cylinder or Sphere (c/y) ",
+        "Cylinder or Sphere (c/s) ",
 };
 
 //static path of i/p o/p files
@@ -223,7 +226,7 @@ int main() {
     cout << "--------------- Prepareing output from user input ------------------" << endl;
     int tempFileIndex = 1;
     int tempLine = 1;
-    //for  each file
+    //Dynamic Variable Replacement in File
     for (vector<string> &fileContent:ipFilesContent) {
         tempLine = 1;
         vector<string> opFile;
@@ -249,6 +252,8 @@ int main() {
         //finally put o/p file into list of ops
         opFilesContent.push_back(opFile);
     }
+
+
 /* --------------------------------------------- generate output files with processed content  -----------------------*/
 
     cout << "------------------------Generating output file-------------------------------" << endl;
@@ -267,6 +272,8 @@ int main() {
         opStream.close();
     }
 
+/* --------------------------------------------- edit output files with global variable ------------------------------*/
+    updateRelaxFluid(globalVars.at("Cylinder or Sphere (c/s) "));
 
 }
 
@@ -346,18 +353,92 @@ void updateVarValue(string varName, string newVal) {
     bool breaker = true;
     for (FileProcessor &obj: fileProc) {
         if (obj.getVarName() == varName && breaker == true) {
-          //  cout << "Updating value from :  " << obj.getVarValue() << endl;
+            //  cout << "Updating value from :  " << obj.getVarValue() << endl;
             obj.setVarValue(newVal);
-          //  cout << " To :" << obj.getVarValue() << endl;
+            //  cout << " To :" << obj.getVarValue() << endl;
             breaker = false;
         }
     }
     //for store var
     if (storeVars.count(varName)) {
         //if vartype is store var
-       // cout << "value before : "<<storeVars.at(varName) << endl;
-       // cout << "store value updated " << endl;
+        // cout << "value before : "<<storeVars.at(varName) << endl;
+        // cout << "store value updated " << endl;
         storeVars[varName] = newVal;
-      //  cout << "value is : "<<storeVars.at(varName) << endl;
+        //  cout << "value is : "<<storeVars.at(varName) << endl;
     }
 }
+
+void updateRelaxFluid(string choice) {
+    ifstream ipStream;
+    //for each file
+    vector<string> fileContent;
+    vector<string> output;
+    ipStream.open(opfilePath + "in.relaxFluid");
+    string tempLine;
+    if (ipStream.is_open()) {
+        //for each line
+        while (getline(ipStream, tempLine)) {
+            fileContent.push_back(tempLine);
+        }
+    } else {
+        cerr << "Unable to open input template file at location : " << ipfilePath + "in.relaxFluid" << endl;
+    }
+    cout << "Reading Relax File\n\n\n\n" << endl;
+    string tempVar;
+    int ptrFirstFrom = 0;
+    int ptrTwoFrom = 0;
+    if (choice == "c") {
+        tempVar = "# Sphere";
+    } else {
+        tempVar = "# Cylinder";
+    }
+    int line = 1;
+    for (string s:fileContent) {
+        if (s.find(tempVar) != string::npos) {
+            ptrFirstFrom = ptrTwoFrom;
+            ptrTwoFrom = line;
+        }
+        line++;
+
+    }
+    line = 1;
+    for (string s:fileContent) {
+        if (choice == "c") {
+            if (line >= ptrFirstFrom && line <= ptrFirstFrom + 3) {
+//                cout<<"updating"<<endl;
+                s = "#" + s;
+            }
+            if (line >= ptrTwoFrom && line <= ptrTwoFrom + 6) {
+//                cout<<"updating"<<endl;
+                s = "#" + s;
+            }
+            }else{
+            if (line >= ptrFirstFrom && line <= ptrFirstFrom + 4) {
+//                cout<<"updating"<<endl;
+                s = "#" + s;
+            }
+            if (line >= ptrTwoFrom && line <= ptrTwoFrom + 3) {
+//                cout<<"updating"<<endl;
+                s = "#" + s;
+            }
+        }
+
+            line++;
+        output.push_back(s);
+        }
+        ipStream.close();
+
+
+        //Replace file
+        ofstream opStream;
+        //create new file
+        opStream.open(opfilePath + "in.relaxFluid");
+        // write data to that file.
+        for (string &line : output) {
+            opStream << line << endl;
+        }
+//        cout << "File Updated : in.relaxFluid" << endl;
+        opStream.close();
+
+    }

@@ -7,7 +7,7 @@ log             log.relaxFluid
 
 
 variable        tmp equal $V$ tmp $V$
-variable        zWstart equal $V$ zWstart $V$ #200
+variable        zWstart equal $S$ zWstart $S$ #200
 
 units           metal
 dimension       3
@@ -37,7 +37,7 @@ variable        ZyLength equal $$ # 60
 variable        xZhi equal "v_xSphere + 0.5*v_ZyLength"
 variable        xZlo equal "v_xSphere - 0.5*v_ZyLength"
 variable        yZy equal "50+0.5*v_Radius"
-#region          sphere1 cylinder x ${yZy} ${dzz} ${Radius} ${xZlo} ${xZhi}   units box
+region          sphere1 cylinder x ${yZy} ${dzz} ${Radius} ${xZlo} ${xZhi}   units box
 
 
 read_data	./data.relaxSubstrate_${tmp}K extra/atom/types 3
