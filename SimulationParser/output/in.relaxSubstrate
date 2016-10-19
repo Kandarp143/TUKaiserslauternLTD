@@ -2,7 +2,7 @@ log            log.relaxSubstrate
 
 # to equlibrate the Substrate for surface (100) for scratching in [0-1-1] direction
 
-variable        tmp equal 2000
+variable        tmp equal c\
 
 units           metal
 molecule        32 ./Solid.molecule
@@ -13,18 +13,18 @@ boundary        p p s
 neighbor        2.0 bin
 neigh_modify    delay 5
 
-lattice         bcc 12 orient x 0 -1 1 orient y 0 -1 -1 orient z 1 0 0
-region          target block 0 rr 0 rrrr 0 fff  # 0 84 0 109 0 85
+lattice         bcc ./Solid.molecule orient x 0 -1 1 orient y 0 -1 -1 orient z 1 0 0
+region          target block 0 ./Solid.molecule 0 ./Solid.molecule 0 ./Solid.molecule  # 0 84 0 109 0 85
 
 create_box      1 target
 create_atoms    0 region target	mol 32 47
 
-mass            1 ggg
+mass            1 ./Solid.molecule
 
 pair_style      eam/fs
 pair_coeff      * * ./Fe_mm.eam.fs Fe
 
-timestep	ggg # 0.001
+timestep	./Fe_mm.eam.fs Fe # 0.001
 thermo          100
 thermo_style    custom step temp pe ke etotal press vol lx ly lz pxx pyy pzz pxy pxz pyz
 
@@ -40,8 +40,8 @@ compute         centro all centro/atom bcc
 
 velocity        all create ${tmp} 47 mom yes rot yes dist gaussian
 fix             NpT all npt temp ${tmp} ${tmp} 0.1 x 0.0 0.0 100.0 y 0.0 0.0 100.0 drag 15.0
-dump		1 all custom ggg dump.relaxSubstrate type id xs ys zs c_cna
-run             ggg # 200000
+dump		1 all custom ./Fe_mm.eam.fs Fe dump.relaxSubstrate type id xs ys zs c_cna
+run             ./Fe_mm.eam.fs Fe # 200000
 unfix		NpT
 
 

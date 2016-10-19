@@ -6,8 +6,8 @@ log             log.relaxFluid
 # Inserting the Indenter
 
 
-variable        tmp equal 2000
-variable        zWstart equal ggg #200
+variable        tmp equal c\
+variable        zWstart equal c\ #200
 
 units           metal
 dimension       3
@@ -17,8 +17,8 @@ atom_style	template 33
 special_bonds   extra 1
 
 # setting geometry
-variable        dz equal gg  # 25.5
-variable        Radius equal g # 20
+variable        dz equal ./Solid.molecule  # 25.5
+variable        Radius equal ./Solid.molecule # 20
 variable        xxlo equal ??
 variable        xxhi equal ??
 variable        yylo equal ??
@@ -45,14 +45,14 @@ read_data	./data.relaxSubstrate_${tmp}K extra/atom/types 3
 change_box	all z final ${zzlo} ${zWstart}   units box
 
 lattice         none 1.0
-lattice         diamond g #3.5667
+lattice         diamond ./Solid.molecule #3.5667
 
 create_atoms    3 region $$sphere1 mol 33 47
 
-mass            1 ggg
-mass            2 ggg
-mass            3 ggg
-mass            4 gg
+mass            1 ./Solid.molecule
+mass            2 ./Solid.molecule
+mass            3 ./Solid.molecule
+mass            4 ./Solid.molecule
 
 write_data      data.insSphereInterim
 
@@ -63,9 +63,9 @@ clear
 
 # Insertion of Fluid and its equilibration
 
-variable        tmp      equal 2000
-variable        zWstart  equal ggg 200
-variable        densEnd  equal g 0.07 #in g/cm^3
+variable        tmp      equal c\
+variable        zWstart  equal c\ 200
+variable        densEnd  equal c\ 0.07 #in g/cm^3
 
 
 units           metal
@@ -76,8 +76,8 @@ atom_style	template 33
 special_bonds   extra 1
 
 
-variable        dz equal gg
-variable        Radius equal g
+variable        dz equal ./Solid.molecule
+variable        Radius equal ./Solid.molecule
 variable        xxlo equal ??
 variable        xxhi equal ??
 variable        yylo equal ??
@@ -118,11 +118,11 @@ variable        yZy equal "50 + 0.5*v_Radius"
 
 read_data	./data.insSphereInterim $$$ extra/atom/types 1 extra/bond/types 1
 
-mass            1 ggg
-mass            2 ggg
-mass            3 ggg
-mass            4 gg
-mass            5 g #15.03
+mass            1 ./Solid.molecule
+mass            2 ./Solid.molecule
+mass            3 ./Solid.molecule
+mass            4 ./Solid.molecule
+mass            5 ./Solid.molecule #15.03
 
 
 # Fixed boundaries
@@ -158,7 +158,7 @@ region          F_all union 5 F_top F_sidex1 F_sidey1 F_sidex2 F_sidey2   units 
 
 # insert Fluid
 
-lattice         sc g #8
+lattice         sc ./Solid.molecule #8
 
 region          UNTEN block ${xxlo} ${xxhi} ${yylo} ${yyhi} ${zzlo} ${zzFluid} units box
 region          Fluid union 3 F_all UNTEN SchutzSphere side out             units box
@@ -247,12 +247,12 @@ compute          TempFluid Fluid temp
 #compute         peratom all stress/atom NULL
 
 # spatial evaluation
-variable       binwidth equal "g"  # 8
+variable       binwidth equal "./Solid.molecule"  # 8
 variable       xstart equal "((xhi + xlo)/2)-0.5*v_binwidth"
 variable       xboundHi2 equal "0.6*v_binwidth+v_xstart"
 variable       xboundLo2 equal "-0.6*v_binwidth+v_xstart"
-compute        Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower g z lower gg bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
-fix            7 all ave/chunk 1 g g Kaesten2 temp density/mass file profile.relaxFluid3D_${tmp}      # 500  10000
+compute        Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower ./Solid.molecule z lower ./Solid.molecule bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
+fix            7 all ave/chunk 1 ./Solid.molecule ./Solid.molecule Kaesten2 temp density/mass file profile.relaxFluid3D_${tmp}      # 500  10000
 
 
 velocity        Fluid create ${tmp} 47
@@ -260,12 +260,12 @@ neighbor        5 bin
 neigh_modify    delay 5 one 50000 page 500000
 
 
-timestep        ggg # 0.00012
+timestep        ./Fe_mm.eam.fs Fe # 0.00012
 variable        speedW         equal 0.5
 variable        VolFluidEnd    equal "v_MassFluid / v_densEnd*1.66053904"
 variable        zWend          equal "v_zzhi + ( v_VolFluidEnd + 4/3*PI*v_Radius^3 ) / ( (v_xxhi-v_xxlo)*(v_yyhi -v_yylo) ) "
 variable        nCompr         equal "round((v_zWstart - v_zWend)/(v_speedW*dt))"
-variable        nPost          equal ggg #200000
+variable        nPost          equal ./Fe_mm.eam.fs Fe #200000
 variable        nPre           equal "0.025*v_nPost"
 variable        zW             equal "v_zWstart - v_speedW*(step-v_nPre)*dt"
 
@@ -273,7 +273,7 @@ print  	       	"WallpositionEnd ${zWend}"
 variable        FunkTest equal "v_zzhi + v_dz + v_Radius+15"
 if "${zWend} <= ${FunkTest}" then quit
 
-thermo          ggg #100
+thermo          ./Fe_mm.eam.fs Fe #100
 dump            1 Koor custom $$ dump.relaxFluid type id xs ys zs  #30000
 dump            2 Koor xyz 1000 relaxFluid.xyz  #500 - 1000
 dump_modify     2 element Fe Fe Fe C O

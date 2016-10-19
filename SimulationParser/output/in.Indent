@@ -2,7 +2,7 @@ log             log.Indent
 
 # Indentation Simulation
 
-variable        tmp equal 2000
+variable        tmp equal c\
 variable        zzend equal $$ # 200
 
 
@@ -15,8 +15,8 @@ special_bonds   extra 1
 
 # Koordinaten von Substrat
 
-variable        dz equal gg # 25.5
-variable        Radius equal g# 10
+variable        dz equal ./Solid.molecule # 25.5
+variable        Radius equal ./Solid.molecule# 10
 variable        xxlo equal ?
 variable        xxhi equal ?
 variable        yylo equal ?
@@ -39,11 +39,11 @@ variable        VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * (v_zzend
 read_data	./data.relaxFluid_${tmp}K 
 
 
-mass            1 ggg
-mass            2 ggg
-mass            3 ggg
-mass            4 gg
-mass            5 g #15.03
+mass            1 ./Solid.molecule
+mass            2 ./Solid.molecule
+mass            3 ./Solid.molecule
+mass            4 ./Solid.molecule
+mass            5 ./Solid.molecule #15.03
 
 
 # Fixed boundaries
@@ -146,12 +146,12 @@ compute          TempFluid Fluid temp
 
 #compute         peratom all stress/atom NULL
 
-variable       binwidth equal "g" # 8
+variable       binwidth equal "./Solid.molecule" # 8
 variable       xstart equal "((xhi + xlo)/2)-0.5*v_binwidth"
 variable       xboundHi2 equal "0.6*v_binwidth+v_xstart"
 variable       xboundLo2 equal "-0.6*v_binwidth+v_xstart"
-compute        Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower g z lower gg bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
-fix            8 all ave/chunk 1 g g Kaesten2 temp density/mass file profile.Indent3D_${tmp}     # 500 10000
+compute        Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower ./Solid.molecule z lower ./Solid.molecule bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
+fix            8 all ave/chunk 1 ./Solid.molecule ./Solid.molecule Kaesten2 temp density/mass file profile.Indent3D_${tmp}     # 500 10000
 
 
 
@@ -161,9 +161,9 @@ neigh_modify     delay 5 one 50000 page 500000
 
 # Equilibrate interface
 
-thermo          ggg
-timestep        ggg
-run             gg
+thermo          ./Fe_mm.eam.fs Fe
+timestep        ./Fe_mm.eam.fs Fe
+run             ./Fe_mm.eam.fs Fe
 
 
 # Indentation
@@ -179,17 +179,17 @@ variable        f_Ind2   equal "c_f_IndSub[2]+c_f_IndFl[2]"
 variable        f_Ind3   equal "c_f_IndSub[3]+c_f_IndFl[3]"
 
 
-variable        vindent         equal g #-0.2
+variable        vindent         equal ./Fe_mm.eam.fs Fe #-0.2
 variable        depth           equal v_vindent*step*dt-v_dz+v_Radius
 #variable        depth           equal v_vindent*(step-10000)*dt
-variable        eindringtiefe    equal g #5
+variable        eindringtiefe    equal ./Fe_mm.eam.fs Fe #5
 variable        run_Indent       equal round((v_eindringtiefe+v_dz-v_Radius)/(-v_vindent*dt))
 
 velocity        sphere1 set 0.0 0.0 v_vindent                              units box
 velocity        fixedlayer set 0.0 0.0 0.0                          units box
 
 
-thermo          ggg #100
+thermo          ./Fe_mm.eam.fs Fe #100
 thermo_style    custom step atoms c_TempFluid v_VolFluid v_DensFluid v_depth c_f_IndSub[1] c_f_IndSub[2] c_f_IndSub[3] v_f_Ind1 v_f_Ind2 v_f_Ind3
 dump            1 all custom $$ dump.Indent type id xs ys zs c_cna  #30000
 dump      	2 Koor xyz $$ Indent.xyz   #1000

@@ -2,7 +2,7 @@ log             log.Remove
 
 # Indentation Simulation
 
-variable        tmp equal 2000
+variable        tmp equal c\
 variable        zzend equal $$ # 200
 
 
@@ -15,8 +15,8 @@ special_bonds   extra 1
 
 # Koordinaten von Substrat
 
-variable        dz equal gg # 25.5
-variable        Radius equal g # 10
+variable        dz equal ./Solid.molecule # 25.5
+variable        Radius equal ./Solid.molecule # 10
 variable        xxlo equal ?
 variable        xxhi equal ?
 variable        yylo equal ?
@@ -39,11 +39,11 @@ variable        VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * (v_zzend
 read_data	./data.Scratch_${tmp}K 
 
 
-mass            1 ggg
-mass            2 ggg
-mass            3 ggg
-mass            4 gg
-mass            5 g #15.03
+mass            1 ./Solid.molecule
+mass            2 ./Solid.molecule
+mass            3 ./Solid.molecule
+mass            4 ./Solid.molecule
+mass            5 ./Solid.molecule #15.03
 
 
 # Fixed boundaries
@@ -157,7 +157,7 @@ neigh_modify    delay 5 one 50000 page 500000
 
 # Indentation
 
-timestep        ggg# 0.00012
+timestep        ./Fe_mm.eam.fs Fe# 0.00012
 
 #group           Substrat type 3
 #group           Indenter type 4
@@ -170,18 +170,18 @@ variable        f_Ind2   equal "c_f_IndSub[2]+c_f_IndFl[2]"
 variable        f_Ind3   equal "c_f_IndSub[3]+c_f_IndFl[3]"
 
 
-variable        vremove         equal g # 0.2
+variable        vremove         equal ./Fe_mm.eam.fs Fe # 0.2
 variable        length           equal v_vremove*step*dt
-variable        remove_length   equal "g 0.5*v_Radius+ g eindringtiefe"
+variable        remove_length   equal "./Fe_mm.eam.fs Fe 0.5*v_Radius+ ./Fe_mm.eam.fs Fe eindringtiefe"
 variable        run_remove        equal round((v_remove_length)/(v_vremove*dt))
 
 velocity        sphere1 set 0.0 0.0 v_vremove                       units box
 velocity        fixedlayer set 0.0 0.0 0.0                          units box
 
 
-thermo          ggg # 100
+thermo          ./Fe_mm.eam.fs Fe # 100
 thermo_style    custom step atoms c_TempFluid v_VolFluid v_DensFluid v_length c_f_IndSub c_f_IndSub[1] c_f_IndSub[2] c_f_IndSub[3] v_f_Ind v_f_Ind1 v_f_Ind2 v_f_Ind3
-dump            1 all custom ggg dump.Remove type id xs ys zs #c_cna
+dump            1 all custom ./Fe_mm.eam.fs Fe dump.Remove type id xs ys zs #c_cna
 print           "Number of timesteps = ${run_remove}" screen yes
 run             ${run_remove}
 write_data      data.Remove_${tmp}K
