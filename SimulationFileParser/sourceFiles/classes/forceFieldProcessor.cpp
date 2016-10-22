@@ -17,7 +17,10 @@ const string &forceFieldProcessor::getNosCites() const {
 }
 
 void forceFieldProcessor::setNosCites(const string &nosCites) {
+
     forceFieldProcessor::nosCites = nosCites;
+
+
 }
 
 const string &forceFieldProcessor::getNosBonds() const {
@@ -26,6 +29,8 @@ const string &forceFieldProcessor::getNosBonds() const {
 
 void forceFieldProcessor::setNosBonds(const string &nosBonds) {
     forceFieldProcessor::nosBonds = nosBonds;
+
+
 }
 
 const vector<string> &forceFieldProcessor::getPairCoffBlock() const {
@@ -34,4 +39,12 @@ const vector<string> &forceFieldProcessor::getPairCoffBlock() const {
 
 void forceFieldProcessor::setPairCoffBlock(const vector<string> &pairCoffBlock) {
     forceFieldProcessor::pairCoffBlock = pairCoffBlock;
+}
+
+const vector<string> &forceFieldProcessor::getMass() const {
+    return mass;
+}
+
+void forceFieldProcessor::setMass(const vector<string> &mass) {
+    forceFieldProcessor::mass = mass;
 }

@@ -55,3 +55,4 @@ vector<string> forcedFiles;
 vector<vector<string>> ipFilesContent;
 vector<vector<string>> opFilesContent;
 vector<forceFieldProcessor> forceFields;
+string forceFieldsSelection;

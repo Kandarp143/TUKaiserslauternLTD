@@ -35,5 +35,6 @@ extern std::vector<std::vector<std::string>> ipFilesContent;
 extern std::vector<std::vector<std::string>> opFilesContent;
 //force fields
 extern std::vector<forceFieldProcessor> forceFields;
+extern std::string forceFieldsSelection;
 
 #endif //SIMULATIONFILEPARSER_GLOBALS_H

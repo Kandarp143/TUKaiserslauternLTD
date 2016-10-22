@@ -201,6 +201,7 @@ vector<forceFieldProcessor> parseForceFields(string qualifiedPath) {
     ipStream.open(qualifiedPath);
     string tempLine;
     vector<string> s;
+    vector<string> m;
     forceFieldProcessor *f;
     bool flag = false;
     if (ipStream.is_open()) {
@@ -210,14 +211,33 @@ vector<forceFieldProcessor> parseForceFields(string qualifiedPath) {
             if (tempLine.find("MOLECULE") != std::string::npos) {
                 if (flag) {
                     f->setPairCoffBlock(s);
+                    f->setMass(m);
                     final.push_back(*f);
                     s.clear();
+                    m.clear();
                 }
                 flag = true;
                 f = new forceFieldProcessor();
-                f->setMolecule(tempLine);
+                ReplaceStringInPlace(tempLine, "MOLECULE", "");
+                f->setMolecule(trim(tempLine));
             } else {
-                s.push_back(tempLine);
+                //capture bonds and cites
+                if (tempLine.find("number_of_cites:") != std::string::npos) {
+                    ReplaceStringInPlace(tempLine, "number_of_cites:", "");
+                    f->setNosCites(trim(tempLine));
+                } else if (tempLine.find("number_of_bonds:") != std::string::npos) {
+                    ReplaceStringInPlace(tempLine, "number_of_bonds:", "");
+                    f->setNosBonds(trim(tempLine));
+                } else {
+                    s.push_back(tempLine);
+                }
+                //saperate mass filter
+                if (tempLine.find("mass") != std::string::npos) {
+                    trim(tempLine);
+                    tempLine = tempLine.substr(tempLine.find_last_of(" "), tempLine.length());
+                    m.push_back(trim(tempLine));
+                }
+
             }
         }
     } else {
@@ -225,6 +245,21 @@ vector<forceFieldProcessor> parseForceFields(string qualifiedPath) {
     }
     //push each file into list of files
     ipStream.close();
+
+    //generating force field selection
+    forceFieldsSelection = "\n[";
+
+    for (forceFieldProcessor f: final) {
+        if (forceFieldsSelection == "\n[") {
+            forceFieldsSelection = forceFieldsSelection + f.getMolecule();
+        } else {
+            forceFieldsSelection = forceFieldsSelection + ", " + f.getMolecule();
+        }
+    }
+    forceFieldsSelection = forceFieldsSelection + "]";
+    globalQue.push_back("Select Molecule : " + forceFieldsSelection);
     return final;
 }
+
+
 

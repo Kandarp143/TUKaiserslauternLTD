@@ -12,13 +12,19 @@ using namespace std;
 
 int main() {
     /* --------------------------------------------- reading force fields  -------------------------------------------*/
-    forceFields =  parseForceFields(forcefilePath+forcefileName);
-//    for (forceFieldProcessor f: forceFields) {
-//        cout << "------------------" << f.getMolecule() << endl;
-//        for (string t : f.getPairCoffBlock()) {
-//            cout << t << endl;
-//        }
-//    }
+    forceFields = parseForceFields(forcefilePath + forcefileName);
+    cout << forceFieldsSelection << endl;
+    for (forceFieldProcessor f: forceFields) {
+        cout << "------------------" << f.getMolecule() << "------------------" << endl;
+        cout << "nosBonds : " << f.getNosBonds() << endl;
+        cout << "nosCites : " << f.getNosCites() << endl;
+        for (string t : f.getPairCoffBlock()) {
+            cout << "Pair Coff :" << t << endl;
+        }
+        for (string m : f.getMass()) {
+            cout << "mass :" << m << endl;
+        }
+    }
 
     /* --------------------------------------------- read and store i/p files in variable ----------------------------*/
     ifstream ipStream;

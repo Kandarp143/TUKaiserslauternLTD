@@ -1,5 +1,8 @@
 MOLECULE Fe_mm.eam.fs
 
+number_of_cites: 2
+number_of_bonds: 1
+
 mass  1 55.845
 
 
@@ -110,11 +113,11 @@ MOLECULE n-Hexan
 # units metal
 # values from OPLS+Amber-Forcefield (exception: dihedral_coeff)
 
-pair_coeff      1 1 0.003963972 3.95
-pair_coeff      2 2 0.008444984 3.75
+pair_coeff   1 1 0.003963972 3.95
+pair_coeff   2 2 0.008444984 3.75
 mass            1 14.03
 mass            2 15.03
-bond_style      harmonic
+bond_style  harmonic
 bond_coeff      1 27.5112581255 1.507
 angle_style     harmonic
 angle_coeff     1 5.3858314916 112
@@ -185,8 +188,8 @@ MOLECULE ethanol
 
 pair_coeff	1 1 0.008444984 3.750
 pair_coeff	2 2 0.003963972 3.950
-pair_coeff      3 3 0.008014117 3.020
-pair_coeff      4 4 0.0 0.0
+pair_coeff  3 3 0.008014117 3.020
+pair_coeff  4 4 0.0 0.0
 mass            1 15.04
 mass            2 14.03
 mass            3 16.00

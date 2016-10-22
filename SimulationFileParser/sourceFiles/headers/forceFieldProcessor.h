@@ -35,6 +35,11 @@ public:
 
 private:
     vector<string> pairCoffBlock;
+    vector<string> mass;
+public:
+    const vector<string> &getMass() const;
+
+    void setMass(const vector<string> &mass);
 };
 
 

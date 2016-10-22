@@ -40,4 +40,5 @@ extern std::string toString(double value);
 extern vector<forceFieldProcessor> parseForceFields(string qualifiedPath);
 
 
+
 #endif //SIMULATIONFILEPARSER_GLOBALFUN_H
