@@ -25,7 +25,8 @@ void findVariable(int fileNo, string fileName, int lineNo, string line, string d
         } else {
             //even
             //cout << "End Pos :" << pos << endl;
-//            cout << "Variable is : " << line.substr(startPos, pos - startPos + 3) << endl;
+//            cout << "Var Type : " << delimiter << "             Variable is : "
+//                 << line.substr(startPos, pos - startPos + 3) << endl;
             fileProcessor obj = fileProcessor();
             obj.setFileIndex(fileNo);
             obj.setFileName(fileName);
@@ -76,9 +77,15 @@ string ExePath() {
 }
 
 void copyFile(string fileName) {
-    ifstream src(forcefilePath + fileName, std::ios::binary);
-    ofstream dest(opfilePath + fileName, std::ios::binary);
-    dest << src.rdbuf();
+    ifstream ipStream;
+    ipStream.open(forcefilePath + fileName);
+    if (ipStream.is_open()) {
+        ifstream src(forcefilePath + fileName, std::ios::binary);
+        ofstream dest(opfilePath + fileName, std::ios::binary);
+        dest << src.rdbuf();
+    }
+    ipStream.close();
+
 }
 
 
@@ -181,9 +188,43 @@ double toDouble(std::string value) {
     return atof(value.c_str());
 }
 
-//to convert double to string
 std::string toString(double value) {
     std::ostringstream strs;
     strs << value;
     return strs.str();
 }
+
+
+vector<forceFieldProcessor> parseForceFields(string qualifiedPath) {
+    vector<forceFieldProcessor> final;
+    ifstream ipStream;
+    ipStream.open(qualifiedPath);
+    string tempLine;
+    vector<string> s;
+    forceFieldProcessor *f;
+    bool flag = false;
+    if (ipStream.is_open()) {
+        //for each line
+        while (getline(ipStream, tempLine)) {
+            if (tempLine == "")continue;
+            if (tempLine.find("MOLECULE") != std::string::npos) {
+                if (flag) {
+                    f->setPairCoffBlock(s);
+                    final.push_back(*f);
+                    s.clear();
+                }
+                flag = true;
+                f = new forceFieldProcessor();
+                f->setMolecule(tempLine);
+            } else {
+                s.push_back(tempLine);
+            }
+        }
+    } else {
+        cerr << "Unable to open input template file at location : " << endl;
+    }
+    //push each file into list of files
+    ipStream.close();
+    return final;
+}
+

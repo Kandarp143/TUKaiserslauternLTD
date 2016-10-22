@@ -93,7 +93,7 @@ group           Koor dynamic all region dumpBox
 
 pair_style      hybrid eam/fs lj/cut $$ tersoff #10
 #pair_modify     shift yes
-pair_coeff      * * eam/fs ../Fe_mm.eam.fs Fe Fe Fe NULL NULL
+pair_coeff      * * eam/fs ./$V$ pair_coeff_string : Fe_mm.eam.fs ? $V$ Fe Fe Fe NULL NULL
 pair_coeff      * * tersoff ../SiC.tersoff NULL NULL NULL C NULL
 pair_coeff      5 5 lj/cut $$$ #0.008976 3.775 
 pair_coeff      1*3 4 lj/cut $$ #0.02495 3.7 4.2

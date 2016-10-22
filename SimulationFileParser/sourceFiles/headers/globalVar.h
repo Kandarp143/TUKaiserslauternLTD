@@ -4,7 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
-#include "fileProcessor.h";
+#include "fileProcessor.h"
+#include "forceFieldProcessor.h"
 
 
 #ifndef SIMULATIONFILEPARSER_GLOBALS_H
@@ -18,6 +19,7 @@ extern std::vector<std::string> globalQue;
 extern std::string ipfilePath;
 extern std::string opfilePath;
 extern std::string forcefilePath;
+extern std::string forcefileName;
 //list of Delimiter
 extern std::string varStoreDelimiter;
 extern std::string varDelimiter;
@@ -31,5 +33,7 @@ extern std::unordered_map<std::string, std::string> globalVars;
 extern std::vector<std::string> forcedFiles;
 extern std::vector<std::vector<std::string>> ipFilesContent;
 extern std::vector<std::vector<std::string>> opFilesContent;
+//force fields
+extern std::vector<forceFieldProcessor> forceFields;
 
 #endif //SIMULATIONFILEPARSER_GLOBALS_H

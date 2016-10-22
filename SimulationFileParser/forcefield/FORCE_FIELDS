@@ -1,3 +1,13 @@
+MOLECULE Fe_mm.eam.fs
+
+mass  1 55.845
+
+
+
+MOLECULE SiC.tersoff
+
+mass 1 12
+
 
 
 MOLECULE Methan
@@ -15,7 +25,12 @@ MOLECULE Ethan
 # units metal
 # values from OPLS+Amber-Forcefield
 
-pair_coeff	1 1 0.0089764145 3.775
+number_of_cites: 2
+number_of_bonds: 1
+max_size: 
+
+molecule_type: lj/cut
+pair_coeff	1 0.0089764145 3.775
 mass            1 15.03
 bond_style	harmonic
 bond_coeff	1 27.5112581255 1.507
@@ -90,6 +105,25 @@ dihedral_coeff  1 0.087032454 0.17397787 0.01175232 -0.27276264 0.0 #coefficient
 
 
 
+MOLECULE n-Hexan
+
+# units metal
+# values from OPLS+Amber-Forcefield (exception: dihedral_coeff)
+
+pair_coeff      1 1 0.003963972 3.95
+pair_coeff      2 2 0.008444984 3.75
+mass            1 14.03
+mass            2 15.03
+bond_style      harmonic
+bond_coeff      1 27.5112581255 1.507
+angle_style     harmonic
+angle_coeff     1 5.3858314916 112
+dihedral_style  multi/harmonic
+dihedral_coeff  1 0.000176614 -0.00034896 0.0000271455831 0.000552723938 0.0 #coefficients from file "Alkanvergleich", units transferred into metal
+
+
+
+
 MOLECULE SPC/E-f Harmonic
 
 # values from Raabe G., Sadus R.J. (2007): Influence of bond flexibility on the vapor-liquid phase equilibria of water
@@ -129,6 +163,7 @@ MOLECULE methanol
 # units metal
 # values from TraPPE
 
+molecule_type: lj/coul/cut
 pair_coeff	1 1 0.0084449838 3.750
 pair_coeff	2 2 0.0080141173 3.020
 pair_coeff	3 3 0.0 0.0
@@ -171,5 +206,3 @@ dihedral_coeff  1 0.0292480811 0.0305027644 0.0050273505 -0.064778196 0.0 #coeff
 
 
 MOLECULE Pentan-1-ol
-
-

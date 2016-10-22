@@ -2,6 +2,7 @@
 // Created by king on 10/20/2016.
 //
 #include <iostream>
+#include "../headers/forceFieldProcessor.h"
 
 #ifndef SIMULATIONFILEPARSER_GLOBALFUN_H
 #define SIMULATIONFILEPARSER_GLOBALFUN_H
@@ -34,6 +35,9 @@ extern double toDouble(std::string value);
 
 //to convert double to string
 extern std::string toString(double value);
+
+//to parse and capture data from molecule file
+extern vector<forceFieldProcessor> parseForceFields(string qualifiedPath);
 
 
 #endif //SIMULATIONFILEPARSER_GLOBALFUN_H

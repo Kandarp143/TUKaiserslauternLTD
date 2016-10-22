@@ -22,7 +22,7 @@ create_atoms    0 region target	mol 32 47
 mass            1 $S$ mass1 $S$
 
 pair_style      eam/fs
-pair_coeff      * * $P$ ../$S$pair_coeff_string$S$ $P$
+pair_coeff      * * ./$S$ pair_coeff_string : Fe_mm.eam.fs ? $S$
 
 timestep	    $S$ timestep $S$ # 0.001
 thermo          100

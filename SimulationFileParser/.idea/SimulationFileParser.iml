@@ -4,12 +4,14 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sourceFiles/classes/forceFieldProcessor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sourceFiles/classes/globalVar.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sourceFiles/classes/fileProcessor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sourceFiles/classes/globalFun.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sourceFiles/headers/fileProcessor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sourceFiles/headers/globalVar.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sourceFiles/headers/globalFun.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sourceFiles/headers/forceFieldProcessor.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

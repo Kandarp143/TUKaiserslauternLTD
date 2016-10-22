@@ -40,7 +40,7 @@ string opfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/output/";
 string forcefilePath = "C:/Users/king/ClionProjects/SimulationFileParser/forcefield/";
 //for server
 //string forcefilePath  = "/scratch/kpatel/fluide/";
-
+string forcefileName = "FORCE_FIELDS";
 //list of Delimiter
 string varStoreDelimiter = "$S$";
 string varDelimiter = "$V$";
@@ -54,3 +54,4 @@ unordered_map<string, string> globalVars;
 vector<string> forcedFiles;
 vector<vector<string>> ipFilesContent;
 vector<vector<string>> opFilesContent;
+vector<forceFieldProcessor> forceFields;

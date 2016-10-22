@@ -14,7 +14,6 @@ private:
     string varString;
 public:
     const string &getVarString() const;
-
     void setVarString(const string &varString);
 
 private:

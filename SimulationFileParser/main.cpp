@@ -4,14 +4,23 @@
 #include <fstream>
 #include <unordered_map>
 //#include <unistd.h>
-#include "sourceFiles/headers/globalVar.h";
-#include "sourceFiles/headers/globalFun.h";
+#include "sourceFiles/headers/globalVar.h"
+#include "sourceFiles/headers/globalFun.h"
 
 
 using namespace std;
 
 int main() {
-    /* --------------------------------------------- read and store i/p files in variable --------------------------------*/
+    /* --------------------------------------------- reading force fields  -------------------------------------------*/
+    forceFields =  parseForceFields(forcefilePath+forcefileName);
+//    for (forceFieldProcessor f: forceFields) {
+//        cout << "------------------" << f.getMolecule() << endl;
+//        for (string t : f.getPairCoffBlock()) {
+//            cout << t << endl;
+//        }
+//    }
+
+    /* --------------------------------------------- read and store i/p files in variable ----------------------------*/
     ifstream ipStream;
     for (string &ipFileName :ipFiles) {
         //for each file
@@ -55,9 +64,9 @@ int main() {
 
 /* --------------------------------------------- ask user to input value of variable  --------------------------------*/
     cout << "--------------- Enter global user Specification ------------------" << endl;
-    string temp;
-    string cptr;
-    string bptr;
+    string temp; //hold temp value
+    string cptr; //current pointer
+    string bptr; //back pointer
     for (const string &text : globalQue) {
         //save last string
         bptr = cptr;
@@ -79,7 +88,7 @@ int main() {
 
     }
     //for last var re enter value if , it is error
-    cout << "Want to change last value (@/N) ?" << " : ";
+    cout << "Want to change last value (@ / n) ?" << " : ";
     cin >> temp;
     if (temp == varErrorDelimiter) {
         cout << cptr << " : ";
@@ -138,7 +147,6 @@ int main() {
                 temp = storeVars["timestep"];
                 double d = toDouble(temp) * 100;
                 obj.setVarValue(toString(d));
-                cout << "This is cal" << obj.getVarName() << ":" << temp << endl;
             }
 
         }
