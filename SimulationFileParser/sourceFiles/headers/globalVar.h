@@ -27,6 +27,8 @@ extern std::string varPathDelimiter;
 extern std::string varCalDelimiter;
 extern std::string varErrorDelimiter;
 extern std::string varForceFieldDelimiter;
+extern std::string varForceBlockStart;
+extern std::string varForceBlockEnd;
 //process variables
 extern std::vector<fileProcessor> fileProc;
 extern std::unordered_map<std::string, std::string> storeVars;
@@ -36,6 +38,7 @@ extern std::vector<std::vector<std::string>> ipFilesContent;
 extern std::vector<std::vector<std::string>> opFilesContent;
 //force fields
 extern std::vector<forceFieldProcessor> forceFields;
+extern std::vector<string> pairCoffBlock;
 
 extern forceFieldProcessor forceField;
 

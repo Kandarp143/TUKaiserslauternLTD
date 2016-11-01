@@ -145,7 +145,7 @@ void updateRelaxFluid(string choice) {
     } else {
         cerr << "Unable to open input template file at location : " << ipfilePath + "in.relaxFluid" << endl;
     }
-    cout << "Reading Relax File\n\n\n\n" << endl;
+//    cout << "Reading Relax File\n\n\n\n" << endl;
     string tempVar;
     int ptrFirstFrom = 0;
     int ptrTwoFrom = 0;
@@ -199,7 +199,7 @@ void updateRelaxFluid(string choice) {
     for (string &line : output) {
         opStream << line << endl;
     }
-//        cout << "File Updated : in.relaxFluid" << endl;
+    cout << "File Updated : in.relaxFluid" << endl;
     opStream.close();
 
 }
@@ -269,6 +269,24 @@ vector<forceFieldProcessor> parseForceFields(string qualifiedPath) {
     return final;
 }
 
+string getWord(string s, int wordCount) {
+    vector<string> ans;
+    istringstream iss(s);
+    string word;
+    int count = 0;
+    while (iss >> word) {
+        ans.push_back(word);
+    }
+
+    if (wordCount > ans.size()) {
+        cout << " string don't have " << wordCount << "th word" << endl;
+        return "";
+    } else {
+        cout << " word " << ans[wordCount - 1] << endl;
+        return ans[wordCount - 1];
+    }
+}
+
 string getFirstorLastWord(string s, bool isFirst) {
     istringstream iss(s);
     string word;
@@ -292,16 +310,22 @@ string getFirstorLastWord(string s, bool isFirst) {
 }
 
 
-string getLastWord(string s) {
-    string ans;
-    trim(s);
-    ans = s.substr(s.find_last_of(" "), s.length());
-    cout << "This is last" << s << endl;
-    return ans;
-
-}
-
 void resetVariable() {
     ipFilesContent.clear();
     opFilesContent.clear();
+}
+
+
+vector<string> getLine(vector<string> inputBlock, string Matchword) {
+    vector<string> ans;
+    for (string s:inputBlock) {
+        if (s.find(Matchword) != std::string::npos) {
+            ans.push_back(s);
+        }
+    }
+    if (ans.size() == 0) {
+        ans.push_back(" ");
+        ans.push_back(" ");
+    }
+    return ans;
 }

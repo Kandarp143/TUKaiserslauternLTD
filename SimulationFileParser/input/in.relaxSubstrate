@@ -8,7 +8,7 @@ units           metal
 molecule        32 $P$../Solid.molecule $P$
 dimension       3
 atom_style      template 32
-atom_modify	map array
+atom_modify		map array
 boundary        p p s
 neighbor        2.0 bin
 neigh_modify    delay 5
@@ -30,8 +30,8 @@ thermo_style    custom step temp pe ke etotal press vol lx ly lz pxx pyy pzz pxy
 
 compute         ke all ke/atom
 compute         pe all pe/atom
-variable	etotal atom (c_ke+c_pe)
-#compute         stress all stress/atom
+variable		etotal atom (c_ke+c_pe)
+#compute        stress all stress/atom
 compute         cna all cna/atom 3.45
 compute         centro all centro/atom bcc
 #compute		ackland all ackland/atom
@@ -40,9 +40,9 @@ compute         centro all centro/atom bcc
 
 velocity        all create ${tmp} 47 mom yes rot yes dist gaussian
 fix             NpT all npt temp ${tmp} ${tmp} $C$ calfix $C$ x 0.0 0.0 100.0 y 0.0 0.0 100.0 drag 15.0
-dump		1 all custom $S$ dump $S$ dump.relaxSubstrate type id xs ys zs c_cna
+dump			1 all custom $S$ dump $S$ dump.relaxSubstrate type id xs ys zs c_cna
 run             $V$ run $V$ # 200000
-unfix		NpT
+unfix			NpT
 
 
 write_data      data.relaxSubstrate_${tmp}K

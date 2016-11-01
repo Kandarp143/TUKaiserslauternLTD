@@ -55,4 +55,20 @@ extern void askGlobalUserInput();
 //to get first word from string
 extern string getFirstorLastWord(string s, bool isFirst);
 
+//to get input block of pair coff
+extern std::vector<string> getPairCoffBlock(string file);
+
+//to replace block with new block
+extern void replacePairCoffBlock(string file, vector<string> block);
+extern void replaceMassBlock(string file, vector<string> block);
+
+//to replace block with new block
+extern vector<string> replaceMergeBlock(vector<string> orgBlock, vector<string> mrgBlock, string StartP, string EndP);
+
+//to get any no of word from string
+extern string getWord(string s, int wordCount);
+
+//to get list of lines that match word
+extern vector<string> getLine(vector<string> inputBlock, string Matchword);
+
 #endif //SIMULATIONFILEPARSER_GLOBALFUN_H

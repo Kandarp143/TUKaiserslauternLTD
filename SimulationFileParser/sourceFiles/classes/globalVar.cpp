@@ -15,7 +15,8 @@ std::vector<std::string> ipFiles = {"in.relaxSubstrate", "in.relaxFluid", "in.In
 //std::vector<std::string> ipFiles = {"in.relaxSubstrate"};
 
 //global asking question
-std::vector<std::string> globalQue = {"[1] Cylinder or Sphere (c/s)", "[2] Select Molecule", "[3] 1*3 4 Interaction [val1 val2]", "[4] 1*3 5 Interatcion [val1 val2]"};
+std::vector<std::string> globalQue = {"[1] Cylinder or Sphere (c/s)", "[2] Select Molecule",
+                                      "[3] 1*3 4 Interaction [val1 val2]", "[4] 1*3 5 Interatcion [val1 val2]"};
 
 //static path of i/p o/p files
 //for linux  (INPUT FILE PATH)
@@ -48,6 +49,8 @@ string varPathDelimiter = "$P$";
 string varCalDelimiter = "$C$";
 string varErrorDelimiter = "@";
 string varForceFieldDelimiter = "$F$";
+string varForceBlockStart = "$FB-START$";
+string varForceBlockEnd = "$FB-END$";
 //process variables
 vector<fileProcessor> fileProc;
 unordered_map<string, string> storeVars;
@@ -57,3 +60,4 @@ vector<vector<string>> ipFilesContent;
 vector<vector<string>> opFilesContent;
 vector<forceFieldProcessor> forceFields;
 forceFieldProcessor forceField;
+vector<string> pairCoffBlock;

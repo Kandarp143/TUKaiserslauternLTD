@@ -10,9 +10,6 @@
 using namespace std;
 
 int main() {
-//    string s = "[1] Cylinder or Sphere (c/s)";
-//    getFirstorLastWord(s,true);
-//    return(0);
 /* --------------------------------------------- reading force fields  -----------------------------------------------*/
     forceFields = parseForceFields(forcefilePath + forcefileName);
 
@@ -102,41 +99,25 @@ int main() {
         opStream.close();
     }
 
-///* --------------------------------------------- edit output files with global variable ------------------------------*/
+/* --------------------------------------------- edit output files with global variable ------------------------------*/
+    cout << "------------------------Updateing file : relaxFluid------------------------" << endl;
     updateRelaxFluid(globalVars.at("[1]"));
-//
-///* --------------------------------------------- edit output files with force fields ---------------------------------*/
-////    resetVariable();
-////    cout << "------------------------Updateing forcefield-------------------------------" << endl;
-////
-////
-////    cout << forceField.getMolecule() << endl;
-////
-////
-////    for (string &ipFileName :ipFiles) {
-////        opFilesContent.push_back(getFileContent(opfilePath + ipFileName));
-////    }
-////
-////    //temp holders
-////    fileNo = 0;
-////    lineNo = 0;
-////    fileName = "";
-////    //for each file
-////    for (vector<string> &fileContent:opFilesContent) {
-////        lineNo = 0;
-////        fileName = ipFiles[fileNo++];
-////        //for each line
-////        for (string &line:fileContent) {
-////            lineNo++;
-////            //find force variable
-////            findVariable(fileNo, fileName, lineNo, line, varForceFieldDelimiter);
-////        }
-////    }
-////
-////
-////    for (fileProcessor &obj: fileProc) {
-////        cout << obj.getVarName() << obj.getVarType() << endl;
-////    }
 
+/* --------------------------------------------- edit output files with force fields ---------------------------------*/
+    resetVariable();
+    cout << "------------------------Updateing forcefield-------------------------------" << endl;
+    //get paircoffblock from main file
+    pairCoffBlock = getPairCoffBlock(opfilePath + "in.relaxFluid");
+    //create merge block from forcefield and org block
+    vector<string> pcAdd = getLine(forceField.getPairCoffBlock(), "pair_coeff");
+    vector<string> bcAdd = getLine(forceField.getPairCoffBlock(), "bond_coeff");
+    vector<string> massAdd = getLine(forceField.getPairCoffBlock(), "mass");
+    pairCoffBlock = replaceMergeBlock(pairCoffBlock, pcAdd, "$PC-START$", "$PC-END$");
+    pairCoffBlock = replaceMergeBlock(pairCoffBlock, bcAdd, "$BC-START$", "$BC-END$");
+    //replace this block into all file
+    for (string &ipFileName :ipFiles) {
+        replacePairCoffBlock(opfilePath + ipFileName, pairCoffBlock);
+        replaceMassBlock(opfilePath + ipFileName, massAdd);
+    }
 
 }
