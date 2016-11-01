@@ -42,8 +42,7 @@ read_data	./data.relaxFluid_${tmp}K
 mass            1 $V$ mass1 $V$
 mass            2 $V$ mass1 $V$
 mass            3 $V$ mass1 $V$
-mass            4 $V$ mass4 $V$
-mass            5 $V$ mass5 $V$ #15.03
+$F$ masses $F$
 
 
 # Fixed boundaries

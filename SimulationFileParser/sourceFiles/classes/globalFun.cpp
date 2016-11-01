@@ -13,6 +13,26 @@ using namespace std;
 
 /* --------------------------------------------- function's implementations -----------------------------------------*/
 
+
+
+vector<string> getFileContent(std::string fullPath) {
+    vector<string> fileContent;
+    ifstream ipStream;
+    ipStream.open(fullPath);
+    string tempLine;
+    if (ipStream.is_open()) {
+        //for each line
+        while (getline(ipStream, tempLine)) {
+            fileContent.push_back(tempLine);
+        }
+    } else {
+        cerr << "Unable to open input template file at location : " << fullPath << endl;
+
+    }
+    ipStream.close();
+    return fileContent;
+}
+
 void findVariable(int fileNo, string fileName, int lineNo, string line, string delimiter) {
     int pos = line.find(delimiter, 0);
     int loopCount = 1;
@@ -40,6 +60,7 @@ void findVariable(int fileNo, string fileName, int lineNo, string line, string d
             string tempVarNameHolder = tempVarTextHolder.substr(3, tempVarTextHolder.length() - 6);
             obj.setVarName(trim(tempVarNameHolder));
             fileProc.push_back(obj);
+
         }
         pos = line.find(delimiter, pos + 1);
         loopCount++;
@@ -188,7 +209,7 @@ double toDouble(std::string value) {
     return atof(value.c_str());
 }
 
-std::string toString(double value) {
+string toString(double value) {
     std::ostringstream strs;
     strs << value;
     return strs.str();
@@ -245,21 +266,42 @@ vector<forceFieldProcessor> parseForceFields(string qualifiedPath) {
     }
     //push each file into list of files
     ipStream.close();
-
-    //generating force field selection
-    forceFieldsSelection = "\n[";
-
-    for (forceFieldProcessor f: final) {
-        if (forceFieldsSelection == "\n[") {
-            forceFieldsSelection = forceFieldsSelection + f.getMolecule();
-        } else {
-            forceFieldsSelection = forceFieldsSelection + ", " + f.getMolecule();
-        }
-    }
-    forceFieldsSelection = forceFieldsSelection + "]";
-    globalQue.push_back("Select Molecule : " + forceFieldsSelection);
     return final;
 }
 
+string getFirstorLastWord(string s, bool isFirst) {
+    istringstream iss(s);
+    string word;
+    string first;
+    string last;
+    string ans;
+    int count = 0;
+    while (iss >> word) {
+        if (count == 0) {
+            first = word;
+        }
+        last = word;
+        count++;
+    }
+    if (isFirst)
+        ans = first;
+    else
+        ans = last;
+//    cout << "String :" << s << " word :" << word << " First :" << first << " Last :" << last << " Ans:" << ans << endl;
+    return ans;
+}
 
 
+string getLastWord(string s) {
+    string ans;
+    trim(s);
+    ans = s.substr(s.find_last_of(" "), s.length());
+    cout << "This is last" << s << endl;
+    return ans;
+
+}
+
+void resetVariable() {
+    ipFilesContent.clear();
+    opFilesContent.clear();
+}

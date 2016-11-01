@@ -12,6 +12,12 @@ using namespace std;
 class forceFieldProcessor {
 private:
     string molecule;
+    string sigma;
+public:
+    const string &getSigma() const;
+
+    void setSigma(const string &sigma);
+
 public:
     const string &getNosCites() const;
 

@@ -48,3 +48,11 @@ const vector<string> &forceFieldProcessor::getMass() const {
 void forceFieldProcessor::setMass(const vector<string> &mass) {
     forceFieldProcessor::mass = mass;
 }
+
+const string &forceFieldProcessor::getSigma() const {
+    return sigma;
+}
+
+void forceFieldProcessor::setSigma(const string &sigma) {
+    forceFieldProcessor::sigma = sigma;
+}

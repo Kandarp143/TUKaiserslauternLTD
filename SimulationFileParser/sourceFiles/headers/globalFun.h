@@ -9,6 +9,10 @@
 
 
 /* --------------------------------------------- declaration of functions --------------------------------------------*/
+
+//parse normal file and convert to vector<string>
+extern std::vector<string> getFileContent(std::string fullPath);
+
 //find variable in line based on delimiter
 extern void findVariable(int fileNo, std::string fileName, int lineNo, std::string line, std::string delimiter);
 
@@ -39,6 +43,16 @@ extern std::string toString(double value);
 //to parse and capture data from molecule file
 extern vector<forceFieldProcessor> parseForceFields(string qualifiedPath);
 
+//to reset all global variable
+extern void resetVariable();
 
+//to ask to user input
+extern void askUserInput();
+
+//to ask to user input
+extern void askGlobalUserInput();
+
+//to get first word from string
+extern string getFirstorLastWord(string s, bool isFirst);
 
 #endif //SIMULATIONFILEPARSER_GLOBALFUN_H

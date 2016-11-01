@@ -26,6 +26,7 @@ extern std::string varDelimiter;
 extern std::string varPathDelimiter;
 extern std::string varCalDelimiter;
 extern std::string varErrorDelimiter;
+extern std::string varForceFieldDelimiter;
 //process variables
 extern std::vector<fileProcessor> fileProc;
 extern std::unordered_map<std::string, std::string> storeVars;
@@ -35,6 +36,7 @@ extern std::vector<std::vector<std::string>> ipFilesContent;
 extern std::vector<std::vector<std::string>> opFilesContent;
 //force fields
 extern std::vector<forceFieldProcessor> forceFields;
-extern std::string forceFieldsSelection;
+
+extern forceFieldProcessor forceField;
 
 #endif //SIMULATIONFILEPARSER_GLOBALS_H

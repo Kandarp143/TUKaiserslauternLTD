@@ -13,7 +13,7 @@ units           metal
 dimension       3
 boundary        p p sm
 molecule        33 $P$../Solid.molecule $P$ $P$../Solid.molecule $P$
-atom_style	template 33
+atom_style    template 33
 special_bonds   extra 1
 
 # setting geometry
@@ -30,7 +30,9 @@ variable        dzz equal "(v_zzhi + v_dz)"
 # Sphere
 variable        xSphere equal "(v_xxhi + v_xxlo)/2"
 variable        ySphere equal "(v_yyhi + v_yylo)/2"
-region          sphere1 sphere ${xSphere} ${ySphere} ${dzz} ${Radius}     units box
+region          sphere1 sphere ${xSphere} ${ySphere} ${dzz} ${
+Radius
+}     units box
 
 # Cylinder
 variable        ZyLength equal $$ # 60
@@ -40,9 +42,9 @@ variable        yZy equal "50+0.5*v_Radius"
 region          sphere1 cylinder x ${yZy} ${dzz} ${Radius} ${xZlo} ${xZhi}   units box
 
 
-read_data	./data.relaxSubstrate_${tmp}K extra/atom/types 3
+read_data    ./data.relaxSubstrate_${tmp}K extra/atom/types 3
 
-change_box	all z final ${zzlo} ${zWstart}   units box
+change_box    all z final ${zzlo} ${zWstart}   units box
 
 lattice         none 1.0
 lattice         diamond $V$ diamond $V$ #3.5667
@@ -69,10 +71,10 @@ variable        densEnd  equal $V$ densEnd $V$ 0.07 #in g/cm^3
 
 
 units           metal
-dimension	3
+dimension    3
 boundary        p p sm
 molecule        33 $P$../Ethan.molecule $P$  $P$../Solid.molecule $P$  $P$../Solid.molecule $P$
-atom_style	template 33
+atom_style    template 33
 special_bonds   extra 1
 
 
@@ -84,15 +86,27 @@ variable        yylo equal ??
 variable        yyhi equal ??
 variable        zzlo equal ??
 variable        zzhi equal ??
-variable        xxhiInnen equal ${xxhi}-3
-variable        yyhiInnen equal ${yyhi}-3
-variable        xxhiIInnen equal ${xxhi}-8
+variable        xxhiInnen equal ${xxhi
+}-3
+variable        yyhiInnen equal ${
+yyhi
+}-3
+variable        xxhiIInnen equal ${
+xxhi
+}-8
 variable        yyhiIInnen equal ${yyhi}-8
 variable        zzFluid equal ${zzhi}+4
-variable        zzendFluid equal ${zWstart}-2.5
-variable        xxloFluid equal ${xxlo}+2.5
-variable        xxhiFluid equal ${xxhi}-2.5
-variable        yyloFluid equal ${yylo}+2.5
+variable        zzendFluid equal ${
+zWstart
+}-2.5
+variable        xxloFluid equal ${
+xxlo}+2.5
+variable        xxhiFluid equal ${
+xxhi
+}-2.5
+variable        yyloFluid equal ${
+yylo
+}+2.5
 variable        yyhiFluid equal ${yyhi}-2.5
 variable        dzz equal "(v_zzhi + v_dz)"
 variable        Schutz_Radius equal "(v_Radius + 4)"
@@ -101,8 +115,10 @@ variable        Schutz_Radius equal "(v_Radius + 4)"
 variable        VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * (v_zzend-$$1.8 - v_zzhi - $$sigma ) - 4/3 * PI * (v_Radius-$$sigma)^3"
 variable        VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * ((v_zzend-$$1.8) - (v_zzhi)+$$sigma) - (62.5+2*$$Sigma) * PI * (v_Radius+$$Sigma)^2"
 variable        xSphere equal "(v_xxhi + v_xxlo)/2"
-variable       	ySphere	equal "(v_yyhi + v_yylo)/2"
-region          SchutzSphere sphere ${xSphere} ${ySphere} ${dzz} ${Schutz_Radius}     units box
+variable        ySphere    equal "(v_yyhi + v_yylo)/2"
+region          SchutzSphere sphere ${xSphere} ${ySphere} ${dzz} ${
+Schutz_Radius
+}     units box
 region          sphere1 sphere ${xSphere} ${ySphere} ${dzz} ${Radius}     units box
 
 
@@ -112,24 +128,27 @@ variable        VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * ((v_zzen
 variable        xZhi equal "v_xSphere + 0.5*v_ZyLength"
 variable        xZlo equal "v_xSphere - 0.5*v_ZyLength"
 variable        yZy equal "50 + 0.5*v_Radius"
-#region          sphere1 cylinder x ${yZy} ${dzz} ${Radius} ${xZlo} ${xZhi}   units box
-#region          SchutzSphere cylinder x ${yZy} ${dzz} ${Schutz_Radius} ${xZlo} ${xZhi}   units box
+#region          sphere1 cylinder x ${yZy} ${dzz} ${Radius} ${xZlo} ${
+xZhi
+}   units box
+#region          SchutzSphere cylinder x ${yZy} ${dzz} ${Schutz_Radius} ${xZlo} ${xZhi
+}   units box
 
 
-read_data	./data.insSphereInterim $$$ extra/atom/types 1 extra/bond/types 1
+read_data    ./data.insSphereInterim $$$ extra/atom/types $F$atom$F$ extra/bond/types $F$bond$F$
 
 mass            1 $V$ mass1 $V$
 mass            2 $V$ mass1 $V$
 mass            3 $V$ mass1 $V$
-mass            4 $V$ mass4 $V$
-mass            5 $S$ mass5 $S$ #15.03
-
+$F$ masses $F$
 
 # Fixed boundaries
 
 region          bottom block ${xxlo} ${xxhi} ${yylo} ${yyhi} ${zzlo} 3.0            units box
 region          sidex1 block ${xxlo} ${xxhi} ${yylo} 3.0 3.0 ${zzhi}               units box
-region          sidey1 block ${xxhiInnen} ${xxhi} 3.0 ${yyhiInnen} 3.0 ${zzhi}              units box
+region          sidey1 block ${
+xxhiInnen
+} ${xxhi} 3.0 ${yyhiInnen} 3.0 ${zzhi}              units box
 region          sidex2 block ${xxlo} ${xxhi} ${yyhiInnen} ${yyhi} 3.0 ${zzhi}        units box
 region          sidey2 block ${xxlo} 3.0 3.0 ${yyhiInnen} 3.0 ${zzhi}                units box
 
@@ -139,7 +158,9 @@ region          sidey2 block ${xxlo} 3.0 3.0 ${yyhiInnen} 3.0 ${zzhi}           
 region          bottom2 block 3.0 ${xxhiInnen} 3.0 ${yyhiInnen} 3.0 8.0                units box
 region          sidex11 block 3.0 ${xxhiInnen} 3.0 8.0 8.0 ${zzhi}                  units box
 region          sidey11 block ${xxhiIInnen} ${xxhiInnen} 8.0 ${yyhiInnen} 8.0 ${zzhi}        units box
-region          sidex22 block 3.0 ${xxhiIInnen} ${yyhiIInnen} ${yyhiInnen} 8.0 ${zzhi}        units box
+region          sidex22 block 3.0 ${xxhiIInnen} ${yyhiIInnen} ${yyhiInnen} 8.0 ${
+zzhi
+}        units box
 region          sidey22 block 3.0 8.0 8.0 ${yyhiIInnen} 8.0 ${zzhi}                  units box
 
 region          body block 8.0 ${xxhiIInnen} 8.0 ${yyhiIInnen} 8.0 ${zzhi}                units box
@@ -147,11 +168,19 @@ region          body block 8.0 ${xxhiIInnen} 8.0 ${yyhiIInnen} 8.0 ${zzhi}      
 
 # Fluid-protectlayer against unfacorable lattice
 
-region          F_top block ${xxlo} ${xxhi} ${yylo} ${yyhi} ${zzendFluid} ${zWstart}            units box
-region          F_sidex1 block ${xxlo} ${xxhi} ${yylo} ${yyloFluid} ${zzFluid} ${zzendFluid}               units box
+region          F_top block ${xxlo} ${xxhi} ${yylo} ${yyhi} ${zzendFluid
+} ${
+zWstart
+}            units box
+region          F_sidex1 block ${xxlo} ${xxhi} ${yylo} ${yyloFluid} ${zzFluid} ${
+zzendFluid
+}               units box
 region          F_sidey1 block ${xxhiFluid} ${xxhi} ${yyloFluid} ${yyhiFluid} ${zzFluid} ${zzendFluid}              units box
-region          F_sidex2 block ${xxlo} ${xxhi} ${yyhiFluid} ${yyhi} ${zzFluid} ${zzendFluid}        units box
-region          F_sidey2 block ${xxlo} ${xxloFluid} ${yyloFluid}  ${yyhiFluid} ${zzFluid} ${zzendFluid}                units box
+region          F_sidex2 block ${xxlo} ${xxhi} ${yyhiFluid} ${yyhi} ${zzFluid} ${
+zzendFluid
+}        units box
+region          F_sidey2 block ${xxlo} ${xxloFluid} ${yyloFluid}  ${yyhiFluid} ${zzFluid} ${zzendFluid
+}                units box
 
 region          F_all union 5 F_top F_sidex1 F_sidey1 F_sidex2 F_sidey2   units box
 
@@ -160,7 +189,8 @@ region          F_all union 5 F_top F_sidex1 F_sidey1 F_sidex2 F_sidey2   units 
 
 lattice         sc $V$ lattice $V$ #8
 
-region          UNTEN block ${xxlo} ${xxhi} ${yylo} ${yyhi} ${zzlo} ${zzFluid} units box
+region          UNTEN block ${xxlo} ${xxhi} ${yylo} ${yyhi} ${zzlo} ${zzFluid
+} units box
 region          Fluid union 3 F_all UNTEN SchutzSphere side out             units box
 
 create_atoms    4 region Fluid mol 33 47
@@ -185,7 +215,7 @@ group           target union fixedlayer boundary body
 group           sphere1 region sphere1
 group           Fluid type 5
 
-region          dumpBox block ?? 100 250 100 250 150 300	   units box
+region          dumpBox block ?? 100 250 100 250 150 300       units box
 group           Koor dynamic all region dumpBox
 
 set             group fixedlayer type 1
@@ -196,24 +226,24 @@ set             group sphere1 type 4
 group           mobile subtract all fixedlayer boundary
 
 
-pair_style      hybrid eam/fs lj/cut $$ tersoff #10
-pair_coeff      * * eam/fs ./$V$ pair_coeff_string : Fe_mm.eam.fs ? $V$ Fe Fe Fe NULL NULL
+pair_style      hybrid eam/fs lj/cut $S$ pair_style $S$ tersoff #10
+pair_coeff      * * eam/fs ./$V$ pair_coeff_string: Fe_mm.eam.fs ? $V$ Fe Fe Fe NULL NULL
 pair_coeff      * * tersoff ../SiC.tersoff NULL NULL NULL C NULL
-pair_coeff      5 5 lj/cut $$$ # 0.008976 3.775 
-pair_coeff      1*3 4 lj/cut $$ # 0.02495 3.7 4.2
-pair_coeff	1*3 5 lj/cut $$ # 0.02495 3.7 4.2
-pair_coeff	4 5 lj/cut $$ # 0.02495 3.7 4.2
+pair_coeff      5 5 lj/cut $$$ # 0.008976 3.775
+pair_coeff      1*3 4 lj/cut $F$1*3 4$F$ # 0.02495 3.7 4.2
+pair_coeff        1*3 5 lj/cut $F$1*3 5$F$ # 0.02495 3.7 4.2
+pair_coeff        4 5 lj/cut $$ # 0.02495 3.7 4.2
 #pair_modify     pair lj/cut 2 shift yes
 
 $$$
-bond_style	harmonic
+bond_style    harmonic
 bond_coeff      1 13.75563 1.507
 
 #pair_modify     mix arithmetic
 #pair_modify     tail yes
 
 
-compute		boundaryTEMP boundary temp
+compute        boundaryTEMP boundary temp
 
 fix             1 Fluid nve
 fix             2 fixedlayer setforce 0.0 0.0 0.0
@@ -269,7 +299,7 @@ variable        nPost          equal $V$ nPost $V$ #200000
 variable        nPre           equal "0.025*v_nPost"
 variable        zW             equal "v_zWstart - v_speedW*(step-v_nPre)*dt"
 
-print  	       	"WallpositionEnd ${zWend}"
+print            "WallpositionEnd ${zWend}"
 variable        FunkTest equal "v_zzhi + v_dz + v_Radius+15"
 if "${zWend} <= ${FunkTest}" then quit
 
