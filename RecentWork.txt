@@ -1,0 +1,13 @@
+TO DO IN C++ HIWI
+
+- make code runnable in unix
+- topology
+- mass and co-off change 
+- at last add all view value
+- add all thing in try catch
+- code cleaning 
+- var name remove
+- make path var dynamic (output file should be currrent dir)
+- no of O = amount of diff atom type (no of mass line is no of o)
+- sigma (1X3 5 2nd value)
+- give option to select molicule with no 
