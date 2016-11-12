@@ -24,7 +24,7 @@ std::vector<std::string> globalQue = {"[1] Cylinder or Sphere (c/s)", "[2] Selec
 //for windows
 string ipfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/input/";
 //for server
-//string ipfilePath = "/scratch/kpatel/MASTER/";
+//string ipfilePath = "/scratch/kpatel/SimulationFileParser/input/";
 
 
 //for linux  (OUTPUT PATH)
@@ -32,6 +32,7 @@ string ipfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/input/";
 //for windows
 string opfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/output/";
 //for server
+//string opfilePath = "/scratch/kpatel/SimulationFileParser/output/";
 //string opfilePath = ExePath();
 
 
@@ -40,6 +41,7 @@ string opfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/output/";
 //for windows
 string forcefilePath = "C:/Users/king/ClionProjects/SimulationFileParser/forcefield/";
 //for server
+//string forcefilePath = "/scratch/kpatel/SimulationFileParser/forcefield/";
 //string forcefilePath  = "/scratch/kpatel/fluide/";
 string forcefileName = "FORCE_FIELDS";
 //list of Delimiter

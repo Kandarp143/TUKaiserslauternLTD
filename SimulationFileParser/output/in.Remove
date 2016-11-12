@@ -2,7 +2,7 @@ log             log.Remove
 
 # Indentation Simulation
 
-variable        tmp equal 3000
+variable        tmp equal 
 variable        zzend equal $$ # 200
 
 
@@ -15,8 +15,8 @@ special_bonds   extra 1
 
 # Koordinaten von Substrat 
 
-variable         dz equal 434350 # 25.5
-variable         Radius equal 5 # 10
+variable         dz equal ./Solid.molecule # 25.5
+variable         Radius equal ./Solid.molecule # 10
 variable         xxlo equal ?
 variable         xxhi equal ?
 variable         yylo equal ?
@@ -39,10 +39,11 @@ variable         VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * (v_zzen
 read_data		 ./data.Scratch_${tmp}K 
 
 
-mass             1 230
-mass             2 230
-mass             3 230
-
+mass             1 ./Solid.molecule
+mass             2 ./Solid.molecule
+mass             3 ./Solid.molecule
+$M-START$
+$M-END$
 
 
 # Fixed boundaries
@@ -100,21 +101,23 @@ group            Koor dynamic all region dumpBox
 #group           mobile subtract all fixedlayer boundary
 
 $FB-START$
-pair_style      hybrid eam/fs lj/cut 5 tersoff #10
-pair_coeff      * * eam/fs ./2303 Fe Fe Fe NULL NULL
-pair_coeff      * * tersoff ../SiC.tersoff NULL NULL NULL C NULL
-pair_coeff      5 5 lj/cut $$$ # 0.008976 3.775
-pair_coeff      1*3 4 lj/cut 3.95 3.95 # 0.02495 3.7 4.2
-pair_coeff      1*3 5 lj/cut 3.95 3.95 # 0.02495 3.7 4.2
-pair_coeff      4 5 lj/cut $$ # 0.02495 3.7 4.2
-#pair_modify    pair lj/cut 2 shift yes
-pair_coeff   1 1 0.003963972 3.95
-pair_coeff   2 2 0.008444984 3.75
-bond_style        harmonic
-bond_coeff      1 13.75563 1.507
-bond_coeff      1 27.5112581255 1.507
-#pair_modify    mix arithmetic
-#pair_modify    tail yes
+pair_style       hybrid eam/fs lj/cut $$ tersoff #10
+#pair_modify     shift yes
+pair_coeff       * * eam/fs ./Fe_mm.eam.fs Fe Fe Fe NULL NULL
+pair_coeff       * * tersoff ../SiC.tersoff NULL NULL NULL C NULL
+pair_coeff       5 5 lj/cut $$$ # 0.008976 3.775 
+pair_coeff       1*3 4*5 lj/cut $$ #0.02495 3.7 4.2
+pair_coeff		 4 5 lj/cut $$ #0.02495 3.7 4.2
+#pair_modify     pair lj/cut 2 shift yes
+
+$$$
+bond_style		 harmonic
+bond_coeff       1 13.75563 1.507
+
+# ---- braucht man diese beiden hier nochmal ?!?!
+
+#pair_modify     mix arithmetic
+#pair_modify     tail yes
 $FB-END$
 
 compute			 boundaryTEMP boundary temp
@@ -155,7 +158,7 @@ neigh_modify     delay 5 one 50000 page 500000
 
 # Indentation
 
-timestep         303# 0.00012
+timestep         ./Solid.molecule# 0.00012
 
 #group           Substrat type 3
 #group           Indenter type 4
@@ -168,18 +171,18 @@ variable         f_Ind2   equal "c_f_IndSub[2]+c_f_IndFl[2]"
 variable         f_Ind3   equal "c_f_IndSub[3]+c_f_IndFl[3]"
 
 
-variable         vremove         equal 5 # 0.2
+variable         vremove         equal ./Solid.molecule # 0.2
 variable         length           equal v_vremove*step*dt
-variable         remove_length   equal "5 0.5*v_Radius+ 5 eindringtiefe"
+variable         remove_length   equal "./Solid.molecule 0.5*v_Radius+ ./Solid.molecule eindringtiefe"
 variable         run_remove        equal round((v_remove_length)/(v_vremove*dt))
 
 velocity         sphere1 set 0.0 0.0 v_vremove                       units box
 velocity         fixedlayer set 0.0 0.0 0.0                          units box
 
 
-thermo           5 # 100
+thermo           ./Solid.molecule # 100
 thermo_style     custom step atoms c_TempFluid v_VolFluid v_DensFluid v_length c_f_IndSub c_f_IndSub[1] c_f_IndSub[2] c_f_IndSub[3] v_f_Ind v_f_Ind1 v_f_Ind2 v_f_Ind3
-dump             1 all custom 3004 dump.Remove type id xs ys zs #c_cna
+dump             1 all custom ./Solid.molecule dump.Remove type id xs ys zs #c_cna
 print            "Number of timesteps = ${run_remove}" screen yes
 run              ${run_remove}
 write_data       data.Remove_${tmp}K

@@ -41,7 +41,7 @@ compute         centro all centro/atom bcc
 velocity        all create ${tmp} 47 mom yes rot yes dist gaussian
 fix             NpT all npt temp ${tmp} ${tmp} $C$ calfix $C$ x 0.0 0.0 100.0 y 0.0 0.0 100.0 drag 15.0
 dump			1 all custom $S$ dump $S$ dump.relaxSubstrate type id xs ys zs c_cna
-run             $V$ run $V$ # 200000
+run             $S$ run $S$ # 200000
 unfix			NpT
 
 
