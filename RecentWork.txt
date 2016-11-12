@@ -10,4 +10,5 @@ TO DO IN C++ HIWI
 - make path var dynamic (output file should be currrent dir)
 - no of O = amount of diff atom type (no of mass line is no of o)
 - sigma (1X3 5 2nd value)
-- give option to select molicule with no 
+- give option to select molicule with no
+- learning git 
