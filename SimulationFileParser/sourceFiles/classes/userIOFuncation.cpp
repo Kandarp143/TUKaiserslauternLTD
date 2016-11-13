@@ -12,9 +12,19 @@ void askGlobalUserInput() {
     string temp; //hold temp value
     string cptr; //current pointer
     string bptr; //back pointer
+    for (string &text : globalQue) {
+        if (text == "[2] Select Molecule (Enter No)") {
+            string tmp = "[";
+            for (string tx :molecules) {
+                tmp = tmp + tx + ",";
+            };
+            tmp = tmp + "]";
+            cout << tmp<< endl;
+        }
 
 
-    for (const string &text : globalQue) {
+
+
         //save last string
         bptr = cptr;
         //ask for current string

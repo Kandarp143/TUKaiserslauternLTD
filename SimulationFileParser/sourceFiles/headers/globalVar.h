@@ -39,7 +39,7 @@ extern std::vector<std::vector<std::string>> opFilesContent;
 //force fields
 extern std::vector<forceFieldProcessor> forceFields;
 extern std::vector<string> pairCoffBlock;
-
+extern std::vector<string> molecules;
 extern forceFieldProcessor forceField;
 
 #endif //SIMULATIONFILEPARSER_GLOBALS_H

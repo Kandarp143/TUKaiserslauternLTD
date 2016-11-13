@@ -15,31 +15,32 @@ std::vector<std::string> ipFiles = {"in.relaxSubstrate", "in.relaxFluid", "in.In
 //std::vector<std::string> ipFiles = {"in.relaxSubstrate"};
 
 //global asking question
-std::vector<std::string> globalQue = {"[1] Cylinder or Sphere (c/s)", "[2] Select Molecule",
+std::vector<std::string> globalQue = {"[1] Cylinder or Sphere (c/s)", "[2] Select Molecule (Enter No)",
                                       "[3] 1*3 4 Interaction [val1 val2]", "[4] 1*3 5 Interatcion [val1 val2]"};
 
 //static path of i/p o/p files
 //for linux  (INPUT FILE PATH)
-//string ipfilePath = "/Users/Kandarp/ClionProjects/SimulationFileParser/input/";
+string ipfilePath = "/home/kandarp/ClionProjects/SimulationFileParser/input/";
 //for windows
-string ipfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/input/";
+//string ipfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/input/";
 //for server
 //string ipfilePath = "/scratch/kpatel/SimulationFileParser/input/";
 
 
 //for linux  (OUTPUT PATH)
-//string opfilePath = "/Users/Kandarp/ClionProjects/SimulationFileParser/input/";
+string opfilePath = "/home/kandarp/ClionProjects/SimulationFileParser/output/";
 //for windows
-string opfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/output/";
+//string opfilePath = "C:/Users/king/ClionProjects/SimulationFileParser/output/";
 //for server
 //string opfilePath = "/scratch/kpatel/SimulationFileParser/output/";
 //string opfilePath = ExePath();
 
 
 //for linux (FROCE FIELD)
-//string forcefilePath = "/Users/Kandarp/ClionProjects/SimulationFileParser/input/";
+
+string forcefilePath = "/home/kandarp/ClionProjects/SimulationFileParser/forcefield/";
 //for windows
-string forcefilePath = "C:/Users/king/ClionProjects/SimulationFileParser/forcefield/";
+//string forcefilePath = "C:/Users/king/ClionProjects/SimulationFileParser/forcefield/";
 //for server
 //string forcefilePath = "/scratch/kpatel/SimulationFileParser/forcefield/";
 //string forcefilePath  = "/scratch/kpatel/fluide/";
@@ -63,3 +64,4 @@ vector<vector<string>> opFilesContent;
 vector<forceFieldProcessor> forceFields;
 forceFieldProcessor forceField;
 vector<string> pairCoffBlock;
+vector<string> molecules;

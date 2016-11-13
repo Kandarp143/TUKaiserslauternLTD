@@ -11,7 +11,7 @@ using namespace std;
 
 int main() {
 /* --------------------------------------------- reading force fields  -----------------------------------------------*/
-    forceFields = parseForceFields(forcefilePath+"sdfsdfsdf" + forcefileName);
+    forceFields = parseForceFields(forcefilePath + forcefileName);
 
 /* --------------------------------------------- read and store i/p files in variable --------------------------------*/
     ifstream ipStream;

@@ -2,7 +2,7 @@ log             log.Scratch
 
 # Indentation Simulation
 
-variable        tmp equal 
+variable        tmp equal c
 variable        zzend equal $$ # 200
 
 
@@ -15,8 +15,8 @@ special_bonds   extra 1
 
 # Koordinaten von Substrat
 
-variable        dz equal ./Solid.molecule #25.5
-variable        Radius equal ./Solid.molecule # 10
+variable        dz equal c #25.5
+variable        Radius equal c # 10
 variable        xxlo equal ?
 variable        xxhi equal ?
 variable        yylo equal ?
@@ -39,11 +39,11 @@ variable        VolFluid equal "(v_xxhi - v_xxlo) * (v_yyhi - v_yylo) * (v_zzend
 read_data		./data.Indent_${tmp}K 
 
 
-mass            1 ./Solid.molecule
-mass            2 ./Solid.molecule
-mass            3 ./Solid.molecule
-$M-START$
-$M-END$
+mass            1 c
+mass            2 c
+mass            3 c
+mass            1 15.03
+mass            2 14.03
 
 
 # Fixed boundaries
@@ -92,22 +92,19 @@ region          dumpBox block ? 100 250 100 250 150 300	   units box
 group           Koor dynamic all region dumpBox
 
 $FB-START$
-pair_style      hybrid eam/fs lj/cut $$ tersoff #10
-#pair_modify    shift yes
-pair_coeff      * * eam/fs ./Fe_mm.eam.fs Fe Fe Fe NULL NULL
+pair_style      hybrid eam/fs lj/cut c tersoff #10
+pair_coeff      * * eam/fs ./c Fe Fe Fe NULL NULL
 pair_coeff      * * tersoff ../SiC.tersoff NULL NULL NULL C NULL
-pair_coeff      5 5 lj/cut $$$ #0.008976 3.775 
-pair_coeff      1*3 4 lj/cut $$ #0.02495 3.7 4.2
-pair_coeff		1*3 5 lj/cut $$ #0.02495 3.7 4.2
-pair_coeff		4 5 lj/cut $$ #0.02495 3.7 4.2
+pair_coeff      5 5 lj/cut $$$ # 0.008976 3.775
+pair_coeff      1*3 4 lj/cut 13 132 # 0.02495 3.7 4.2
+pair_coeff      1*3 5 lj/cut 12 33 # 0.02495 3.7 4.2
+pair_coeff      4 5 lj/cut $$ # 0.02495 3.7 4.2
 #pair_modify    pair lj/cut 2 shift yes
-
-$$$
-bond_style		harmonic
+pair_coeff      1 1 0.0075884211 3.905
+pair_coeff      2 2 0.0051169708 3.905
+bond_style        harmonic
 bond_coeff      1 13.75563 1.507
-
-# ---- braucht man diese beiden hier nochmal ?!?!
-
+bond_coeff	1 27.5112581255 1.507
 #pair_modify    mix arithmetic
 #pair_modify    tail yes
 $FB-END$
@@ -147,12 +144,12 @@ compute         TempFluid Fluid temp
 #compute        peratom all stress/atom NULL
 
 # spatial evaluation
-variable       	binwidth equal "./Solid.molecule"  # 8
+variable       	binwidth equal "c"  # 8
 variable       	xstart equal "((xhi + xlo)/2)-0.5*v_binwidth"
 variable       	xboundHi2 equal "0.6*v_binwidth+v_xstart"
 variable       	xboundLo2 equal "-0.6*v_binwidth+v_xstart"
-compute        	Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower ./Solid.molecule z lower ./Solid.molecule bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
-fix            	8 all ave/chunk 1 ./Solid.molecule ./Solid.molecule Kaesten2 temp density/mass file profile.Scratch3D_${tmp}   # 500 10000
+compute        	Kaesten2 all chunk/atom bin/3d x ${xstart} ${binwidth} y lower c z lower c bound x ${xboundLo2} ${xboundHi2} discard yes   units box   # 3
+fix            	8 all ave/chunk 1 c c Kaesten2 temp density/mass file profile.Scratch3D_${tmp}   # 500 10000
 
 
 neighbor        5 bin
@@ -162,7 +159,7 @@ neigh_modify    delay 5 one 50000 page 500000
 # Indentation
 
 
-timestep        ./Solid.molecule #0.00012
+timestep        c #0.00012
 
 #group          Substrat type 3
 #group          Indenter type 4
@@ -175,16 +172,16 @@ variable        f_Ind2   equal "c_f_IndSub[2]+c_f_IndFl[2]"
 variable        f_Ind3   equal "c_f_IndSub[3]+c_f_IndFl[3]"
 
 
-variable        vscratch         equal ./Solid.molecule #0.2
+variable        vscratch         equal c #0.2
 variable        length           equal v_vscratch*step*dt
-variable        scratch_length   equal ./Solid.molecule #5
+variable        scratch_length   equal c #5
 variable        run_scratch        equal round((v_scratch_length)/(v_vscratch*dt))
 
 velocity        sphere1 set 0.0 v_vscratch 0.0                              units box
 velocity        fixedlayer set 0.0 0.0 0.0                          units box
 
 
-thermo          ./Solid.molecule 100
+thermo          c 100
 thermo_style    custom step atoms c_TempFluid v_VolFluid v_DensFluid v_length c_f_IndSub[1] c_f_IndSub[2] c_f_IndSub[3] v_f_Ind1 v_f_Ind2 v_f_Ind3
 dump            1 all custom $$ dump.Scratch type id xs ys zs #c_cna  #30000
 dump      		2 Koor xyz $$ Scratch.xyz  #1000

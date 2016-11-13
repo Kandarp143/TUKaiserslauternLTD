@@ -27,7 +27,7 @@ vector<string> getFileContent(std::string fullPath) {
         }
     } else {
         cerr << "Unable to open input template file at location : " << fullPath << endl;
-
+        exit(1);
     }
     ipStream.close();
     return fileContent;
@@ -241,6 +241,7 @@ vector<forceFieldProcessor> parseForceFields(string qualifiedPath) {
                 f = new forceFieldProcessor();
                 ReplaceStringInPlace(tempLine, "MOLECULE", "");
                 f->setMolecule(trim(tempLine));
+                molecules.push_back(trim(tempLine));
             } else {
                 //capture bonds and cites
                 if (tempLine.find("number_of_cites:") != std::string::npos) {
@@ -261,8 +262,10 @@ vector<forceFieldProcessor> parseForceFields(string qualifiedPath) {
 
             }
         }
+
     } else {
-        cerr << "Unable to open input template file at location : " << endl;
+        cerr << "Unable to open forcefield file at location : "<<qualifiedPath << endl;
+        exit(1);
     }
     //push each file into list of files
     ipStream.close();
