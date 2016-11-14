@@ -13,13 +13,15 @@ void askGlobalUserInput() {
     string cptr; //current pointer
     string bptr; //back pointer
     for (string &text : globalQue) {
-        if (text == "[2] Select Molecule (Enter No)") {
+        if (text == "[2] Select Molecule") {
             string tmp = "[";
             for (string tx :molecules) {
                 tmp = tmp + tx + ",";
             };
+
+            tmp= tmp.substr(0,tmp.length()-1);
             tmp = tmp + "]";
-            cout << tmp<< endl;
+            text = text + "\n" + tmp;
         }
 
 

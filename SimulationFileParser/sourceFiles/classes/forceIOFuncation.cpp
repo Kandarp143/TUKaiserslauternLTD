@@ -171,5 +171,6 @@ vector<string> replaceMergeBlock(vector<string> orgBlock, vector<string> mrgBloc
         }
 
     }
+
     return ans;
 }

@@ -112,10 +112,26 @@ int main() {
     vector<string> pcAdd = getLine(forceField.getPairCoffBlock(), "pair_coeff");
     vector<string> bcAdd = getLine(forceField.getPairCoffBlock(), "bond_coeff");
     vector<string> massAdd = getLine(forceField.getPairCoffBlock(), "mass");
+    cout << "Generating Pair Coff block" << endl;
     pairCoffBlock = replaceMergeBlock(pairCoffBlock, pcAdd, "$PC-START$", "$PC-END$");
     pairCoffBlock = replaceMergeBlock(pairCoffBlock, bcAdd, "$BC-START$", "$BC-END$");
+    //eraseing first and last
+    vector<string> tmp;
+    for (string s:pairCoffBlock) {
+        if (s == "$FB-START$" || s == "$FB-END$") {
+        } else {
+            tmp.push_back(s);
+        }
+    }
+    pairCoffBlock = tmp;
+    cout << "---- Generated Block  -----" << endl;
+    for (string s :pairCoffBlock) {
+        cout << s << endl;
+    }
+    cout << "----------------------------" << endl;
     //replace this block into all file
     for (string &ipFileName :ipFiles) {
+        cout << "Replaceing block into " << ipFileName << endl;
         replacePairCoffBlock(opfilePath + ipFileName, pairCoffBlock);
         replaceMassBlock(opfilePath + ipFileName, massAdd);
     }

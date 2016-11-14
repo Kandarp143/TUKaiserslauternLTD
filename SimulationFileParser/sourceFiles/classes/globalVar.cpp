@@ -15,7 +15,7 @@ std::vector<std::string> ipFiles = {"in.relaxSubstrate", "in.relaxFluid", "in.In
 //std::vector<std::string> ipFiles = {"in.relaxSubstrate"};
 
 //global asking question
-std::vector<std::string> globalQue = {"[1] Cylinder or Sphere (c/s)", "[2] Select Molecule (Enter No)",
+std::vector<std::string> globalQue = {"[1] Cylinder or Sphere (c/s)", "[2] Select Molecule",
                                       "[3] 1*3 4 Interaction [val1 val2]", "[4] 1*3 5 Interatcion [val1 val2]"};
 
 //static path of i/p o/p files
