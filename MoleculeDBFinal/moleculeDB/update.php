@@ -121,13 +121,13 @@ if (!empty($_POST)) {
             <div class="post">
                 <div class="entry">
                     <!--        molecule file upload-->
-                    <?php $filepath = 'pm/' . $substance; ?>
+                    <?php $filepath = 'pm/' . $substance . 'pm'; ?>
                     <h1 class="title">
                         Upload updated PM file
 
                     </h1>
 
-                    <form action="upload.php?update=true&id=<?php echo $id ?>" method="post"
+                    <form action="processUpload.php?update=true&id=<?php echo $id ?>" method="post"
                           enctype="multipart/form-data">
                         <table>
                             <tr>
@@ -135,8 +135,7 @@ if (!empty($_POST)) {
 
                                     <p style="text-align: center">
                                         <a href="<?php echo $filepath ?>"
-                                           download="<?php echo $substance ?>">Downlaod PM
-                                            File</a>
+                                        "><?php echo $filepath ?></a>
                                     </p>
                                 </td>
                             </tr>

@@ -18,7 +18,8 @@ if (!empty($_POST)) {
         $sql = 'INSERT INTO pm_master (filename,cas_no,name,bibtex_key,model_type,memory_loc,description,type) 
 VALUES (?,?,?,?,?,?,?,?)';
         $q = $pdo->prepare($sql);
-        $suc = $q->execute(array($substance, $casno, $name, $reference, $modeltype, '', $description, $type));
+        $suc = $q->execute(array($substance, $casno, $name, $reference, $modeltype, 'pm/'.$substance.'.pm', $description, $type));
+        $mst = $pdo->lastInsertId();
         Database::disconnect();
     } catch (Exception $e) {
         $error = $e;
@@ -26,7 +27,7 @@ VALUES (?,?,?,?,?,?,?,?)';
     }
     if ($suc) {
         $_SESSION['submit_msg'] = "Master data successfully inserted , Please upload pm file";
-        header("Location: addmol.php?master=true");
+        header("Location: addmol.php?master=true&id=" . $mst);
 
     } else {
         $_SESSION['submit_msg'] = "Error : " . $error;

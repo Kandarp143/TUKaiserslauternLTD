@@ -67,3 +67,11 @@ button {
     cursor: pointer;
     width: 100%;
 }
+
+.err {
+    color: red;
+}
+
+.suc {
+    color: green;
+}

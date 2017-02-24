@@ -10,7 +10,7 @@ $fiangles = array();
 $pdo = Database::connect();
 $query = "SELECT * FROM pm_detail WHERE master_id =" . $master_id . " AND site_type LIKE 'LJ%'";
 $count = 0;
-$point = new Vec();
+$point;
 
 
 //saving points to array

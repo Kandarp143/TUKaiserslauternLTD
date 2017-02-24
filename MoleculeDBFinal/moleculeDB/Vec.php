@@ -15,13 +15,6 @@ class Vec
     private $z = 0;
     private $len = 0;
 
-    // Constructor
-    public function Vec($x, $y, $z)
-    {
-        $this->x = $x;
-        $this->y = $y;
-        $this->z = $z;
-    }
 
     // Set X
     public function setX($x)

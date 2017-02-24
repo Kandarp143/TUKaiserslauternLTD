@@ -3,16 +3,16 @@
 class Database
 {
     //bplaced server
-    private static $dbName = 'kpatel';
-    private static $dbHost = 'localhost';
-    private static $dbUsername = 'kpatel';
-    private static $dbUserPassword = 'xrStwTwRjzdWAcSX';
-
-    //for localhost
 //    private static $dbName = 'kpatel';
 //    private static $dbHost = 'localhost';
-//    private static $dbUsername = 'root';
-//    private static $dbUserPassword = 'root';
+//    private static $dbUsername = 'kpatel';
+//    private static $dbUserPassword = 'xrStwTwRjzdWAcSX';
+
+    //for localhost
+    private static $dbName = 'kpatel';
+    private static $dbHost = 'localhost';
+    private static $dbUsername = 'root';
+    private static $dbUserPassword = 'root';
 
 
     private static $cont = null;
