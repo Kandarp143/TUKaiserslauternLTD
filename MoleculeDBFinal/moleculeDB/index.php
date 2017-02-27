@@ -19,7 +19,11 @@ session_destroy();
             <?php include('include/home.php') ?>
         </div>
         <!-- end #content -->
-        <?php $error = $_GET['invalid']; ?>
+        <?php
+        $error = '';
+        if (isset($_GET['invalid'])) {
+            $error = $_GET['invalid'];
+        } ?>
         <div id="sidebar">
             <div id="sidebar-content">
                 <div id="sidebar-bgbtm">

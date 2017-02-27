@@ -11,8 +11,6 @@
         echo "<tr style='text-align: left'><th>Model Type</th><td>" . $row['model_type'] . "</td></tr>";
         echo "<tr style='text-align: left'><th>Type</th><td>" . $row['type'] . "</td></tr>";
         echo "<tr style='text-align: left'><th>Description</th><td>" . $row['description'] . "</td></tr>";
-        $mst_ref = '[' . $row['bib_key'] . ']';
-
     }
     ?>
 </table>

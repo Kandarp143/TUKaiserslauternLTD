@@ -37,7 +37,7 @@
         </div>
         <!-- end #content -->
         <div id="sidebar" style="display:table-cell; vertical-align:middle; text-align:center">
-            <img src="img/contact.png" height="300px" alt=""/>
+            <!--            <img src="img/contact.png" height="300px" alt=""/>-->
         </div>
         <!-- end #sidebar -->
         <div style="clear:both; margin:0;"></div>

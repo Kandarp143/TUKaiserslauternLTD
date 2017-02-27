@@ -19,8 +19,9 @@ foreach ($pdo->query($bibq) as $row) {
         $bib_title = $row['value'];
     }
     $bib_type = $row['bib_type'];
+    $tit = $row['bib_title'];
 }
-echo $mst_ref . ' ' . $Author . ' : '
+echo '[' . $tit . ']  ' . $Author . ' : '
     . $bib_title . ', ' . $Journal . $Volume . ', '
     . $Number . ', ' . $Pages . ' (' . $Year . ')'
 ?>

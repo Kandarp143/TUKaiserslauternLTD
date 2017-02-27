@@ -7,8 +7,8 @@
           media="screen"/>
     <style>
         table {
-            /*max-width: 400px;*/
-            width: 100% !important;
+            max-width: 90%;
+            /*width: 100% !important;*/
         }
     </style>
     <!--javascript-->
@@ -17,17 +17,16 @@
 
     <!--add column level search-->
     <script>
+        //for select
         $(document).ready(function () {
             // Setup - add a text input to each footer cell
             $('#listmol tfoot th').each(function () {
                 var title = $(this).text();
-                $(this).html('<input type="text" placeholder="Search ' + title + '"/>');
+                $(this).html('<input type="text" size="1" placeholder="Search ' + title + '" />');
             });
+
             // DataTable
-            var table = $('#listmol').DataTable(
-
-            );
-
+            var table = $('#listmol').DataTable();
             $('#listmol tfoot tr').appendTo('#listmol thead');
             // Apply the search
             table.columns().every(function () {
@@ -41,7 +40,28 @@
                     }
                 });
             });
+
+
+            table.columns([4, 5, 6]).every(function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo($(column.footer()).empty())
+                    .on('change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search(val ? '^' + val + '$' : '', true, false)
+                            .draw();
+                    });
+                column.data().unique().sort().each(function (d, j) {
+                    select.append('<option value="' + d + '">' + d + '</option>')
+                });
+
+            });
         });
+
     </script>
 </head>
 <body>
@@ -49,36 +69,11 @@
 
 <div id="wrapper">
     <?php include('include/nav.php') ?>
-    <!--Drop down -->
-    <div id="content page">
-        <?php
-        include 'database.php';
-        $pdo = Database::connect();
-        $sql = 'SELECT DISTINCT model_type FROM pm_master ORDER BY model_type ASC';
-        ?>
-        <form action="" method="post">
-            <select name="modelop">
-                <?php
-                if (isset($_POST['modelop'])) {
-                    echo "<option value='" . $_POST['modelop'] . "'>" . $_POST['modelop'] . "</option>";
-                    $tbl_sql = 'SELECT master_id, SUBSTRING(filename,1,POSITION("." IN filename)-1) as filename,
-cas_no,name,model_type,type,SUBSTRING_INDEX(substr(bibtex_key,instr(bibtex_key,"{") + 1),"}", 1) as bib_key
- FROM pm_master WHERE  model_type = "' . $_POST['modelop'] . '"';
-                } else {
-                    echo "<option value=''>Select Model Type</option>";
-
-                    $tbl_sql = 'SELECT master_id, SUBSTRING(filename,1,POSITION("." IN filename)-1) as filename,
-cas_no,name,model_type,type,SUBSTRING_INDEX(substr(bibtex_key,instr(bibtex_key,"{") + 1),"}", 1) as bib_key
- FROM pm_master';
-                }
-                foreach ($pdo->query($sql) as $row) {
-                    echo "<option value='" . $row['model_type'] . "'>" . $row['model_type'] . "</option>";
-                }
-                ?>
-            </select>
-            <input type="submit" name="submit" value="Go"/>
-        </form>
-    </div>
+    <?php
+    include 'database.php';
+    $pdo = Database::connect();
+    $tbl_sql = 'SELECT master_id,  filename,cas_no,name,model_type,type,bibtex_key FROM pm_master';
+    ?>
     <div id="page">
         <table id="listmol" class="display" cellspacing="0" width="100%">
             <thead>
@@ -121,7 +116,7 @@ cas_no,name,model_type,type,SUBSTRING_INDEX(substr(bibtex_key,instr(bibtex_key,"
                 echo "<td nowrap>" . $row['cas_no'] . "</td>";
                 echo "<td>" . $row['name'] . "</td>";
                 echo "<td>" . $row['model_type'] . "</td>";
-                echo "<td nowrap> [" . $row['bib_key'] . "] </tdnowrap>";
+                echo "<td nowrap> [" . $row['bibtex_key'] . "] </tdnowrap>";
                 echo "<td>" . $row['type'] . "</td>";
                 if ($_SESSION['act'] == 'true') {
                     echo '<td><a  href="update.php?id=' . $row['master_id'] . '">Update</a><br/>';

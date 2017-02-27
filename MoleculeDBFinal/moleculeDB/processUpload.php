@@ -46,7 +46,6 @@ if (isset($_POST["submit"]) && $_POST['submit'] == "UploadFile") {
                 unset($fileArray[$key]);
             }
 
-
         }
         //convert it to key value pair
         foreach ($fileArray as $key => $value) {
