@@ -3,8 +3,6 @@
 <html>
 <head> <?php include('include/links.php') ?>
     <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css" media="screen"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"
-          media="screen"/>
     <style>
         table {
             max-width: 90%;
@@ -63,6 +61,22 @@
         });
 
     </script>
+    <script>
+        $(document).ready(function () {
+            var t = document.getElementById("listmol");
+            var trs = t.getElementsByTagName("tr");
+            var tds = null;
+
+            for (var i = 0; i < trs.length; i++) {
+                tds = trs[i].getElementsByTagName("td");
+                for (var n = 0; n < trs.length; n++) {
+                    tds[n].onclick = function () {
+                        alert(this.id);
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -112,7 +126,9 @@
             foreach ($pdo->query($tbl_sql) as $row) {
                 echo "<tr style='text-align: left'>";
                 echo "<td>" . $row['master_id'] . "</td>";
-                echo "<td><a href='moldetail.php?id=" . $row['master_id'] . "'>" . $row['filename'] . "</a></td>";
+                echo "<td><a href='moldetail.php?id=" . $row['master_id'] . "'>"
+                    . preg_replace('/[0-9]+/', '<sub>$0</sub>', $row['filename'])
+                    . "</a></td>";
                 echo "<td nowrap>" . $row['cas_no'] . "</td>";
                 echo "<td>" . $row['name'] . "</td>";
                 echo "<td>" . $row['model_type'] . "</td>";

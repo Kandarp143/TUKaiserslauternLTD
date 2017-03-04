@@ -56,6 +56,11 @@
     </script>
 </head>
 <body>
+<?php
+$text = 'H2O';
+$text = preg_replace('/[0-9]+/', '<sub>$0</sub>', $text);
+echo $text;
+?>
 <table id="example" class="display" width="100%" cellspacing="0">
     <thead>
     <tr>

@@ -18,7 +18,7 @@
                 <div id="sidebar-bgbtm">
                     <ul>
                         <li id="search">
-                            <img src="img/laboratory.png" alt=""/>
+                            <!--                            <img src="img/laboratory.png" alt=""/>-->
                         </li>
                     </ul>
                 </div>

@@ -4,7 +4,7 @@
                         bibtex_key,model_type,type,description 
                         FROM pm_master where master_id = ' . $master_id;
     foreach ($pdo->query($sql) as $row) {
-        echo "<tr style='text-align: left'><th>Substance</th><td>" . $row['filename'] . "</td></tr>";
+        echo "<tr style='text-align: left'><th>Substance</th><td>" . preg_replace('/[0-9]+/', '<sub>$0</sub>', $row['filename']) . "</td></tr>";
         echo "<tr style='text-align: left'><th>CAS-No</th><td>" . $row['cas_no'] . "</td></tr>";
         echo "<tr style='text-align: left'><th>Name</th><td>" . $row['name'] . "</td></tr>";
         echo "<tr style='text-align: left'><th>Reference</th><td>[" . $row['bibtex_key'] . "]</td></tr>";

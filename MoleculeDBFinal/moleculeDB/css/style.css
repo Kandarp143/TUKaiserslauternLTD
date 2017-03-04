@@ -74,7 +74,7 @@
 }
 
 #menu a:hover {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 
 #menu .active {
@@ -179,11 +179,11 @@
 }
 
 #sidebar a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 #sidebar a:hover {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 
 /* Search */

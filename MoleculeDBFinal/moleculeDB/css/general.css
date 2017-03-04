@@ -31,12 +31,14 @@ p, ol, ul {
 }
 
 a {
+    text-decoration: none;
     color: #000000;
 }
 
 a:hover {
     text-decoration: none;
     color: #FF0000;
+
 }
 
 a img {

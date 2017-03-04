@@ -98,9 +98,9 @@ class Vec
 
     public function addVec(Vec $c1, Vec $c2)
     {
-        $this->x += $c1->getX() + $c2->getX();
-        $this->y += $c1->getY() + $c2->getY();
-        $this->z += $c1->getZ() + $c2->getZ();
+        $this->x = $c1->getX() + $c2->getX();
+        $this->y = $c1->getY() + $c2->getY();
+        $this->z = $c1->getZ() + $c2->getZ();
     }
 
     // Vector Sub
@@ -113,9 +113,16 @@ class Vec
 
     public function subVec(Vec $c1, Vec $c2)
     {
-        $this->x += $c1->getX() - $c2->getX();
-        $this->y += $c1->getY() - $c2->getY();
-        $this->z += $c1->getZ() - $c2->getZ();
+        $this->x = 0;
+        $this->y = 0;
+        $this->z = 0;
+        $this->x = $c1->getX() - $c2->getX();
+        $this->y = $c1->getY() - $c2->getY();
+        $this->z = $c1->getZ() - $c2->getZ();
+//        echo 'P1 : (' . round($c1->getX(), 2) . ',' . round($c1->getY(), 2) . ',' . round($c1->getZ(), 2) . ')  <br/>';
+//        echo 'P2 : (' . round($c2->getX(), 2) . ',' . round($c2->getY(), 2) . ',' . round($c2->getZ(), 2) . ')  <br/>';
+//        echo 'V : (' . round($this->x, 2) . ',' . round($this->y, 2) . ',' . round($this->z, 2) .
+//            ') <br/>   |V| :' . round($this->len(), 4) . '<br/>';
     }
 
     // Vector Negative
@@ -159,6 +166,7 @@ class Vec
     public function len()
     {
         return (sqrt($this->len2()));
+
     }
 
     // Normalize Vector
@@ -199,7 +207,7 @@ class Vec
     {
         $dotp = $this->dotVec($c1, $c2);
         $len = $c1->len() * $c2->len();
-
+//        $c1->neg();
 //        echo 'V1 dot v2 : ' . $dotp . '<br/>';
 //        echo '|v1| : ' . $c1->len() . '|v2| : ' . $c2->len() . '<br/>';
 //        echo '|v1|.|v2| : ' . $len . '<br/>';
@@ -207,7 +215,7 @@ class Vec
 //        echo 'Ans : ' . acos($dotp / $len) * (180 / M_PI);
 
 
-        return acos($dotp / $len) * (180 / M_PI);
+        return 180 - acos($dotp / $len) * (180 / M_PI);
 
     }
 
