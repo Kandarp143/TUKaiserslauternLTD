@@ -3,9 +3,9 @@
 
 require 'database.php';
 
-$id = null;
+$master_id = null;
 if (!empty($_GET['id'])) {
-    $id = $_REQUEST['id'];
+    $master_id = $_REQUEST['id'];
 }
 
 if (!empty($_POST)) {
@@ -13,21 +13,20 @@ if (!empty($_POST)) {
     $substance = $_POST['substance'];
     $casno = $_POST['casno'];
     $name = $_POST['name'];
-    $reference = $_POST['reference'];
     $modeltype = $_POST['modeltype'];
     $description = $_POST['description'];
 
 // update data
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "UPDATE pm_master SET filename = ?,cas_no =?,name = ?,bibtex_key= ?,model_type= ?,description = ? WHERE master_id= ?";
+    $sql = "UPDATE pm_master SET filename = ?,cas_no =?,name = ?,model_type= ?,description = ? WHERE master_id= ?";
     $q = $pdo->prepare($sql);
-    $suc = $q->execute(array($substance, $casno, $name, $reference, $modeltype, $description, $id));
+    $suc = $q->execute(array($substance, $casno, $name, $modeltype, $description, $master_id));
     Database::disconnect();
     if ($suc) {
-        header("Location: update.php?updated=true&id=" . $id);
+        header("Location: update.php?updated=true&id=" . $master_id);
     } else {
-        header("Location: update.php?updated=false&id=" . $id);
+        header("Location: update.php?updated=false&id=" . $master_id);
     }
 
 
@@ -36,17 +35,14 @@ if (!empty($_POST)) {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "select * from pm_master where master_id = ?";
     $q = $pdo->prepare($sql);
-    $q->execute(array($id));
+    $q->execute(array($master_id));
     $data = $q->fetch(PDO::FETCH_ASSOC);
     $substance = $data['filename'];
     $casno = $data['cas_no'];
     $name = $data['name'];
-    $reference = $data['bibtex_key'];
     $modeltype = $data['model_type'];
     $description = $data['description'];
     Database::disconnect();
-
-    echo $data['modeltype'];
 }
 ?>
 <!-- Design by Kandarp -->
@@ -62,7 +58,7 @@ if (!empty($_POST)) {
             <div class="post">
                 <h1 class="title">Update Master Data </h1>
                 <div class="entry">
-                    <form action="update.php?id=<?php echo $id ?>" method="post">
+                    <form action="update.php?id=<?php echo $master_id ?>" method="post">
                         <table>
                             <tr>
                                 <th>Substance :</th>
@@ -79,11 +75,7 @@ if (!empty($_POST)) {
                                 <td><input name="name" type="text" placeholder="Name"
                                            value="<?php echo !empty($name) ? $name : ''; ?>" size="50"></td>
                             </tr>
-                            <tr>
-                                <th>Reference :</th>
-                                <td><input name="reference" type="text" placeholder="reference"
-                                           value="<?php echo !empty($reference) ? $reference : ''; ?>" size="50"></td>
-                            </tr>
+
                             <tr>
                                 <th>Model Type :</th>
                                 <td><input name="modeltype" type="text" placeholder="modeltype"
@@ -99,13 +91,13 @@ if (!empty($_POST)) {
                             <tr>
                                 <td colspan="2">
                                     <button type="submit" class="btn btn-success">Update</button>
-                                    <button href="listmol.php">Back</button>
+
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <?php
-                                    $ans = $_GET['updated'];
+                                    $ans = isset($_GET['updated']) ? $_GET['updated'] : '';
                                     if ($ans == "true") {
                                         echo "<p style='color: green'> Master Data Updated  </p>";
                                     } else if ($ans == "false") {
@@ -121,13 +113,13 @@ if (!empty($_POST)) {
             <div class="post">
                 <div class="entry">
                     <!--        molecule file upload-->
-                    <?php $filepath = 'pm/' . $substance . 'pm'; ?>
+                    <?php $filepath = 'pm/' . $substance . '.pm'; ?>
                     <h1 class="title">
                         Upload updated PM file
 
                     </h1>
 
-                    <form action="processUpload.php?update=true&id=<?php echo $id ?>" method="post"
+                    <form action="processUpload.php?update=true&id=<?php echo $master_id ?>" method="post"
                           enctype="multipart/form-data">
                         <table>
                             <tr>
@@ -146,7 +138,7 @@ if (!empty($_POST)) {
                                 <td>
                                     <input class="button" type="submit" value="UploadFile" name="submit">
                                     <?php
-                                    $ans = $_GET['uploaded'];
+                                    $ans = isset($_GET['uploaded']) ? $_GET['uploaded'] : '';
                                     if ($ans == "true") {
                                         echo "<p style='color: green'> File uploaded successfully  </p>";
                                     } else if ($ans == "false") {
@@ -158,7 +150,20 @@ if (!empty($_POST)) {
                         </table>
                     </form>
                 </div>
+                <h1 class="title">References</h1>
+                <div class="entry">
+                    <p>
+                        <strong>
+                            <?php include('include/detfooter.php') ?>
+                        </strong>
+                        <br/>
+                        <b></b>
+                        <a href="addref.php?id=<?php echo $master_id ?>">Update Refernece</a>
+                        <b/>
+                    </p>
+                </div>
             </div>
+
         </div>
         <!-- end #content -->
         <div style="clear:both; margin:0;"></div>

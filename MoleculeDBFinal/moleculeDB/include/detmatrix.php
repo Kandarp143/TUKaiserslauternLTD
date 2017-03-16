@@ -8,7 +8,8 @@ $fiangles = array();
 
 //getting co-ordinates from database
 $pdo = Database::connect();
-$query = "SELECT * FROM pm_detail WHERE master_id =" . $master_id . " AND site_type LIKE 'LJ%'";
+//$query = "SELECT * FROM pm_detail WHERE master_id =" . $master_id . " AND site_type LIKE 'LJ%'";
+$query = "SELECT * FROM pm_detail WHERE master_id =" . $master_id;
 $count = 0;
 $point;
 

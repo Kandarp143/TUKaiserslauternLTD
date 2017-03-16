@@ -2,7 +2,7 @@
 
 class Database
 {
-//bplaced server
+    //bplaced server
     private static $dbName = 'kpatel';
     private static $dbHost = 'localhost';
     private static $dbUsername = 'kpatel';

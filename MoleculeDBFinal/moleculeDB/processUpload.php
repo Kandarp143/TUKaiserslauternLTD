@@ -102,37 +102,23 @@ if (isset($_POST["submit"]) && $_POST['submit'] == "UploadFile") {
         //CLOSING FILE
         fclose($file);
         if ($suc) {
-            header("Location: addmol.php?master=true&uploaded=true&id=" . $master_id);
             try {
                 move_uploaded_file($file, "pm/" . $filename);
             } catch (Exception $e) {
                 echo $e;
             }
-            echo 'Done';
+            if ($update == "true") {
+                header('Location: update.php?uploaded=true&id=' . $master_id);
+            } else {
+                header("Location: addmol.php?master=done&uploaded=true&id=" . $master_id);
+            }
         } else {
-            echo 'NotDone';
+            if ($update == "true") {
+                header('Location: update.php?uploaded=false&id=' . $master_id);
+            } else {
+                header("Location: addmol.php?master=done&uploaded=false&id=" . $master_id);
+            }
         }
-
-//        if ($suc) {
-//            echo 'Done';
-//            if ($update == "true") {
-//                header('location: update.php?uploaded=true&id=' . $master_id);
-//            } else {
-//                header('location: addmol.php?uploaded=false');
-//            }
-//            die();
-//        } else {
-//            echo 'Not Done';
-//            if ($update == "true") {
-//                header('location: update.php?uploaded=false&id=' . $master_id);
-//            } else {
-//                header('location: addmol.php?uploaded=false');
-//            }
-//            echo 'NotDone';
-//
-//            die();
-//        }
-
 
     }
 }

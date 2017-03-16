@@ -5,7 +5,6 @@ if (!empty($_POST)) {
     $substance = $_POST['substance'];
     $casno = $_POST['casno'];
     $name = $_POST['name'];
-    $reference = $_POST['reference'];
     $modeltype = $_POST['modeltype'];
     $description = $_POST['description'];
     $type = $_POST['type'];
@@ -15,10 +14,10 @@ if (!empty($_POST)) {
     try {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = 'INSERT INTO pm_master (filename,cas_no,name,bibtex_key,model_type,memory_loc,description,type) 
-VALUES (?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT INTO pm_master (filename,cas_no,name,bibtex_ref_key,bibtex_key,bibtex_year,model_type,memory_loc,description,type) 
+                VALUES (?,?,?,?,?,?,?,?,?,?)';
         $q = $pdo->prepare($sql);
-        $suc = $q->execute(array($substance, $casno, $name, $reference, $modeltype, 'pm/'.$substance.'.pm', $description, $type));
+        $suc = $q->execute(array($substance, $casno, $name, 0, '-', 0, $modeltype, 'pm/' . $substance . '.pm', $description, $type));
         $mst = $pdo->lastInsertId();
         Database::disconnect();
     } catch (Exception $e) {

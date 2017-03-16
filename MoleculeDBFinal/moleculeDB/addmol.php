@@ -12,11 +12,11 @@
                 <h1 class="title">Add New Molecule</h1>
                 <div class="entry">
                     <!--        molecule master data-->
-                    <?php if ($_GET['master'] != 'true') { ?>
+                    <?php if (!isset($_GET['master'])) { ?>
                         <?php include('include/addmst.php') ?>
                     <?php } ?>
                     <?php
-                    if ($_GET['master'] == "true") {
+                    if (isset($_GET['master']) && $_GET['master'] == "true") {
                         echo "<p class='suc'> Master data uploaded successfully, Now upload file  </p>";
                         //showing uploaded data
                         require 'database.php';
@@ -24,8 +24,8 @@
                         $pdo = Database::connect();
                         include('include/detheader.php');
 
-                    } else if ($_GET['master'] == "false") {
-                        echo "<p class='err' > Upload Error !  </p>";
+                    } else if (isset($_GET['master']) && $_GET['master'] == "false") {
+                        echo "<p class='err' > Data not uploded ! try again  </p>";
                     }
                     if (isset($_SESSION['submit_msg'])) {
                         echo $_SESSION['submit_msg'];
@@ -36,17 +36,23 @@
                 </div>
                 <div class="entry">
                     <!--        molecule file upload-->
-                    <?php if ($_GET['master'] == 'true') { ?>
-                        <?php include('include/addfile.php') ?>
-                    <?php } ?>
-                    <?php
-                    $ans = $_GET['uploaded'];
-                    if ($ans == "true") {
-                        echo "<p class='suc'> File uploaded successfully  </p>";
-                    } else if ($ans == "false") {
-                        echo "<p class='err' > Upload Error !  </p>";
+                    <?php if (isset($_GET['master']) && $_GET['master'] == 'true') {
+                        include('include/addfile.php');
                     }
                     ?>
+                    <?php if (isset($_GET['master']) && $_GET['master'] == 'done') {
+                        $ans = isset($_GET['uploaded']) ? $_GET['uploaded'] : 'false';
+                        if ($ans == "true") {
+                            $master_id = isset($_GET['id']) ? $_GET['id'] : 0;
+                            echo "<p class='suc'> File uploaded successfully  </p>";
+                            echo '<p> No References found : <a href="addref.php?id=' . $master_id . '">Add Reference</a></p>';
+                        } else if ($ans == "false") {
+                            echo "<p class='err' > File Upload Error ! </p>";
+                        }
+                    }
+                    ?>
+
+
                 </div>
             </div>
         </div>

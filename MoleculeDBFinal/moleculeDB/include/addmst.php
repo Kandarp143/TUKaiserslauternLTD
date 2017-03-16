@@ -19,11 +19,6 @@
                        size="50"></td>
         </tr>
         <tr>
-            <td>Reference</td>
-            <td><input name="reference" type="text" placeholder="reference eg[Vrabec 2001]"
-                       size="50"></td>
-        </tr>
-        <tr>
             <td>Model Type</td>
             <td><input name="modeltype" type="text" placeholder="modeltype"
                        size="50"></td>
