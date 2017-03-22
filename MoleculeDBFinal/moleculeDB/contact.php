@@ -21,7 +21,7 @@
                     <p>
                         University of Kaiserslautern <br/>
                         Computational Molecular Engineering <br/>
-                        Erwin-Schrˆdinger-Str. 44<br/>
+                        Erwin-Schrödinger-Straße  44<br/>
                         D-67663 Kaiserslautern, Germany
                     </p>
                     <p>

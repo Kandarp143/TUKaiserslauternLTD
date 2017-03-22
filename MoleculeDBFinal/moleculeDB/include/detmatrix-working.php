@@ -99,39 +99,29 @@ for ($i = 0; $i <= sizeof($points) - 1; $i++) {
     }
 }
 
-//$maker = array("1" => "7", "8" => "1", "9" => 13 - 9 + 1, "14" => 19 - 14 + 1, "20" => 25 - 20 + 1);
-$maker = null;
-$mk = null;
-$i = 0;
-$len = count($zmatrix);
-$temp = $zmatrix[0][0];
-foreach ($zmatrix as $z):
-    if ($i == 0) {
-        $mk[] = $z[1];
-    }
-    if ($i == $len - 1) {
-        $mk[] = $z[1];
-    }
-    $i++;
-    if ($temp != $z[0]) {
-        $mk[] = $z[1];
-        $temp = $z[0];
-    }
-endforeach;
-//var_dump($mk);
-
-for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
-    $key = $mk[$i];
-    $val = $mk[$i + 1] - $mk[$i];
-//    echo 'Key : ' . $key . ' Value : ' . $val . '</br>';
-    $maker[$key] = $val;
-}
-
-
+$st = null;
+//
+//foreach ($zmatrix as $z) {
+//    $st[] = $z[0];
+//
+//}
+//var_dump($st);
+//if (sizeof($st > 0)) {
+////remove duplicate
+//    $st = array_unique($st);
+////re numbering keys
+//    $st = array_values($st);
+//}
 ?>
-<h3 style="color: #2b2b2b"><b>Geometry in Z-Matrix</b></h3>
 
-<table style="width:70%">
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+<h4><b>Geometry in Z-Matrix</b></h4>
+<table>
     <tr>
         <td><b>Site</b></td>
         <td><b>SiteName</b></td>
@@ -141,20 +131,27 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
         <td><b>Angle</b></td>
         <td><b>Ref</b></td>
         <td><b>DiHedral</b></td>
-
-
+        <td><b>SiteType</b></td>
     </tr>
+
     <?php
-    foreach ($zmatrix as $z):?>
-        <?php if (array_key_exists($z[1], $maker)) { ?>
+    $i = 0;
+    $temp = $st[$i];
+    foreach ($zmatrix as $z):
+        if ($temp != $z[0]) { ?>
             <tr>
-                <td colspan="8"></td>
+                <td colspan="7"></td>
             </tr>
             <tr>
-                <td colspan="8"></td>
+                <td colspan="7"></td>
             </tr>
-        <?php } ?>
+
+            <?php if ($i < sizeof($st))
+                $temp = $st[$i + 1];
+        } ?>
         <tr>
+
+
             <td><?php echo $z[1] ?></td>
             <td><?php echo $z[2] ?></td>
             <td><?php echo $z[3] ?></td>
@@ -163,22 +160,23 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
             <td><?php echo $z[6] ?></td>
             <td><?php echo $z[7] ?></td>
             <td><?php echo $z[8] ?></td>
-            <?php
-            if (array_key_exists($z[1], $maker)) {
-                $fsize = $maker[$z[1]];
-                $fsize = 25 * $fsize;
-                $fsize = $fsize . 'px';
-                ?>
-                <td rowspan=" <?php echo $maker[$z[1]] ?>">
-
-                    <img src="img/bracket.png"
-                         style=" height: <?php echo $fsize; ?>;">
-                </td>
-                <td rowspan=" <?php echo $maker[$z[1]] ?>"><b><?php echo $z[0] ?></b>
-                </td>
-            <?php } ?>
+            <td><?php echo $z[0] ?></td>
         </tr>
-
+        </tbody>
         <?php
     endforeach; ?>
+</table>
+
+<table>
+    <tr>
+        <td>123</td>
+        <td>123</td>
+        <td>123</td>
+        <td rowspan="2">}</td>
+    </tr>
+    <tr>
+        <td>123</td>
+        <td>123</td>
+        <td>123</td>
+    </tr>
 </table>

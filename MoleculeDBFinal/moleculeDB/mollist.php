@@ -2,7 +2,7 @@
 <!-- Design by Kandarp -->
 <html>
 <head> <?php include('include/links.php') ?>
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/datatable.css" media="screen"/>
     <style>
         table {
             max-width: 90%;
@@ -19,8 +19,11 @@
         $(document).ready(function () {
             // Setup - add a text input to each footer cell
             $('#listmol tfoot th').each(function () {
+
                 var title = $(this).text();
-                $(this).html('<input type="text" size="1" placeholder="Search ' + title + '" />');
+                if (title != '') {
+                    $(this).html('<input type="text" size="1" />');
+                }
             });
 
             // DataTable
@@ -94,7 +97,7 @@
             <tr>
                 <th>ID</th>
                 <th>Substance</th>
-                <th>CAS-No</th>
+                <th nowrap>CAS-No</th>
                 <th>Name</th>
                 <th>Model Type</th>
                 <th>References</th>
@@ -109,13 +112,13 @@
             <tr>
                 <th>ID</th>
                 <th>Substance</th>
-                <th>CAS-No</th>
+                <th nowrap>CAS-No</th>
                 <th>Name</th>
                 <th>Model Type</th>
                 <th>References</th>
                 <th>Type</th>
                 <?php if ($_SESSION['act'] == 'true') { ?>
-                    <th>Action</th>
+                    <th></th>
                 <?php } ?>
 
             </tr>
@@ -135,8 +138,8 @@
                 echo "<td nowrap> [" . $row['bibtex_key'] . "] </tdnowrap>";
                 echo "<td>" . $row['type'] . "</td>";
                 if ($_SESSION['act'] == 'true') {
-                    echo '<td><a  href="update.php?id=' . $row['master_id'] . '">Update</a><br/>';
-                    echo '<a  href="delete.php?id=' . $row['master_id'] . '&substance=' . $row['filename'] . '">Delete</a>';
+                    echo '<td><a class="a-success"  href="update.php?id=' . $row['master_id'] . '">Update</a><br/>';
+                    echo '<a  class="a-danger" href="delete.php?id=' . $row['master_id'] . '&substance=' . $row['filename'] . '">Delete</a>';
                     echo '</td>';
                 }
                 echo "</tr>";

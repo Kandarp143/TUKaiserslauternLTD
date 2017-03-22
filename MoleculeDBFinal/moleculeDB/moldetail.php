@@ -6,6 +6,7 @@ $master_id = $_GET['id'];
 $pdo = Database::connect();
 ?>
 <!-- Design by Kandarp -->
+
 <html>
 <head> <?php include('include/links.php') ?>
 </head>
@@ -17,13 +18,10 @@ $pdo = Database::connect();
         <div id="content">
             <div class="post">
                 <!--                molecule header part-->
-                <h1 class="title">Molecule Header </h1>
-                <div class="entry">
-                    <?php include('include/detheader.php') ?>
-                </div>
+                <?php include('include/detheader.php') ?>
 
                 <!--                molecule detail part-->
-                <h1 class="title">Molecule Detail </h1>
+                <h1 class="title">Force Field </h1>
                 <div class="entry">
                     <p>
                         <?php include('include/detmatrix.php') ?>

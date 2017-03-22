@@ -3,7 +3,7 @@
 <!-- Design by Kandarp -->
 <html>
 <head> <?php include('include/links.php') ?>
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/datatable.css" media="screen"/>
     <style>
         table {
             max-width: 90%;

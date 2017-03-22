@@ -18,7 +18,8 @@
                 <li><a href="welcome.php">Home</a></li>
                 <li><a href="mollist.php">Molecule List</a></li>
                 <?php if (isset($_SESSION['usr'])) { ?>
-                    <li><a href="addmol.php">Add New Molecule</a></li>
+                    <li><a href="addmol.php">New Molecule</a></li>
+                    <li><a href="addref.php">References</a></li>
                 <?php } ?>
                 <li><a href="inter.php">Interaction Potentials</a></li>
                 <li><a href="contact.php">Contact Us</a></li>

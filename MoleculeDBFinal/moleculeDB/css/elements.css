@@ -1,3 +1,72 @@
+/*button styling*/
+.btn {
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 30%
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Blue */
+.btn-primary {
+    background-color: #008CBA;
+    color: white;
+}
+
+/* Red */
+.btn-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+/* green */
+.btn-success {
+    background-color: #4CAF50;;
+    color: white;
+}
+
+/*hyperlink styling*/
+
+/*default class*/
+a:link, a:visited {
+    color: #3b5998;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+/*green*/
+a.a-success:link, a.a-success:visited {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a.a-success:hover, a.a-success:active {
+    text-decoration: underline;
+}
+
+/*red*/
+
+a.a-danger:link, a.a-danger:visited {
+    color: #FF6347;
+    text-decoration: none;
+}
+
+a.a-danger:hover, a.a-danger:active {
+    text-decoration: underline;
+}
+
+/*table styling*/
 /* table index */
 .datagrid table {
     border-collapse: collapse;
@@ -6,7 +75,7 @@
 }
 
 .datagrid {
-    font: normal 12px/150% Times New Roman, Times, serif;
+    font: normal 13px/150% sans-serif, Verdana, Geneva;
     background: #fff;
     overflow: hidden;
     border: 1px solid #999999;
@@ -34,3 +103,5 @@
 .datagrid table tbody tr:last-child td {
     border-bottom: none;
 }
+
+

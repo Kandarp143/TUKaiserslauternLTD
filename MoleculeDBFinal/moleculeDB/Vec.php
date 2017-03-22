@@ -14,6 +14,194 @@ class Vec
     private $y = 0;
     private $z = 0;
     private $len = 0;
+    private $sitetype = 0;
+    //for other param
+    private $mass = 0;
+    private $sigma = 0;
+    private $epsilon = 0;
+    private $charge = 0;
+    private $theta = 0;
+    private $phi = 0;
+    private $quadrupole = 0;
+    private $dipole = 0;
+    private $shielding = 0;
+
+    /**
+     * @return int
+     */
+    public function getShielding()
+    {
+        return $this->shielding;
+    }
+
+    /**
+     * @param int $shielding
+     */
+    public function setShielding($shielding)
+    {
+        $this->shielding = $shielding;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMass()
+    {
+        return $this->mass;
+    }
+
+    /**
+     * @param int $mass
+     */
+    public function setMass($mass)
+    {
+        $this->mass = $mass;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSigma()
+    {
+        return $this->sigma;
+    }
+
+    /**
+     * @param int $sigma
+     */
+    public function setSigma($sigma)
+    {
+        $this->sigma = $sigma;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEpsilon()
+    {
+        return $this->epsilon;
+    }
+
+    /**
+     * @param int $epsilon
+     */
+    public function setEpsilon($epsilon)
+    {
+        $this->epsilon = $epsilon;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCharge()
+    {
+        return $this->charge;
+    }
+
+    /**
+     * @param int $charge
+     */
+    public function setCharge($charge)
+    {
+        $this->charge = $charge;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTheta()
+    {
+        return $this->theta;
+    }
+
+    /**
+     * @param int $theta
+     */
+    public function setTheta($theta)
+    {
+        $this->theta = $theta;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPhi()
+    {
+        return $this->phi;
+    }
+
+    /**
+     * @param int $phi
+     */
+    public function setPhi($phi)
+    {
+        $this->phi = $phi;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuadrupole()
+    {
+        return $this->quadrupole;
+    }
+
+    /**
+     * @param int $quadrupole
+     */
+    public function setQuadrupole($quadrupole)
+    {
+        $this->quadrupole = $quadrupole;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDipole()
+    {
+        return $this->dipole;
+    }
+
+    /**
+     * @param int $dipole
+     */
+    public function setDipole($dipole)
+    {
+        $this->dipole = $dipole;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getSitetype()
+    {
+        return $this->sitetype;
+    }
+
+    /**
+     * @param int $sitetype
+     */
+    public function setSitetype($sitetype)
+    {
+        $this->sitetype = $sitetype;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLen()
+    {
+        return $this->len;
+    }
+
+    /**
+     * @param int $len
+     */
+    public function setLen($len)
+    {
+        $this->len = $len;
+    }
 
 
     // Set X
@@ -125,6 +313,14 @@ class Vec
 //            ') <br/>   |V| :' . round($this->len(), 4) . '<br/>';
     }
 
+    //Vector Round Value
+    public function vround()
+    {
+        $this->x = round($this->x, 4);
+        $this->y = round($this->y, 4);
+        $this->z = round($this->z, 4);
+    }
+
     // Vector Negative
     public function neg()
     {
@@ -207,23 +403,30 @@ class Vec
     {
         $dotp = $this->dotVec($c1, $c2);
         $len = $c1->len() * $c2->len();
-//        $c1->neg();
+        $c1->neg();
 //        echo 'V1 dot v2 : ' . $dotp . '<br/>';
 //        echo '|v1| : ' . $c1->len() . '|v2| : ' . $c2->len() . '<br/>';
 //        echo '|v1|.|v2| : ' . $len . '<br/>';
 //        echo 'acos (' . $dotp / $len . ')<br/>';
 //        echo 'Ans : ' . acos($dotp / $len) * (180 / M_PI);
 
-
-        return 180 - acos($dotp / $len) * (180 / M_PI);
-
+        if ($len != 0) {
+            return 180 - acos($dotp / $len) * (180 / M_PI);
+        } else {
+            return 0;
+        }
     }
 
     public function arcsin(Vec $c1, Vec $c2)
     {
         $dotp = $this->dotVec($c1, $c2);
         $len = $c1->len() * $c2->len();
-        return asin($dotp / $len) * (180 / M_PI);
+        if ($len != 0) {
+            return asin($dotp / $len) * (180 / M_PI);
+        } else {
+            return 0;
+        }
+
 
     }
 }

@@ -11,6 +11,8 @@
                             <img src="img/logo_tukl.png" alt="TU Kaiserslautern" width="180px"/>
                         </a>
                     </td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <strong>Laboratory of Engineering Thermodynamics (LTD)</strong><br/>
                         University of Kaiserslautern,<br/>
@@ -23,6 +25,8 @@
                             <img src="img/logo_p.png" alt="University of Paderborn" width="180px"/>
                         </a>
                     </td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <strong>Laboratory of Thermodynamics and Energy Technology (ThEt)</strong><br/>
                         University of Paderborn,<br/>
