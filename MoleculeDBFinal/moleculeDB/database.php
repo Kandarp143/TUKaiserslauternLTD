@@ -3,16 +3,16 @@
 class Database
 {
     //bplaced server
-//    private static $dbName = 'kpatel';
-//    private static $dbHost = 'localhost';
-//    private static $dbUsername = 'kpatel';
-//    private static $dbUserPassword = 'xrStwTwRjzdWAcSX';
+    private static $dbName = 'kpatel';
+    private static $dbHost = 'localhost';
+    private static $dbUsername = 'kpatel';
+    private static $dbUserPassword = 'xrStwTwRjzdWAcSX';
 
     //for localhost
-    private static $dbName = 'molecule_db';
-    private static $dbHost = 'localhost';
-    private static $dbUsername = 'root';
-    private static $dbUserPassword = 'admin';
+//    private static $dbName = 'molecule_db';
+//    private static $dbHost = 'localhost';
+//    private static $dbUsername = 'root';
+//    private static $dbUserPassword = 'admin';
 
 
     private static $cont = null;

@@ -16,158 +16,32 @@ class Vec
     private $len = 0;
     private $sitetype = 0;
     //for other param
-    private $mass = 0;
-    private $sigma = 0;
-    private $epsilon = 0;
-    private $charge = 0;
-    private $theta = 0;
-    private $phi = 0;
-    private $quadrupole = 0;
-    private $dipole = 0;
-    private $shielding = 0;
+//    private $mass = 'N.A';
+//    private $sigma = 'N.A';
+//    private $epsilon = 'N.A';
+//    private $charge = 'N.A';
+//    private $theta = 'N.A';
+//    private $phi = 'N.A';
+//    private $quadrupole = 'N.A';
+//    private $dipole = 'N.A';
+//    private $shielding = 'N.A';
+    //array try
+    private $oth = array();
 
     /**
-     * @return int
+     * @return array
      */
-    public function getShielding()
+    public function getOth()
     {
-        return $this->shielding;
+        return $this->oth;
     }
 
     /**
-     * @param int $shielding
+     * @param array $oth
      */
-    public function setShielding($shielding)
+    public function setOth($oth)
     {
-        $this->shielding = $shielding;
-    }
-
-    /**
-     * @return int
-     */
-    public function getMass()
-    {
-        return $this->mass;
-    }
-
-    /**
-     * @param int $mass
-     */
-    public function setMass($mass)
-    {
-        $this->mass = $mass;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSigma()
-    {
-        return $this->sigma;
-    }
-
-    /**
-     * @param int $sigma
-     */
-    public function setSigma($sigma)
-    {
-        $this->sigma = $sigma;
-    }
-
-    /**
-     * @return int
-     */
-    public function getEpsilon()
-    {
-        return $this->epsilon;
-    }
-
-    /**
-     * @param int $epsilon
-     */
-    public function setEpsilon($epsilon)
-    {
-        $this->epsilon = $epsilon;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCharge()
-    {
-        return $this->charge;
-    }
-
-    /**
-     * @param int $charge
-     */
-    public function setCharge($charge)
-    {
-        $this->charge = $charge;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTheta()
-    {
-        return $this->theta;
-    }
-
-    /**
-     * @param int $theta
-     */
-    public function setTheta($theta)
-    {
-        $this->theta = $theta;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPhi()
-    {
-        return $this->phi;
-    }
-
-    /**
-     * @param int $phi
-     */
-    public function setPhi($phi)
-    {
-        $this->phi = $phi;
-    }
-
-    /**
-     * @return int
-     */
-    public function getQuadrupole()
-    {
-        return $this->quadrupole;
-    }
-
-    /**
-     * @param int $quadrupole
-     */
-    public function setQuadrupole($quadrupole)
-    {
-        $this->quadrupole = $quadrupole;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDipole()
-    {
-        return $this->dipole;
-    }
-
-    /**
-     * @param int $dipole
-     */
-    public function setDipole($dipole)
-    {
-        $this->dipole = $dipole;
+        $this->oth = $oth;
     }
 
 

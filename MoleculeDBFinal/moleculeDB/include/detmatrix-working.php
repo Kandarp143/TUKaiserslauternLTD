@@ -12,11 +12,16 @@ $pdo = Database::connect();
 $query = "SELECT * FROM pm_detail WHERE master_id =" . $master_id;
 $count = 0;
 $point;
+$oth;
 
 
 //saving points to array
+
 foreach ($pdo->query($query) as $row) {
+
     if ($row['param'] == 'x') {
+
+        $oth = array();
         $count++;
         $site = $row['site'];
         $sitetype = $row['site_type'];
@@ -29,18 +34,43 @@ foreach ($pdo->query($query) as $row) {
         $point->setSitetype($sitetype);
         $point->setX($x);
 
+
         array_push($points, $point);
     } else if ($row['param'] == 'y') {
         $point->setY($row['val']);
     } else if ($row['param'] == 'z') {
         $point->setZ($row['val']);
+    } else if ($row['param'] == 'sigma') {
+        $point->setsigma($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
+    } else if ($row['param'] == 'epsilon') {
+        $point->setepsilon($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
+    } else if ($row['param'] == 'charge') {
+        $point->setcharge($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
+    } else if ($row['param'] == 'mass') {
+        $point->setmass($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
+    } else if ($row['param'] == 'theta') {
+        $point->settheta($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
+    } else if ($row['param'] == 'phi') {
+        $point->setphi($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
+    } else if ($row['param'] == 'quadrupole') {
+        $point->setquadrupole($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
+    } else if ($row['param'] == 'dipole') {
+        $point->setdipole($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
+    } else if ($row['param'] == 'shielding') {
+        $point->setshielding($row['param'] . '|' . $row['val']);
+        $oth[$row['param']] = $row['val'];
     }
-
+    $point->setOth($oth);
 }
-
-//foreach ($points as $p) {
-//    echo 'Point' . $p->getName() . ': (' . $p->getX() . ',' . $p->getY() . ',' . $p->getZ() . ')<br/>';
-//}
+var_dump($points);
 
 //making vector & distance
 for ($i = 0; $i <= sizeof($points) - 2; $i++) {
@@ -86,8 +116,9 @@ for ($i = 0; $i <= sizeof($vectors) - 3; $i++) {
 
 //prepareing display array
 $zmatrix = array();
+$pmatrix = array();
 for ($i = 0; $i <= sizeof($points) - 1; $i++) {
-    //down to top
+    //down to top (z matrix)
     if ($i > 2) {
         array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLength(), 4), $i - 1, round($angles[$i - 2], 4), $i - 2, round($fiangles[$i - 3], 4)));
     } else if ($i > 1) {
@@ -97,31 +128,47 @@ for ($i = 0; $i <= sizeof($points) - 1; $i++) {
     } else {
         array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), "-", "-", "-", "-", "-", "-"));
     }
+    //p matrix
+    array_push($pmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(),
+        $points[$i]->getsigma(), $points[$i]->getepsilon(), $points[$i]->getcharge(),
+        $points[$i]->getmass(), $points[$i]->getshielding(), $points[$i]->gettheta(),
+        $points[$i]->getphi(), $points[$i]->getquadrupole(), $points[$i]->getdipole()));
 }
 
-$st = null;
-//
-//foreach ($zmatrix as $z) {
-//    $st[] = $z[0];
-//
-//}
-//var_dump($st);
-//if (sizeof($st > 0)) {
-////remove duplicate
-//    $st = array_unique($st);
-////re numbering keys
-//    $st = array_values($st);
-//}
-?>
-
-<style>
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
+//$maker = array("1" => "7", "8" => "1", "9" => 13 - 9 + 1, "14" => 19 - 14 + 1, "20" => 25 - 20 + 1);
+//$maker array for making dynamic rowspan and bracket
+$maker = null;
+$mk = null;
+$i = 0;
+$len = count($zmatrix);
+$temp = $zmatrix[0][0];
+foreach ($zmatrix as $z):
+    if ($i == 0) {
+        $mk[] = $z[1];
     }
-</style>
-<h4><b>Geometry in Z-Matrix</b></h4>
-<table>
+    if ($i == $len - 1) {
+        $mk[] = $z[1];
+    }
+    $i++;
+    if ($temp != $z[0]) {
+        $mk[] = $z[1];
+        $temp = $z[0];
+    }
+endforeach;
+//var_dump($mk);
+
+for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
+    $key = $mk[$i];
+    $val = $mk[$i + 1] - $mk[$i];
+//    echo 'Key : ' . $key . ' Value : ' . $val . '</br>';
+    $maker[$key] = $val;
+}
+
+
+?>
+<h3 style="color: #2b2b2b"><b>Geometry in Z-Matrix</b></h3>
+
+<table style="width:70%">
     <tr>
         <td><b>Site</b></td>
         <td><b>SiteName</b></td>
@@ -131,27 +178,20 @@ $st = null;
         <td><b>Angle</b></td>
         <td><b>Ref</b></td>
         <td><b>DiHedral</b></td>
-        <td><b>SiteType</b></td>
+
+
     </tr>
-
     <?php
-    $i = 0;
-    $temp = $st[$i];
-    foreach ($zmatrix as $z):
-        if ($temp != $z[0]) { ?>
+    foreach ($zmatrix as $z):?>
+        <?php if (array_key_exists($z[1], $maker)) { ?>
             <tr>
-                <td colspan="7"></td>
+                <td colspan="8"></td>
             </tr>
             <tr>
-                <td colspan="7"></td>
+                <td colspan="8"></td>
             </tr>
-
-            <?php if ($i < sizeof($st))
-                $temp = $st[$i + 1];
-        } ?>
+        <?php } ?>
         <tr>
-
-
             <td><?php echo $z[1] ?></td>
             <td><?php echo $z[2] ?></td>
             <td><?php echo $z[3] ?></td>
@@ -160,23 +200,83 @@ $st = null;
             <td><?php echo $z[6] ?></td>
             <td><?php echo $z[7] ?></td>
             <td><?php echo $z[8] ?></td>
-            <td><?php echo $z[0] ?></td>
+            <?php
+            if (array_key_exists($z[1], $maker)) {
+                $fsize = $maker[$z[1]];
+                $fsize = 25 * $fsize;
+                $fsize = $fsize . 'px';
+                ?>
+                <td rowspan=" <?php echo $maker[$z[1]] ?>">
+
+                    <img src="img/bracket.png"
+                         style=" height: <?php echo $fsize; ?>;">
+                </td>
+                <td rowspan=" <?php echo $maker[$z[1]] ?>"><b><?php echo $z[0] ?></b>
+                </td>
+            <?php } ?>
         </tr>
-        </tbody>
+
         <?php
     endforeach; ?>
 </table>
 
-<table>
+
+<h3 style="color: #2b2b2b"><b>Eni Maaaa........</b></h3>
+
+<table style="width:90%">
     <tr>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-        <td rowspan="2">}</td>
+        <td><b>Site</b></td>
+        <td><b>SiteName</b></td>
+        <td><b>sigma</b></td>
+        <td><b>epsilon</b></td>
+        <td><b>charge</b></td>
+        <td><b>mass</b></td>
+        <td><b>shielding</b></td>
+        <td><b>theta</b></td>
+        <td><b>phi</b></td>
+        <td><b>quadrupole</b></td>
+        <td><b>dipole</b></td>
+
+
     </tr>
-    <tr>
-        <td>123</td>
-        <td>123</td>
-        <td>123</td>
-    </tr>
+    <?php
+    foreach ($pmatrix as $z):?>
+        <?php if (array_key_exists($z[1], $maker)) { ?>
+            <tr>
+                <td colspan="11"></td>
+            </tr>
+            <tr>
+                <td colspan="11"></td>
+            </tr>
+        <?php } ?>
+        <tr>
+            <td><?php echo $z[1] ?></td>
+            <td><?php echo $z[2] ?></td>
+            <td><?php echo $z[3] ?></td>
+            <td><?php echo $z[4] ?></td>
+            <td><?php echo $z[5] ?></td>
+            <td><?php echo $z[6] ?></td>
+            <td><?php echo $z[7] ?></td>
+            <td><?php echo $z[8] ?></td>
+            <td><?php echo $z[9] ?></td>
+            <td><?php echo $z[10] ?></td>
+            <td><?php echo $z[11] ?></td>
+            <?php
+            if (array_key_exists($z[1], $maker)) {
+                $fsize = $maker[$z[1]];
+                $fsize = 25 * $fsize;
+                $fsize = $fsize . 'px';
+                ?>
+                <td rowspan=" <?php echo $maker[$z[1]] ?>">
+
+                    <img src="img/bracket.png"
+                         style=" height: <?php echo $fsize; ?>;">
+                </td>
+                <td rowspan=" <?php echo $maker[$z[1]] ?>"><b><?php echo $z[0] ?></b>
+                </td>
+            <?php } ?>
+        </tr>
+
+        <?php
+    endforeach; ?>
 </table>
