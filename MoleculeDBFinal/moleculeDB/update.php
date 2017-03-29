@@ -123,12 +123,14 @@ if (!empty($_POST)) {
                           enctype="multipart/form-data">
                         <table>
                             <tr>
-                                <td colspan="2">
+                                <td>
+                                    Download old PM file :
+                                </td>
+                                <td>
 
-                                    <p style="text-align: center">
-                                        <a href="<?php echo $filepath ?>"
-                                        "><?php echo $filepath ?></a>
-                                    </p>
+                                    <a class="a-button" href="<?php echo $filepath ?>"
+                                       download><?php echo $filepath ?></a>
+
                                 </td>
                             </tr>
                             <tr>
@@ -137,6 +139,11 @@ if (!empty($_POST)) {
                                 </td>
                                 <td>
                                     <input class="button" type="submit" value="UploadFile" name="submit">
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
                                     <?php
                                     $ans = isset($_GET['uploaded']) ? $_GET['uploaded'] : '';
                                     if ($ans == "true") {
@@ -156,9 +163,12 @@ if (!empty($_POST)) {
                         <strong>
                             <?php include('include/detfooter.php') ?>
                         </strong>
+
+                        <br/>
                         <br/>
                         <b></b>
-                        <a href="addref.php?id=<?php echo $master_id ?>">Update Refernece</a>
+                        <a href="mapref.php?id=<?php echo $master_id ?>" class="a-button">Update Refernece</a>
+                        <a href="moldetail.php?id=<?php echo $master_id ?>" class="a-button">Back to Molecule Detail</a>
                         <b/>
                     </p>
                 </div>

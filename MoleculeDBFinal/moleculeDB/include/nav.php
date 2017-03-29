@@ -1,3 +1,29 @@
+<style>
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+</style>
 <div id="header">
     <div id="logo">
         <h2><a href="welcome.php">Molecular Models of Boltzmann-Zuse Society</a></h2>
@@ -18,9 +44,14 @@
                 <li><a href="welcome.php">Home</a></li>
                 <li><a href="mollist.php">Molecule List</a></li>
                 <?php if (isset($_SESSION['usr']) && $_SESSION['act'] == 'true') { ?>
-                    <li><a href="addmol.php">New Molecule</a></li>
-                    <li><a href="addref.php">References</a></li>
+                    <li class="dropdown"><a href="#">Admin Panel</a>
+                        <div class="dropdown-content">
+                            <a href="addmol.php" style="color: #4CAF50">New Molecule</a>
+                            <a href="addref.php?act=insert" style="color: #4CAF50">New References</a>
+                        </div>
+                    </li>
                 <?php } ?>
+                <li><a href="reference.php">References</a></li>
                 <li><a href="inter.php">Normenclature</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
             </ul>

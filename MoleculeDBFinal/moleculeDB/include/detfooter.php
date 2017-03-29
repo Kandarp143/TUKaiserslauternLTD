@@ -35,7 +35,7 @@ if ($result->rowCount() > 0) {
         . $bib_title . ', ' . $Journal . $Volume . ', '
         . $Number . ', ' . $Pages . ' (' . $Year . ')';
 } else {
-    echo '<p> No References found : <a href="addref.php?id=' . $master_id . '">Add Reference</a></p>';
+    echo '<p> No References found : <a href="mapref.php?id=' . $master_id . '">Add Reference</a></p>';
 
 }
 

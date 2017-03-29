@@ -50,7 +50,7 @@ if (isset($_POST["submit"]) && $_POST['submit'] == "UploadFile") {
         //convert it to key value pair
         foreach ($fileArray as $key => $value) {
             $tempArray = explode("=", $value);
-            if ($tempArray[1] == null) {
+            if (!isset($tempArray[1])) {
                 $tempArray[1] = $tempArray[0];
             }
             if (array_key_exists($tempArray[0], $finalData)) {

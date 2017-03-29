@@ -13,7 +13,7 @@ $query = "SELECT * FROM pm_detail WHERE master_id =" . $master_id;
 $count = 0;
 $point;
 $oth;
-
+$del_val = 'del_val';
 
 //saving points to array
 
@@ -21,7 +21,19 @@ foreach ($pdo->query($query) as $row) {
 
     if ($row['param'] == 'x') {
         //this is break point of each new point (x) cordinate
-        $oth = array();
+        //creating structure of array
+        $oth = array(
+            'Site' => $del_val,
+            'SiteName' => $del_val,
+            'Mass' => $del_val,
+            'Epsilon' => $del_val,
+            'Sigma' => $del_val,
+            'Charge' => $del_val,
+            'Dipole' => $del_val,
+            'Quadrupole' => $del_val,
+            'Theta' => $del_val,
+            'Phi' => $del_val
+        );
         $count++;
         $site = $row['site'];
         $sitetype = $row['site_type'];
@@ -49,9 +61,18 @@ foreach ($pdo->query($query) as $row) {
         || $row['param'] == 'shielding' || $row['param'] == 'theta' || $row['param'] == 'phi'
         || $row['param'] == 'quadrupole' || $row['param'] == 'dipole'
     ) {
-        $oth[ucwords($row['param'])] = round($row['val'], 4);
+        $oth[ucwords($row['param'])] = (string)round($row['val'], 4);
     }
     $point->setOth($oth);
+}
+
+//removeing del_val
+foreach ($points as $p) {
+    $tmp = $p->getOth();
+    while (($key = array_search($del_val, $tmp))) {
+        unset($tmp[$key]);
+    }
+    $p->setOth($tmp);
 }
 //var_dump($points);
 
@@ -184,11 +205,13 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
                 $fsize = $maker[$z[1]];
                 $fsize = 25 * $fsize;
                 $fsize = $fsize . 'px';
+                $fwidth = $fsize / 4;
+                $fwidth = $fwidth . 'px';
                 ?>
                 <td rowspan=" <?php echo $maker[$z[1]] ?>">
 
                     <img src="img/bracket.png"
-                         style=" height: <?php echo $fsize; ?>;">
+                         style=" height: <?php echo $fsize; ?>;width: <?php echo $fwidth; ?>">
                 </td>
                 <td rowspan=" <?php echo $maker[$z[1]] ?>"><b><?php echo $z[0] ?></b>
                 </td>
@@ -200,7 +223,7 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
 </table>
 
 
-<h3 style="color: #2b2b2b;margin-top: 5%"><b>Additional Perameters</b></h3>
+<h3 style="color: #2b2b2b;margin-top: 5%"><b>Interaction Perameters</b></h3>
 
 <table>
     <?php
@@ -208,13 +231,14 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
         <?php if (array_key_exists($z[1], $maker)) {
             $isheader = true; ?>
             <tr>
-                <td colspan="8"></td>
+                <td></td>
             </tr>
 
         <?php } ?>
         <?php if ($isheader) { ?>
             <tr>
-                <?php foreach ($z[2] as $paramName => $value): ?>
+                <?php foreach ($z[2] as $paramName => $value):
+                    ?>
                     <td><b><?php echo $paramName ?></b></td>
                     <?php
                 endforeach; ?>
@@ -222,7 +246,8 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
         <?php }
         $isheader = false; ?>
         <tr>
-            <?php foreach ($z[2] as $paramName => $value): ?>
+            <?php foreach ($z[2] as $paramName => $value):
+                ?>
                 <td><?php echo
                     $paramName == 'SiteName' ? preg_replace('/[0-9]+/', '<sub>$0</sub>', $value) : $value;
                     ?>
@@ -234,11 +259,13 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
                 $fsize = $maker[$z[1]];
                 $fsize = 25 * $fsize;
                 $fsize = $fsize . 'px';
+                $fwidth = $fsize / 2.5;
+                $fwidth = $fwidth . 'px';
                 ?>
                 <td rowspan=" <?php echo $maker[$z[1]] ?>">
 
                     <img src="img/bracket.png"
-                         style=" height: <?php echo $fsize; ?>;">
+                         style=" height: <?php echo $fsize; ?>;width: <?php echo $fwidth; ?>">
                 </td>
                 <td rowspan=" <?php echo $maker[$z[1]] ?>"><b><?php echo $z[0] ?></b>
                 </td>

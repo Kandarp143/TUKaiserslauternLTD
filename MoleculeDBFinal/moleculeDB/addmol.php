@@ -45,7 +45,7 @@
                         if ($ans == "true") {
                             $master_id = isset($_GET['id']) ? $_GET['id'] : 0;
                             echo "<p class='suc'> File uploaded successfully  </p>";
-                            echo '<p> No References found : <a href="addref.php?id=' . $master_id . '">Add Reference</a></p>';
+                            echo '<p> No References found : <a class="a-button" href="mapref.php?id=' . $master_id . '">Add Reference</a></p>';
                         } else if ($ans == "false") {
                             echo "<p class='err' > File Upload Error ! </p>";
                         }

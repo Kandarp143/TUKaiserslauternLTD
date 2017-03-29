@@ -38,7 +38,32 @@ $pdo = Database::connect();
                 </div>
             </div>
         </div>
-        <!-- end #content -->
+        <!--        <!-- end #content -->
+        <!--        --><?php //if ($_SESSION['act'] == 'true') { ?>
+        <!--            <div id="sidebar">-->
+        <!--                <div id="sidebar-content">-->
+        <!--                    <div id="sidebar-bgbtm">-->
+        <!--                        <ul>-->
+        <!--                            <li id="search">-->
+        <!--                                <h2>Actions</h2>-->
+        <!--                                <table>-->
+        <!--                                    <tr>-->
+        <!--                                        <td><b><a class="a-success"-->
+        <!--                                                  href="update.php?id=-->
+        <?php //echo $master_id ?><!--">Update</a></b></td>-->
+        <!--                                        <td><b><a class="a-danger"-->
+        <!--                                                  href="delete.php?id=' . -->
+        <?php //echo $master_id ?><!-- . '&substance='this molecule'">Delete</a>-->
+        <!--                                            </b></td>-->
+        <!--                                    </tr>-->
+        <!--                                </table>-->
+        <!--                            </li>-->
+        <!--                        </ul>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        --><?php //} ?>
+        <!--        <!-- end #sidebar -->
         <div style="clear:both; margin:0;"></div>
     </div>
     <!-- end #page -->

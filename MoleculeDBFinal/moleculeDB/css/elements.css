@@ -1,4 +1,6 @@
 /*button styling*/
+
+
 .btn {
     border: none;
     padding: 10px 20px;
@@ -64,6 +66,19 @@ a.a-danger:link, a.a-danger:visited {
 
 a.a-danger:hover, a.a-danger:active {
     text-decoration: underline;
+}
+
+/*button style link*/
+a.a-button:link, a.a-button:visited {
+    border:solid 1px  #3b5998;
+    padding: 4px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.a-button:hover, a.a-button:active {
+    border:solid 2px  #3b5998;
 }
 
 /*table styling*/

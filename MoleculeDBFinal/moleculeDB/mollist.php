@@ -127,10 +127,25 @@
             <!-- table print-->
             <?php
             foreach ($pdo->query($tbl_sql) as $row) {
-                echo "<tr style='text-align: left'>";
+                if ($_SESSION['act'] == 'true') {
+                    echo "<tr style='text-align: left'>";
+
+                } else {
+
+                    echo "<tr style='text-align: left;line-height: 23px;'>";
+                }
                 echo "<td>" . $row['master_id'] . "</td>";
+                $substance = $row['filename'];
+                if (0 === strpos($substance, 'R')) {
+                    preg_match('~[a-z]~i', substr($substance, 1), $match, PREG_OFFSET_CAPTURE);
+                    $left = substr($substance, 0, $match[0][1] + 1);
+                    $right = substr($substance, $match[0][1] + 1);
+                    $substance = $left . preg_replace('/[0-9]+/', '<sub>$0</sub>', $right);
+                } else {
+                    $substance = preg_replace('/[0-9]+/', '<sub>$0</sub>', $row['filename']);
+                }
                 echo "<td><a href='moldetail.php?id=" . $row['master_id'] . "'>"
-                    . preg_replace('/[0-9]+/', '<sub>$0</sub>', $row['filename'])
+                    . $substance
                     . "</a></td>";
                 echo "<td nowrap>" . $row['cas_no'] . "</td>";
                 echo "<td>" . $row['name'] . "</td>";
