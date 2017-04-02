@@ -1,0 +1,28 @@
+What actually req. 
+
+From HTML CSS 
+
+- one css  -> maintain grid
+- one css  -> maintain global elements styleing
+- one css  -> actual template logic
+
+
+
+From PHP point of view
+
+- how you can use as JAVA . provide method to get data from database.
+- DAO object
+- Connection in saperate file.
+
+
+- Create connection php (exsist)
+- Create all method page that only connect with db and return the 
+
+
+Pending Work
+
+- Z-Matrix testing
+- DB data testing
+- Admin panel saperate
+
+

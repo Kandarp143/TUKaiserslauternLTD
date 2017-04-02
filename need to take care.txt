@@ -1,0 +1,37 @@
+maintain . pm_detail param values
+
+SELECT DISTINCT param FROM pm_detail
+
+delete from pm_detail WHERE param = 'NFluct';
+delete from pm_detail WHERE param like '%0%';
+UPDATE pm_detail SET param = 'quadrupole' WHERE param = 'qudrupole'
+DELETE FROM pm_detail WHERE param LIKE '%Inert%'
+
+
+select DISTINCT param,LENGTH(param),CHAR_LENGTH(param) FROM pm_detail
+
+qudrupole (124,100)
+
+
+
+
+
+
+
+
+LJ126 			sigma	epsilon				mass
+Charge			charge					mass	shielding
+Q			theta	phi		quadrupole	mass	shielding
+D			theta	phi		dipole		mass	shielding
+Dipole			theta	phi		dipole		mass	shielding
+
+
+Total : sigma epsilon charge mass shielding theta phi quadrupole dipole 			
+
+Quadrupole
+
+
+
+
+INSERT INTO `usr_master` (`id`, `name`, `surname`, `email`, `contact`) VALUES (NULL, 'Dummy User', '-', 'er.ikndp@gmail.com', '1590586186');
+INSERT INTO `usr_access` (`id_mst`, `usr_id`, `usr_pass`, `usr_role`) VALUES ('2', 'user', '1234', 'USR');
