@@ -1,4 +1,5 @@
 <?php include('include/header.php') ?>
+
 <?php
 
 require 'database.php';
@@ -58,119 +59,21 @@ if (!empty($_POST)) {
             <div class="post">
                 <h1 class="title">Update Master Data </h1>
                 <div class="entry">
-                    <form action="update.php?id=<?php echo $master_id ?>" method="post">
-                        <table>
-                            <tr>
-                                <th>Substance :</th>
-                                <td><input name="substance" type="text" placeholder="substance"
-                                           value="<?php echo !empty($substance) ? $substance : ''; ?>" size="50"></td>
-                            </tr>
-                            <tr>
-                                <th>CAS-No :</th>
-                                <td><input name="casno" type="text" placeholder="casno"
-                                           value="<?php echo !empty($casno) ? $casno : ''; ?>" size="50"></td>
-                            </tr>
-                            <tr>
-                                <th>Name :</th>
-                                <td><input name="name" type="text" placeholder="Name"
-                                           value="<?php echo !empty($name) ? $name : ''; ?>" size="50"></td>
-                            </tr>
-
-                            <tr>
-                                <th>Model Type :</th>
-                                <td><input name="modeltype" type="text" placeholder="modeltype"
-                                           value="<?php echo !empty($modeltype) ? $modeltype : ''; ?>" size="50"></td>
-                            </tr>
-                            <tr>
-                                <th>Description</th>
-                                <td><input name="description" type="text" placeholder="description"
-                                           value="<?php echo !empty($description) ? $description : ''; ?>" size="50">
-                                </td>
-                            </tr>
-                            <tr></tr>
-                            <tr>
-                                <td colspan="2">
-                                    <button type="submit" class="btn btn-success">Update</button>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <?php
-                                    $ans = isset($_GET['updated']) ? $_GET['updated'] : '';
-                                    if ($ans == "true") {
-                                        echo "<p style='color: green'> Master Data Updated  </p>";
-                                    } else if ($ans == "false") {
-                                        echo "<p style='color: red;' >  Error !  </p>";
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
+                    <!--        molecule header-->
+                    <?php include('include/upheader.php') ?>
                 </div>
             </div>
             <div class="post">
+                <h1 class="title">Upload updated PM file</h1>
+
                 <div class="entry">
                     <!--        molecule file upload-->
-                    <?php $filepath = 'pm/' . $substance . '.pm'; ?>
-                    <h1 class="title">
-                        Upload updated PM file
-
-                    </h1>
-
-                    <form action="processUpload.php?update=true&id=<?php echo $master_id ?>" method="post"
-                          enctype="multipart/form-data">
-                        <table>
-                            <tr>
-                                <td>
-                                    Download old PM file :
-                                </td>
-                                <td>
-
-                                    <a class="a-button" href="<?php echo $filepath ?>"
-                                       download><?php echo $filepath ?></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="file" name="fileToUpload" id="fileToUpload">
-                                </td>
-                                <td>
-                                    <input class="button" type="submit" value="UploadFile" name="submit">
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <?php
-                                    $ans = isset($_GET['uploaded']) ? $_GET['uploaded'] : '';
-                                    if ($ans == "true") {
-                                        echo "<p style='color: green'> File uploaded successfully  </p>";
-                                    } else if ($ans == "false") {
-                                        echo "<p style='color: red;' > Upload Error !  </p>";
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
+                    <?php include('include/updet.php') ?>
                 </div>
                 <h1 class="title">References</h1>
                 <div class="entry">
-                    <p>
-                        <strong>
-                            <?php include('include/detfooter.php') ?>
-                        </strong>
+                    <?php include('include/upfoot.php') ?>
 
-                        <br/>
-                        <br/>
-                        <b></b>
-                        <a href="mapref.php?id=<?php echo $master_id ?>" class="a-button">Update Refernece</a>
-                        <a href="moldetail.php?id=<?php echo $master_id ?>" class="a-button">Back to Molecule Detail</a>
-                        <b/>
-                    </p>
                 </div>
             </div>
 

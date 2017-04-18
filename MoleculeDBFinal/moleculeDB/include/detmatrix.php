@@ -259,7 +259,7 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
                 $fsize = $maker[$z[1]];
                 $fsize = 25 * $fsize;
                 $fsize = $fsize . 'px';
-                $fwidth = $fsize / 2.5;
+                $fwidth = $fsize / 3.0;
                 $fwidth = $fwidth . 'px';
                 ?>
                 <td rowspan=" <?php echo $maker[$z[1]] ?>">
