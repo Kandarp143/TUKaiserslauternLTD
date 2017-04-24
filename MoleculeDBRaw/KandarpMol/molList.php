@@ -66,14 +66,13 @@
 <body>
 
 
-<div id="wrapper">
+<div class="wrapper">
     <?php include('include/nav.php') ?>
     <?php
-    include 'database.php';
     $pdo = Database::connect();
     $tbl_sql = 'SELECT master_id,  filename,cas_no,name,model_type,type,bibtex_key FROM pm_master';
     ?>
-    <div id="page">
+    <div class="page">
         <table id="listmol" class="display" cellspacing="0" width="90%">
             <thead>
             <tr>
@@ -151,7 +150,7 @@
 <!-- end #page -->
 
 
-<div id="footer">
+<div class="footer">
     <?php include('include/footer.php') ?>
 </div>
 <!-- end #footer -->

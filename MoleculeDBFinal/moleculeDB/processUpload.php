@@ -23,15 +23,6 @@ if (isset($_POST["submit"]) && $_POST['submit'] == "UploadFile") {
         $trimmed_array = array_values(array_filter($members, "trim"));
         $fileArray = array_map('trim', $trimmed_array);
 
-//        //geting master id from database
-//        include 'database.php';
-//        $pdo = Database::connect();
-//        $sql = "SELECT master_id FROM pm_master WHERE filename ='" . $filename . "';";
-//        foreach ($pdo->query($sql) as $row) {
-//            $master_id = $row["master_id"];
-//            echo "id: " . $master_id . "<br>";
-//        }
-
         //make master data array
         $count = 0;
         $finalData = array();
