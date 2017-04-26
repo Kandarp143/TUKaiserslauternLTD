@@ -3,6 +3,7 @@
 <?php
 
 require 'database.php';
+require_once 'funcation/othFunc.php';
 
 $master_id = null;
 if (!empty($_GET['id'])) {
@@ -76,7 +77,6 @@ if (!empty($_POST)) {
 
                 </div>
             </div>
-
         </div>
         <!-- end #content -->
         <div style="clear:both; margin:0;"></div>

@@ -5,6 +5,7 @@ if (isset($_GET['master_id'])) {
     $master_id = $_GET['master_id'];
 }
 ?>
+
 <form action="processRef.php?map=true&master_id=<?php echo $master_id ?>&id=<?php echo $id ?>&act=<?php echo $act ?>"
       method="post">
     <?php
@@ -19,6 +20,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Bib_Title'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Reference Type</td>
@@ -26,13 +32,23 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Bib_Type'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
-                <td>Title</td>
+                <td>Title of Publication</td>
                 <td><input name="Title" type="text"
                            placeholder=""
                            value="<?php echo $ref['Title'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Author</td>
@@ -40,6 +56,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Author'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Journal</td>
@@ -47,6 +68,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Journal'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Publisher</td>
@@ -54,6 +80,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Publisher'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Volume</td>
@@ -61,6 +92,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Volume'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Number</td>
@@ -68,6 +104,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Number'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Pages</td>
@@ -75,6 +116,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Pages'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Year</td>
@@ -82,34 +128,23 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Year'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
-                <td>Address</td>
-                <td><input name="Address" type="text"
-                           placeholder=""
-                           value="<?php echo $ref['Address'] ?>"
-                           size="50"></td>
-            </tr>
-            <tr>
-                <td>Owner</td>
-                <td><input name="Owner" type="text"
-                           placeholder=""
-                           value="<?php echo $ref['Owner'] ?>"
-                           size="50"></td>
-            </tr>
-            <tr>
-                <td>Timestamp</td>
-                <td><input name="Timestamp" type="text"
-                           placeholder=""
-                           value="<?php echo $ref['Timestamp'] ?>"
-                           size="50"></td>
-            </tr>
-            <tr>
-                <td>Doi</td>
+                <td>DOI</td>
                 <td><input name="Doi" type="text"
                            placeholder=""
                            value="<?php echo $ref['Doi'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Editor</td>
@@ -117,6 +152,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Editor'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Edition</td>
@@ -124,6 +164,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Edition'] ?>"
                            size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Url</td>
@@ -131,13 +176,11 @@ if (isset($_GET['master_id'])) {
                            placeholder=""
                            value="<?php echo $ref['Url'] ?>"
                            size="50"></td>
-            </tr>
-            <tr>
-                <td>School</td>
-                <td><input name="School" type="text"
-                           placeholder=""
-                           value="<?php echo $ref['School'] ?>"
-                           size="50"></td>
+                <td>
+                    <div class="tooltip">[i]
+                        <span class="tooltiptext">Tooltip text</span>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td colspan="2">

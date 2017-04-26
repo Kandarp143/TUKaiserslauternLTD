@@ -40,9 +40,10 @@
             The models which are documented here are rigid classical mechanical
             force fields for low-molecular fluids, consisting of 12-6 Lennard-Jones
             interaction sites, point charges, and point multipoles.
-            They can be used with simultion tools like <a href="http://www.ms-2.de" target="_blank">ms2</a>
+            They can be used with moleculer simultion tools like <a href="http://www.ms-2.de"
+                                                                    target="_blank"><b><i>ms2</i></b></a>
             and <a
-                    href="http://www.ls1-mardyn.de/home.html" target="_blank">ls1 mardyn</a>
+                    href="http://www.ls1-mardyn.de/home.html" target="_blank"><b>ls1 mardyn</b></a>
         </p>
     </div>
 </div>

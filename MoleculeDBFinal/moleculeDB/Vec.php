@@ -8,6 +8,7 @@
  */
 class Vec
 {
+    /*Var*/
     private $id = 0;
     private $name = '';
     private $x = 0;
@@ -15,164 +16,21 @@ class Vec
     private $z = 0;
     private $len = 0;
     private $sitetype = 0;
-    //for other param
-//    private $mass = 'N.A';
-//    private $sigma = 'N.A';
-//    private $epsilon = 'N.A';
-//    private $charge = 'N.A';
-//    private $theta = 'N.A';
-//    private $phi = 'N.A';
-//    private $quadrupole = 'N.A';
-//    private $dipole = 'N.A';
-//    private $shielding = 'N.A';
-    //array try
     private $oth = array();
 
-    /**
-     * @return array
-     */
-    public function getOth()
+
+    /* Funcation */
+
+    /*funcation to set (x,y,z) of point*/
+    function setCordinate($x, $y, $z)
     {
-        return $this->oth;
+        $this->x = round($x, 4);
+        $this->y = round($y, 4);
+        $this->z = round($z, 4);
+
     }
 
-    /**
-     * @param array $oth
-     */
-    public function setOth($oth)
-    {
-        $this->oth = $oth;
-    }
-
-
-    /**
-     * @return int
-     */
-    public function getSitetype()
-    {
-        return $this->sitetype;
-    }
-
-    /**
-     * @param int $sitetype
-     */
-    public function setSitetype($sitetype)
-    {
-        $this->sitetype = $sitetype;
-    }
-
-    /**
-     * @return int
-     */
-    public function getLen()
-    {
-        return $this->len;
-    }
-
-    /**
-     * @param int $len
-     */
-    public function setLen($len)
-    {
-        $this->len = $len;
-    }
-
-
-    // Set X
-    public function setX($x)
-    {
-        $this->x = $x;
-    }
-
-    // Set Y
-    public function setY($y)
-    {
-        $this->y = $y;
-    }
-
-    // Set Z
-    public function setZ($z)
-    {
-        $this->z = $z;
-    }
-
-    // Set name
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    // Set id
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    // Set len
-    public function setLength($len)
-    {
-        $this->len = $len;
-    }
-
-    // Get X
-    public function getX()
-    {
-        return $this->x;
-    }
-
-    // Get Y
-    public function getY()
-    {
-        return $this->y;
-    }
-
-    // Get Z
-    public function getZ()
-    {
-        return $this->z;
-    }
-
-    // Get Name
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    // Get ID
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    // Get ID
-    public function getLength()
-    {
-        return $this->len;
-    }
-
-    // Vector Add
-    public function add($xx, $yy, $zz)
-    {
-        $this->x += $xx;
-        $this->y += $yy;
-        $this->z += $zz;
-    }
-
-    public function addVec(Vec $c1, Vec $c2)
-    {
-        $this->x = $c1->getX() + $c2->getX();
-        $this->y = $c1->getY() + $c2->getY();
-        $this->z = $c1->getZ() + $c2->getZ();
-    }
-
-    // Vector Sub
-    public function sub($xx, $yy, $zz)
-    {
-        $this->x -= $xx;
-        $this->y -= $yy;
-        $this->z -= $zz;
-    }
-
+    /* subtract one point from another (for vector = pass (point2,point1)*/
     public function subVec(Vec $c1, Vec $c2)
     {
         $this->x = 0;
@@ -181,21 +39,72 @@ class Vec
         $this->x = $c1->getX() - $c2->getX();
         $this->y = $c1->getY() - $c2->getY();
         $this->z = $c1->getZ() - $c2->getZ();
-//        echo 'P1 : (' . round($c1->getX(), 2) . ',' . round($c1->getY(), 2) . ',' . round($c1->getZ(), 2) . ')  <br/>';
-//        echo 'P2 : (' . round($c2->getX(), 2) . ',' . round($c2->getY(), 2) . ',' . round($c2->getZ(), 2) . ')  <br/>';
-//        echo 'V : (' . round($this->x, 2) . ',' . round($this->y, 2) . ',' . round($this->z, 2) .
-//            ') <br/>   |V| :' . round($this->len(), 4) . '<br/>';
-    }
-
-    //Vector Round Value
-    public function vround()
-    {
         $this->x = round($this->x, 4);
         $this->y = round($this->y, 4);
         $this->z = round($this->z, 4);
     }
 
-    // Vector Negative
+
+    /* make vector nagative*/
+
+    public function getX()
+    {
+        return $this->x;
+    }
+
+    /* dot product of two vector*/
+
+    public function setX($x)
+    {
+        $this->x = round($x, 4);
+
+    }
+
+    /* legth of vector */
+
+    public function getY()
+    {
+        return $this->y;
+    }
+
+    /* cross product of two vector*/
+
+    public function setY($y)
+    {
+        $this->y = round($y, 4);
+    }
+
+    /* angle : between two vector*/
+
+    public function getZ()
+    {
+        return $this->z;
+    }
+
+    /* angle : between three vector*/
+
+    public function setZ($z)
+    {
+        $this->z = round($z, 4);
+    }
+
+    /*Setters*/
+
+    public function angleXY(Vec $c1, Vec $c2)
+    {
+        //custom formula
+        $c1->neg();
+        $dotp = $this->dotVec($c1, $c2);
+        $len = round($c1->len() * $c2->len(), 4);
+        if ($len != 0) {
+            $val = round($dotp / $len, 4);
+            $rad = acos($val);
+            return round(rad2deg($rad), 4);
+        } else {
+            return 0;
+        }
+    }
+
     public function neg()
     {
         $this->x = -$this->x;
@@ -203,104 +112,89 @@ class Vec
         $this->z = -$this->z;
     }
 
-    // Vector Scale
-    public function scale($k)
-    {
-        $this->x *= $k;
-        $this->y *= $k;
-        $this->z *= $k;
-    }
-
-    // Vector Dot Product
-    public function dot($xx, $yy, $zz)
-    {
-        return ($this->x * $xx +
-            $this->y * $yy +
-            $this->z * $zz);
-    }
-
     public function dotVec(Vec $c1, Vec $c2)
     {
-        return $c1->getX() * $c2->getX() + $c1->getY() * $c2->getY() + $c1->getZ() * $c2->getZ();
+        return round($c1->getX() * $c2->getX() + $c1->getY() * $c2->getY() + $c1->getZ() * $c2->getZ(), 4);
     }
 
-    // Vector Length^2
-    public function len2()
-    {
-        return ($this->x * $this->x +
-            $this->y * $this->y +
-            $this->z * $this->z);
-    }
-
-    // Vector Length
     public function len()
     {
-        return (sqrt($this->len2()));
-
+        return round((sqrt($this->x * $this->x +
+            $this->y * $this->y +
+            $this->z * $this->z)), 4);
     }
 
-    // Normalize Vector
-    public function normalize()
+    public function angleXYZ(Vec $c1, Vec $c2, Vec $c3)
     {
-        $tmp = $this->len();
-        if (abs($tmp) > 1e-7) {
-            $this->x /= $tmp;
-            $this->y /= $tmp;
-            $this->z /= $tmp;
-        } else {
-            throw new Exception('len = 0');
-        }
+        $norm = $this->normVec($c1, $c2);
+//        $norm->neg(); //because angleXY neg it so - - +
+        $cos = $this->angleXY($norm, $c3) - 90;
+        return $cos;
     }
 
-    // Vector Cross Product
-    public function cross($xx, $yy, $zz)
-    {
-        $cx = $this->y * $zz - $this->z * $yy;
-        $cy = $this->z * $xx - $this->x * $zz;
-        $cz = $this->x * $yy - $this->y * $xx;
-        $this->x = $cx;
-        $this->y = $cy;
-        $this->z = $cz;
-    }
-
-    public function crossVec(Vec $c1, Vec $c2)
+    public function normVec(Vec $c1, Vec $c2)
     {
         $cx = $c1->getY() * $c2->getZ() - $c1->getZ() * $c2->getY();
         $cy = $c1->getZ() * $c2->getX() - $c1->getX() * $c2->getZ();
         $cz = $c1->getX() * $c2->getY() - $c1->getY() * $c2->getX();
-        $this->x = $cx;
-        $this->y = $cy;
-        $this->z = $cz;
+        $this->x = round($cx, 4);
+        $this->y = round($cy, 4);
+        $this->z = round($cz, 4);
+        $v = new Vec();
+        $v->setCordinate($cx, $cy, $cz);
+        return $v;
     }
 
-    public function arccos(Vec $c1, Vec $c2)
+    public function getLen()
     {
-        $dotp = $this->dotVec($c1, $c2);
-        $len = $c1->len() * $c2->len();
-        $c1->neg();
-//        echo 'V1 dot v2 : ' . $dotp . '<br/>';
-//        echo '|v1| : ' . $c1->len() . '|v2| : ' . $c2->len() . '<br/>';
-//        echo '|v1|.|v2| : ' . $len . '<br/>';
-//        echo 'acos (' . $dotp / $len . ')<br/>';
-//        echo 'Ans : ' . acos($dotp / $len) * (180 / M_PI);
-
-        if ($len != 0) {
-            return 180 - acos($dotp / $len) * (180 / M_PI);
-        } else {
-            return 0;
-        }
+        return $this->len;
     }
 
-    public function arcsin(Vec $c1, Vec $c2)
+    public function setLen($len)
     {
-        $dotp = $this->dotVec($c1, $c2);
-        $len = $c1->len() * $c2->len();
-        if ($len != 0) {
-            return asin($dotp / $len) * (180 / M_PI);
-        } else {
-            return 0;
-        }
 
+        $this->len = round($len, 4);
+    }
 
+    /*Getters*/
+
+    public function getOth()
+    {
+        return $this->oth;
+    }
+
+    public function setOth($oth)
+    {
+        $this->oth = $oth;
+    }
+
+    public function getSitetype()
+    {
+        return $this->sitetype;
+    }
+
+    public function setSitetype($sitetype)
+    {
+        $this->sitetype = $sitetype;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }

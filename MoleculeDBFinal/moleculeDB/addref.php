@@ -63,7 +63,7 @@ if ($act == 'update') {
 }
 ?>
 
-
+<link rel="stylesheet" type="text/css" href="css/tooltip.css" media="screen"/>
 <html>
 <head> <?php include('include/links.php') ?>
 </head>

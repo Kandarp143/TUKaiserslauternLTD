@@ -58,7 +58,12 @@ if (!empty($_POST)) {
             //3.map
             $sql = 'UPDATE pm_master SET bibtex_ref_key = ' . $id . ' , bibtex_key = "' . trim($_POST['bib_type'], " ") . '" WHERE master_id =' . $master_id;
             $pdo->query($sql);
-            header("Location:  moldetail.php?id=$master_id");
+            if (headers_sent()) {
+                die("Redirect failed. Please click on this link: <a href= 'moldetail.php?id='.$master_id> CLICK HERE <a/>");
+            } else {
+                exit(header("Location:  moldetail.php?id=$master_id"));
+            }
+
             $pdo = Database::disconnect();
         }
 
@@ -73,7 +78,14 @@ if (!empty($_POST)) {
             //3.map
             $sql = 'UPDATE pm_master SET bibtex_ref_key = ' . $radval[0] . ' , bibtex_key = "' . $radval[1] . '" WHERE master_id =' . $master_id;
             $pdo->query($sql);
-            header("Location:  moldetail.php?id=$master_id");
+
+
+            if (headers_sent()) {
+                die("Redirect failed. Please click on this link: <a href= 'moldetail.php?id='.$master_id> CLICK HERE <a/>");
+            } else {
+                exit(header("Location:  moldetail.php?id=$master_id"));
+            }
+
             $pdo = Database::disconnect();
         }
 
@@ -94,7 +106,11 @@ if (!empty($_POST)) {
                         $suc = $q->execute(array($id, trim($_POST['bib_type'], " "), trim($_POST['bib_title'], " "),
                             trim($key, " "), trim($val, " ")));
                     }
-                    header('Location: reference.php?act=' . $act);
+                    if (headers_sent()) {
+                        die("Redirect failed. Please click on this link: <a href= 'reference.php?act=' . $act> CLICK HERE <a/>");
+                    } else {
+                        exit(header("Location:  reference.php?act=" . $act));
+                    }
 
                 }
             } catch (Exception $e) {
@@ -124,7 +140,12 @@ if (!empty($_POST)) {
                         $suc = $q->execute(array($id, trim($_POST['bib_type'], " "), trim($_POST['bib_title'], " "),
                             trim($key, " "), trim($val, " ")));
                     }
-                    header('Location: reference.php?act=' . $act);
+
+                    if (headers_sent()) {
+                        die("Redirect failed. Please click on this link: <a href= 'reference.php?act=' . $act> CLICK HERE <a/>");
+                    } else {
+                        exit(header("Location:  reference.php?act=" . $act));
+                    }
 
                 }
             } catch (Exception $e) {
@@ -140,7 +161,11 @@ if (!empty($_POST)) {
             $sql = "DELETE FROM pm_bib  WHERE bib_key = ?";
             $result = $pdo->prepare($sql);
             $result->execute(array($id));
-            header('Location: reference.php?act=' . $act);
+            if (headers_sent()) {
+                die("Redirect failed. Please click on this link: <a href= 'reference.php?act=' . $act> CLICK HERE <a/>");
+            } else {
+                exit(header("Location:  reference.php?act=" . $act));
+            }
         } catch (Exception $e) {
             echo $e;
         }

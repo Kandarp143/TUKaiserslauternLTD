@@ -67,3 +67,17 @@ button {
     color: green;
 }
 
+/*
+Table styling
+*/
+table, td, th {
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 7px;
+}

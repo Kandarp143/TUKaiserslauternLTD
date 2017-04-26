@@ -1,6 +1,7 @@
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/datatable.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
+          media="screen"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"
           media="screen"/>
     <script src="../js/jquery.min.js"></script>

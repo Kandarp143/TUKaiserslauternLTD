@@ -3,7 +3,8 @@
 <!-- Design by Kandarp -->
 <html>
 <head> <?php include('include/links.php') ?>
-    <link rel="stylesheet" type="text/css" href="css/datatable.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
+          media="screen"/>
     <!--javascript-->
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>

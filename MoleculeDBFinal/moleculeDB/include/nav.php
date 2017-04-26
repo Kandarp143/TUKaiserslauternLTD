@@ -4,7 +4,6 @@
         position: absolute;
         background-color: #f9f9f9;
         min-width: 160px;
-
         z-index: 1;
     }
 
@@ -28,7 +27,8 @@
     <div id="logo">
         <h2><a href="welcome.php">Molecular Models of Boltzmann-Zuse Society</a></h2>
         <?php if (isset($_SESSION['usr'])) { ?>
-            <p><strong>&nbsp;&nbsp;&nbsp;Welcome <?php echo $_SESSION['usr'] ?>
+            <p><strong>&nbsp;<span
+                            style="color: #32CD32">&nbsp;&nbsp;Welcome <b><?php echo $_SESSION['usr'] ?></b></span>
                     <a href="logout.php">( Logout )</a></strong></p>
         <?php } else { ?>
             <p>&nbsp;&nbsp;<strong>&nbsp;<a href="index.php" style="text-decoration: underline;">[Sign In]</a> </strong>(Public
@@ -41,19 +41,19 @@
     <?php if (isset($_SESSION['usr'])) { ?>
         <div id="menu">
             <ul>
-                <li><a href="welcome.php">Home</a></li>
-                <li><a href="mollist.php">Molecule List</a></li>
                 <?php if (isset($_SESSION['usr']) && $_SESSION['act'] == 'true') { ?>
-                    <li class="dropdown"><a href="#">Admin Panel</a>
+                    <li class="dropdown"><a href="#" style="color: #32CD32;border: solid 1px #32CD32;">Admin Panel</a>
                         <div class="dropdown-content">
                             <a href="addmol.php" style="color: #4CAF50">New Molecule</a>
                             <a href="addref.php?act=insert" style="color: #4CAF50">New References</a>
                         </div>
                     </li>
                 <?php } ?>
+                <li><a href="welcome.php">Home</a></li>
+                <li><a href="mollist.php">Molecule List</a></li>
                 <li><a href="reference.php">References</a></li>
                 <li><a href="inter.php">Normenclature</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </div>
     <?php } ?>

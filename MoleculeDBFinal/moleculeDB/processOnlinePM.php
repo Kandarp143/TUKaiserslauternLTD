@@ -68,26 +68,41 @@ foreach ($finalData as $key => $value) {
     }
 }
 
-//CLOSING FILE
-fclose($file);
+$url = '';
 if ($suc) {
-    try {
-        move_uploaded_file($file, "pm/" . $filename);
-    } catch (Exception $e) {
-        echo $e;
-    }
     if ($update == "true") {
-        header('Location: update.php?uploaded=true&id=' . $master_id);
+        $url = 'update.php?uploaded=true&id=' . $master_id;
+        if (headers_sent()) {
+            die("Redirect failed. Please click on this link: <a href= echo $url> CLICK HERE : $url <a/>");
+        } else {
+            exit(header('location:' . $url));
+        }
     } else {
-        header("Location: addmol.php?master=done&uploaded=true&id=" . $master_id);
+        $url = 'addmol.php?master=done&uploaded=true&id=' . $master_id;
+        if (headers_sent()) {
+            die("Redirect failed. Please click on this link: <a href= echo $url>  CLICK HERE : $url<a/>");
+        } else {
+            exit(header('location:' . $url));
+        }
     }
 } else {
     if ($update == "true") {
-        header('Location: update.php?uploaded=false&id=' . $master_id);
+        $url = 'update.php?uploaded=false&id=' . $master_id;
+        if (headers_sent()) {
+            die("Redirect failed. Please click on this link: <a href= echo $url>  CLICK HERE : $url<a/>");
+        } else {
+            exit(header('location:' . $url));
+        }
     } else {
-        header("Location: addmol.php?master=done&uploaded=false&id=" . $master_id);
+        $url = 'addmol.php?master=done&uploaded=false&id=' . $master_id;
+        if (headers_sent()) {
+            die("Redirect failed. Please click on this link: <a href= echo $url>  CLICK HERE : $url <a/>");
+        } else {
+            exit(header('location:' . $url));
+        }
     }
 }
+
 
 $pdo = Database::disconnect();
 ?>

@@ -89,7 +89,12 @@ if ($_POST['addPass'] == 'admin') {
         $sql = "DELETE FROM pm_detail  WHERE master_id = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($master_id));
-        header("Location: mollist.php");
+        if (headers_sent()) {
+            die("Redirect failed. Please click on this link: <a href= 'mollist.php'> CLICK HERE <a/>");
+        } else {
+            exit(header("Location:  mollist.php"));
+        }
+
         echo 'Mail Sent';
         return true;
     } catch (Exception $e) {
@@ -97,7 +102,11 @@ if ($_POST['addPass'] == 'admin') {
         return false;
     }
 } else {
-    header("Location:delete.php?pass=false&id=" . $master_id);
+    if (headers_sent()) {
+        die("Redirect failed. Please click on this link: <a href= 'Location:delete.php?pass=false&id='. $master_id> CLICK HERE <a/>");
+    } else {
+        exit(header("Location:delete.php?pass=false&id=" . $master_id));
+    }
 }
 
 

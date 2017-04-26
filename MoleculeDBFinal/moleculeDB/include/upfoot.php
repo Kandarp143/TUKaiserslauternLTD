@@ -1,6 +1,6 @@
 <p>
     <strong>
-        <?php include('include/detfooter.php') ?>
+          <?php referenceMessage($master_id) ?>
     </strong>
 
     <br/>

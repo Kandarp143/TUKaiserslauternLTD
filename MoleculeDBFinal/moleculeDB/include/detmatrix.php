@@ -1,142 +1,9 @@
 <?php
 
-//declaring variables
-$points = array();
-$vectors = array();
-$angles = array();
-$fiangles = array();
-
-//getting co-ordinates from database
-$pdo = Database::connect();
-//$query = "SELECT * FROM pm_detail WHERE master_id =" . $master_id . " AND site_type LIKE 'LJ%'";
-$query = "SELECT * FROM pm_detail WHERE master_id =" . $master_id;
-$count = 0;
-$point;
-$oth;
-$del_val = 'del_val';
-
-//saving points to array
-
-foreach ($pdo->query($query) as $row) {
-
-    if ($row['param'] == 'x') {
-        //this is break point of each new point (x) cordinate
-        //creating structure of array
-        $oth = array(
-            'Site' => $del_val,
-            'SiteName' => $del_val,
-            'Mass' => $del_val,
-            'Epsilon' => $del_val,
-            'Sigma' => $del_val,
-            'Charge' => $del_val,
-            'Dipole' => $del_val,
-            'Quadrupole' => $del_val,
-            'Theta' => $del_val,
-            'Phi' => $del_val
-        );
-        $count++;
-        $site = $row['site'];
-        $sitetype = $row['site_type'];
-        $x = $row['val'];
-
-        $point = new Vec();
-        $point->setId($count);
-
-        $point->setName($site);
-        $point->setSitetype($sitetype);
-        $point->setX($x);
-
-        //making table for other pera
-        $oth['Site'] = $count;
-        $oth['SiteName'] = $row['site'];
-//        $oth['SiteType'] = $row['site_type'];
-
-        array_push($points, $point);
-    } else if ($row['param'] == 'y') {
-        $point->setY($row['val']);
-    } else if ($row['param'] == 'z') {
-        $point->setZ($row['val']);
-    } else if ($row['param'] == 'sigma'
-        || $row['param'] == 'epsilon' || $row['param'] == 'charge' || $row['param'] == 'mass'
-        || $row['param'] == 'shielding' || $row['param'] == 'theta' || $row['param'] == 'phi'
-        || $row['param'] == 'quadrupole' || $row['param'] == 'dipole'
-    ) {
-        $oth[ucwords($row['param'])] = (string)round($row['val'], 4);
-    }
-    $point->setOth($oth);
-}
-
-//removeing del_val
-foreach ($points as $p) {
-    $tmp = $p->getOth();
-    while (($key = array_search($del_val, $tmp))) {
-        unset($tmp[$key]);
-    }
-    $p->setOth($tmp);
-}
-//var_dump($points);
-
-//making vector & distance
-for ($i = 0; $i <= sizeof($points) - 2; $i++) {
-    $vector = new Vec();
-    $p1 = $points[$i];
-    $p2 = $points[$i + 1];
-    $vector->subVec($p2, $p1);
-    $vector->vround();
-    $vector->setId($i + 1);
-    $len = $vector->len();
-    $vector->setLength($len);
-    array_push($vectors, $vector);
-//    echo $vector->getId() . ' ' . $p2->getZ() . ' - '
-//        . $p1->getZ() . '=' . $vector->getZ() . ' & Length = ' . $vector->getLength() . '<br/>';
-//    echo 'Vector' . $vector->getId() . ': (' . $vector->getX() . ',' . $vector->getY() . ',' . $vector->getZ() . ')<br/>';
-//    echo 'Length :' . $vector->getLength() . '</br>';
-}
-
-//angles
-for ($i = 0; $i <= sizeof($vectors) - 2; $i++) {
-    $vector = new Vec();
-    $v1 = $vectors[$i];
-    $v2 = $vectors[$i + 1];
-    $angle = $vector->arccos($v1, $v2);
-    array_push($angles, $angle);
-//    echo 'Angle : ' . $angle . '<br/>';
-
-}
-//fiangles
-for ($i = 0; $i <= sizeof($vectors) - 3; $i++) {
-    $vector = new Vec();
-    $v1 = $vectors[$i];
-    $v2 = $vectors[$i + 1];
-    $v3 = $vectors[$i + 2];
-    $vector->crossVec($v1, $v2);
-//    echo 'ARC Sine <br/>';
-//    echo 'Vector' . $vector->getId() . ': (' . $vector->getX() . ',' . $vector->getY() . ',' . $vector->getZ() . ')<br/>';
-    $fiangle = $vector->arcsin($vector, $v3);
-    array_push($fiangles, $fiangle);
-//    echo 'FiAngle : ' . $fiangle . '<br/>';
-
-}
-
-//prepareing display array
-$zmatrix = array();
-$pmatrix = array();
-for ($i = 0; $i <= sizeof($points) - 1; $i++) {
-    //down to top (z matrix)
-    if ($i > 2) {
-        array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLength(), 4), $i - 1, round($angles[$i - 2], 4), $i - 2, round($fiangles[$i - 3], 4)));
-    } else if ($i > 1) {
-        array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLength(), 4), $i - 1, round($angles[$i - 2], 4), "-", "-"));
-    } else if ($i > 0) {
-        array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLength(), 4), "-", "-", "-", "-"));
-    } else {
-        array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), "-", "-", "-", "-", "-", "-"));
-    }
-    //p matrix
-    array_push($pmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getOth()));
-}
-
-//$maker = array("1" => "7", "8" => "1", "9" => 13 - 9 + 1, "14" => 19 - 14 + 1, "20" => 25 - 20 + 1);
+/*prepareing display array*/
+$zmatrix = makeZmatrix($master_id);
+$pmatrix = $zmatrix [1];
+unset($zmatrix[1]);
 //$maker array for making dynamic rowspan and bracket
 $maker = null;
 $mk = null;
@@ -164,9 +31,6 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
 //    echo 'Key : ' . $key . ' Value : ' . $val . '</br>';
     $maker[$key] = $val;
 }
-
-//var_dump($maker);
-
 ?>
 <h3 style="color: #2b2b2b"><b>Geometry in Z-Matrix</b></h3>
 
@@ -203,6 +67,8 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
             <?php
             if (array_key_exists($z[1], $maker)) {
                 $fsize = $maker[$z[1]];
+                var_dump($maker);
+                var_dump($fsize);
                 $fsize = 25 * $fsize;
                 $fsize = $fsize . 'px';
                 $fwidth = $fsize / 4;
