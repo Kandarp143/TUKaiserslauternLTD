@@ -6,6 +6,7 @@ require_once 'funcation/othFunc.php';
 $master_id = $_GET['id'];
 $substance = '';
 $pdo = Database::connect();
+$xml = new XMLWriter();
 ?>
 <!-- Design by Kandarp -->
 <html>
@@ -28,30 +29,11 @@ $pdo = Database::connect();
                 <!--                molecule Reference part-->
                 <h1 class="title">Download Files</h1>
                 <div class="entry">
-                    <table>
-                        <tr>
-                            <th>
-                                <b><i>Ms2 ----> </i></b>
-                            </th>
-                            <td>
-                                <a class="a-button"
-                                   href="generate.php?id=<?php echo $master_id ?>"><?php echo $substance ?></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <b>Ls1 Mardyn <i>----></i></b>
-                            </th>
-                            <td>
-                                <a class="a-button"
-                                   href="generate.php?id=<?php echo $master_id ?>"><?php echo $substance ?></a>
-                            </td>
-                        </tr>
-                    </table>
+                    <p><?php include('include/detDown.php') ?></p>
 
                 </div>
                 <!--                molecule Reference part-->
-                <h1 class="title">References</h1>
+                <h1 class="title">Reference</h1>
                 <div class="entry">
                     <p>
                         <strong>

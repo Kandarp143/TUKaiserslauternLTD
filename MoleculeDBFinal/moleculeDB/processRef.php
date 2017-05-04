@@ -23,11 +23,6 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  * 5.if update molecule and new ref. (still not decided)
 */
 
-print 'POST : ';
-var_dump($_POST);
-print 'GET : ';
-var_dump($_GET);
-
 
 //if data is posted(insert or update)
 if (!empty($_POST)) {

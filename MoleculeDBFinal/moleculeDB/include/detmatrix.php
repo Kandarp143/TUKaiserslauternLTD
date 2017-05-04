@@ -1,49 +1,22 @@
 <?php
-
-/*prepareing display array*/
-$zmatrix = makeZmatrix($master_id);
-$pmatrix = $zmatrix [1];
-unset($zmatrix[1]);
-//$maker array for making dynamic rowspan and bracket
-$maker = null;
-$mk = null;
-$i = 0;
-$len = count($zmatrix);
-$temp = $zmatrix[0][0];
-foreach ($zmatrix as $z):
-    if ($i == 0) {
-        $mk[] = $z[1];
-    }
-    if ($i == $len - 1) {
-        $mk[] = $z[1];
-    }
-    $i++;
-    if ($temp != $z[0]) {
-        $mk[] = $z[1];
-        $temp = $z[0];
-    }
-endforeach;
-//var_dump($mk);
-
-for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
-    $key = $mk[$i];
-    $val = $mk[$i + 1] - $mk[$i] + 1;
-//    echo 'Key : ' . $key . ' Value : ' . $val . '</br>';
-    $maker[$key] = $val;
-}
+$returnArray = makeZmatrix($master_id);
+$zmatrix = $returnArray['zmatrix'];
+$pmatrix = $returnArray['pmatrix'];
+$maker = $returnArray['maker'];
 ?>
+
 <h3 style="color: #2b2b2b"><b>Geometry in Z-Matrix</b></h3>
 
-<table>
-    <tr>
-        <td><b>Site</b></td>
-        <td><b>SiteName</b></td>
+<table width="70%">
+    <tr style="border-bottom: solid 1px grey;">
+        <td><b>Site-ID</b></td>
+        <td><b>Site-name</b></td>
+        <td><b>Ref.</b></td>
+        <td><b>Distance / <span>&#8491;</span></b></td>
         <td><b>Ref</b></td>
-        <td><b>Distance</b></td>
+        <td><b>Angle / <span>&#xb0;</span></b></td>
         <td><b>Ref</b></td>
-        <td><b>Angle</b></td>
-        <td><b>Ref</b></td>
-        <td><b>DiHedral</b></td>
+        <td><b>Dihedral / <span>&#xb0;</span></b></td>
 
 
     </tr>
@@ -57,7 +30,7 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
         <?php } ?>
         <tr>
             <td><?php echo $z[1] ?></td>
-            <td><?php echo preg_replace('/[0-9]+/', '<sub>$0</sub>', $z[2]) ?></td>
+            <td><?php echo toSubstanceTitle($z[2]) ?></td>
             <td><?php echo $z[3] ?></td>
             <td><?php echo $z[4] ?></td>
             <td><?php echo $z[5] ?></td>
@@ -67,11 +40,9 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
             <?php
             if (array_key_exists($z[1], $maker)) {
                 $fsize = $maker[$z[1]];
-                var_dump($maker);
-                var_dump($fsize);
                 $fsize = 25 * $fsize;
-                $fsize = $fsize . 'px';
                 $fwidth = $fsize / 4;
+                $fsize = $fsize . 'px';
                 $fwidth = $fwidth . 'px';
                 ?>
                 <td rowspan=" <?php echo $maker[$z[1]] ?>">
@@ -89,9 +60,10 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
 </table>
 
 
-<h3 style="color: #2b2b2b;margin-top: 5%"><b>Interaction Perameters</b></h3>
+<h3 style="color: #2b2b2b;margin-top: 5%"><b>Interaction Parameters</b></h3>
 
-<table>
+
+<table width="70%">
     <?php
     foreach ($pmatrix as $z):?>
         <?php if (array_key_exists($z[1], $maker)) {
@@ -99,13 +71,12 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
             <tr>
                 <td></td>
             </tr>
-
         <?php } ?>
         <?php if ($isheader) { ?>
-            <tr>
+            <tr style="border-bottom: solid 1px grey;">
                 <?php foreach ($z[2] as $paramName => $value):
                     ?>
-                    <td><b><?php echo $paramName ?></b></td>
+                    <td><b><?php echo toCustomHeader($paramName) ?></b></td>
                     <?php
                 endforeach; ?>
             </tr>
@@ -115,7 +86,7 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
             <?php foreach ($z[2] as $paramName => $value):
                 ?>
                 <td><?php echo
-                    $paramName == 'SiteName' ? preg_replace('/[0-9]+/', '<sub>$0</sub>', $value) : $value;
+                    $paramName == 'SiteName' ? toSubstanceTitle($value) : $value;
                     ?>
                 </td>
                 <?php
@@ -124,9 +95,9 @@ for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
             if (array_key_exists($z[1], $maker)) {
                 $fsize = $maker[$z[1]];
                 $fsize = 25 * $fsize;
-                $fsize = $fsize . 'px';
                 $fwidth = $fsize / 3.0;
                 $fwidth = $fwidth . 'px';
+                $fsize = $fsize . 'px';
                 ?>
                 <td rowspan=" <?php echo $maker[$z[1]] ?>">
 

@@ -17,6 +17,19 @@ class Vec
     private $len = 0;
     private $sitetype = 0;
     private $oth = array();
+    private $isSame = false;
+    private $ref = 0;
+
+    public function isIsSame()
+    {
+        return $this->isSame;
+    }
+
+
+    public function getRef()
+    {
+        return $this->ref;
+    }
 
 
     /* Funcation */
@@ -46,22 +59,20 @@ class Vec
 
 
     /* make vector nagative*/
-
     public function getX()
     {
         return $this->x;
     }
 
     /* dot product of two vector*/
-
     public function setX($x)
     {
         $this->x = round($x, 4);
 
     }
 
-    /* legth of vector */
 
+    /* legth of vector */
     public function getY()
     {
         return $this->y;
@@ -86,6 +97,16 @@ class Vec
     public function setZ($z)
     {
         $this->z = round($z, 4);
+    }
+
+    public function setIsSame($isSame)
+    {
+        $this->isSame = $isSame;
+    }
+
+    public function setRef($ref)
+    {
+        $this->ref = $ref;
     }
 
     /*Setters*/
@@ -126,10 +147,17 @@ class Vec
 
     public function angleXYZ(Vec $c1, Vec $c2, Vec $c3)
     {
+        //custom formula
         $norm = $this->normVec($c1, $c2);
-//        $norm->neg(); //because angleXY neg it so - - +
-        $cos = $this->angleXY($norm, $c3) - 90;
-        return $cos;
+        $dotp = $this->dotVec($norm, $c3);
+        $len = round($norm->len() * $c3->len(), 4);
+        if ($len != 0) {
+            $val = round($dotp / $len, 4);
+            $rad = asin($val);
+            return round(rad2deg($rad), 4);
+        } else {
+            return 0;
+        }
     }
 
     public function normVec(Vec $c1, Vec $c2)

@@ -1,0 +1,4 @@
+1. Remove all print ln stmts 
+2. Add static read of counter in heartbeat
+3. allow unhealthy initially 
+4. check again test of addHost()

@@ -56,6 +56,8 @@ WHERE pm_master.master_id =?', array($masterId));
     $Pages = 0;
     $Year = 0;
     $tit = 0;
+    $doi = 0;
+    $url = 0;
     if (!empty($refs)) {
         foreach ($refs as $row) {
             if ($row['param'] == 'Author') {
@@ -72,39 +74,46 @@ WHERE pm_master.master_id =?', array($masterId));
                 $Year = $row['value'];
             } else if ($row['param'] == 'Title') {
                 $bib_title = $row['value'];
+            } else if ($row['param'] == 'Doi') {
+                $doi = $row['value'];
+            } else if ($row['param'] == 'Url') {
+                $url = $row['value'];
             }
+
             $bib_type = $row['bib_type'];
             $tit = $row['bib_title'];
         }
         return '[' . $tit . ']  ' . $Author . ' : '
-            . $bib_title . ', ' . $Journal . $Volume . ', '
-            . $Number . ', ' . $Pages . ' (' . $Year . ')';
+        . $bib_title . ', ' . $Journal . $Volume . ', '
+        . $Number . ', ' . $Pages . ' (' . $Year . '),<a href="' . $url . '" target="_blank" >' . $doi . '</a>';
     } else {
 
         return 'No reference found !';
     }
 }
 
-
 function makeZmatrix($masterId)
 {
+    $retrunArray = array();
 
-    /*declaring variables*/
+    //declaring variables
     $points = array();
     $vectors = array();
     $angles = array();
     $fiangles = array();
+
+//getting co-ordinates from database
+    $db = new Database();
+    $result = $db->selectRecords('SELECT * FROM pm_detail WHERE master_id =?', array($masterId));
     $count = 0;
     $point = null;
     $oth = null;
     $del_val = 'del_val';
 
-    $db = new Database();
-    /*getting co-ordinates from database*/
-    $refs = $db->selectRecords('SELECT * FROM pm_detail WHERE master_id =?', array($masterId));
+//saving points to array
 
-    /*saving points to array*/
-    foreach ($refs as $row) {
+    foreach ($result as $row) {
+
         if ($row['param'] == 'x') {
             //this is break point of each new point (x) cordinate
             //creating structure of array
@@ -152,7 +161,7 @@ function makeZmatrix($masterId)
         $point->setOth($oth);
     }
 
-    /*removeing del_val*/
+//removeing del_val
     foreach ($points as $p) {
         $tmp = $p->getOth();
         while (($key = array_search($del_val, $tmp))) {
@@ -161,11 +170,17 @@ function makeZmatrix($masterId)
         $p->setOth($tmp);
     }
 
-    /*making vector & distance*/
+//    echo '<pre>';
+//    var_dump($points);
+//    echo '</pre>';
+
+
+//making vector & distance
     for ($i = 0; $i <= sizeof($points) - 2; $i++) {
         $vector = new Vec();
         $p1 = $points[$i];
         $p2 = $points[$i + 1];
+
         $vector->subVec($p2, $p1);
         $vector->setId($i + 1);
         $len = $vector->len();
@@ -177,7 +192,23 @@ function makeZmatrix($masterId)
 //    echo 'Length :' . $vector->getLen() . '</br>';
     }
 
-    /*angles*/
+
+    //check if both's co-ordinate are same
+    foreach ($points as $p) {
+        foreach ($points as $pp) {
+            if ($p->getX() == $pp->getX() && $p->getY() == $pp->getY() && $p->getZ() == $pp->getZ() && $p != $pp
+                && $p->getId() > $pp->getId()
+            ) {
+//                echo '<br/>' . $p->getName() . ' is same  ' . $pp->getName() . '<br/>';
+
+                $p->setIsSame(true);
+                $p->setRef($pp->getId());
+
+            }
+        }
+    }
+
+//angles
     for ($i = 0; $i <= sizeof($vectors) - 2; $i++) {
         $vector = new Vec();
         $v1 = $vectors[$i];
@@ -187,7 +218,7 @@ function makeZmatrix($masterId)
 //    echo 'Angle : ' . $angle . '<br/>';
 
     }
-    /*fiangles*/
+//fiangles
     for ($i = 0; $i <= sizeof($vectors) - 3; $i++) {
         $vector = new Vec();
         $v1 = $vectors[$i];
@@ -201,35 +232,66 @@ function makeZmatrix($masterId)
 
     }
 
-
-    /*prepareing display array*/
+//prepareing display array
     $zmatrix = array();
     $pmatrix = array();
     for ($i = 0; $i <= sizeof($points) - 1; $i++) {
-        //down to top (z matrix)
-        if ($i > 2) {
-            array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLen(), 4), $i - 1, round($angles[$i - 2], 4), $i - 2, round($fiangles[$i - 3], 4)));
-        } else if ($i > 1) {
-            array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLen(), 4), $i - 1, round($angles[$i - 2], 4), "-", "-"));
-        } else if ($i > 0) {
-            array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLen(), 4), "-", "-", "-", "-"));
+        if ($points[$i]->isIsSame()) {
+            array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $points[$i]->getRef(), 0, "-", "-", "-", "-"));
         } else {
-            array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), "-", "-", "-", "-", "-", "-"));
+            //down to top (z matrix)
+            if ($i > 2) {
+                array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLen(), 4), $i - 1, round($angles[$i - 2], 4), $i - 2, round($fiangles[$i - 3], 4)));
+            } else if ($i > 1) {
+                array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLen(), 4), $i - 1, round($angles[$i - 2], 4), "-", "-"));
+            } else if ($i > 0) {
+                array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), $vectors[$i - 1]->getId(), round($vectors[$i - 1]->getLen(), 4), "-", "-", "-", "-"));
+            } else {
+
+                array_push($zmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getName(), "-", "-", "-", "-", "-", "-"));
+            }
         }
+
         //p matrix
         array_push($pmatrix, array($points[$i]->getSitetype(), $i + 1, $points[$i]->getOth()));
     }
-    /*adding other parameter array at 2nd position*/
-    array_push($zmatrix, $pmatrix);
+
+//$maker = array("1" => "7", "8" => "1", "9" => 13 - 9 + 1, "14" => 19 - 14 + 1, "20" => 25 - 20 + 1);
+//$maker array for making dynamic rowspan and bracket
+    $maker = null;
+    $mk = null;
+    $i = 0;
+    $len = count($zmatrix);
+    $temp = $zmatrix[0][0];
+    foreach ($zmatrix as $z):
+        if ($i == 0) {
+            $mk[] = $z[1];
+        }
+        if ($i == $len - 1) {
+            $mk[] = $z[1];
+        }
+        $i++;
+        if ($temp != $z[0]) {
+            $mk[] = $z[1];
+            $temp = $z[0];
+        }
+    endforeach;
+//var_dump($mk);
+
+    for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
+        $key = $mk[$i];
+        $val = $mk[$i + 1] - $mk[$i] + 1;
+//    echo 'Key : ' . $key . ' Value : ' . $val . '</br>';
+        $maker[$key] = $val;
+    }
 
 
-    return $zmatrix;
-}
+    $retrunArray['pmatrix'] = $pmatrix;
+    $retrunArray['zmatrix'] = $zmatrix;
+    $retrunArray['maker'] = $maker;
+//var_dump($maker);
 
-
-function Pmatrix($masterId)
-{
-
+    return $retrunArray;
 }
 
 function timeStamp()
@@ -238,3 +300,33 @@ function timeStamp()
     $now->format('Y-m-d H:i:s');
     return $now->format('d-m-Y H:i:s');
 }
+
+function toCustomHeader($header)
+{
+    switch (trim($header)) {
+        case "Site":
+            return 'Site-ID';
+        case "SiteName";
+            return 'Site-name';
+        case "Mass":
+            return 'Mass / g mol<sup>-1</sup>';
+        case "Epsilon":
+            return '<span>&epsilon;</span>';
+        case "Sigma":
+            return '<span>&Sigma;</span>';
+        case "Quadrupole":
+            return $header . ' / <span>&#xb0;</span>';
+        case "Theta":
+            return '<span>&Theta;</span> / <span>&#xb0;</span>';
+        case "Phi":
+            return '<span>&Phi;</span> / <span>&#xb0;</span>';
+        case "Shielding":
+            return $header;
+        default:
+            return $header;
+    }
+}
+
+
+?>
+

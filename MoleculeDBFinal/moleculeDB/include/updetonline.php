@@ -22,6 +22,7 @@ foreach ($pdo->query($sql) as $row) {
 }
 //print content
 
+$cout = 0;
 $sql = 'SELECT * FROM pm_detail WHERE master_id =' . $id;
 print "NSiteTypes" . "&nbsp;&nbsp; = " . $NSiteTypes . "\n\n";
 foreach ($pdo->query($sql) as $row) {

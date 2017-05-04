@@ -12,7 +12,7 @@ class Database
     private static $dbName = 'molecule_db';
     private static $dbHost = 'localhost';
     private static $dbUsername = 'root';
-    private static $dbUserPassword = 'admin';
+    private static $dbUserPassword = 'root';
 
 
     private static $cont = null;

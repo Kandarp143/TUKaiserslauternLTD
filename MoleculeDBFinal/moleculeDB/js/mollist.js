@@ -20,7 +20,9 @@ $(document).ready(function () {
 
     // DataTable
     $('#listmol').DataTable({
-        stateSave: true
+        stateSave: true,
+        // "pagingType": "input"
+        // "pagingType": "scrolling"
     });
     var table = $('#listmol').DataTable();
     $('#listmol tfoot tr').appendTo('#listmol thead');

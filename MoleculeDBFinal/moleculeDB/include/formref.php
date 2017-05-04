@@ -27,18 +27,6 @@ if (isset($_GET['master_id'])) {
                 </td>
             </tr>
             <tr>
-                <td>Reference Type</td>
-                <td><input name="bib_type" type="text"
-                           placeholder=""
-                           value="<?php echo $ref['Bib_Type'] ?>"
-                           size="50"></td>
-                <td>
-                    <div class="tooltip">[i]
-                        <span class="tooltiptext">Tooltip text</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td>Title of Publication</td>
                 <td><input name="Title" type="text"
                            placeholder=""
