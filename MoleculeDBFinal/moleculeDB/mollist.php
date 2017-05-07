@@ -87,7 +87,7 @@ require_once 'funcation/othFunc.php'; ?>
                     echo "<td nowrap> [" . $row['bibtex_key'] . "] </tdnowrap>";
                     echo "<td>" . $row['type'] . "</td>";
                     if ($_SESSION['act'] == 'true') {
-                        echo '<td><a class="a-success"  href="update.php?id=' . $row['master_id'] . '">Update</a><br/>';
+                        echo '<td><a class="a-success"  href="updatemol.php?id=' . $row['master_id'] . '">Update</a><br/>';
                         echo '<a  class="a-danger" href="delete.php?id=' . $row['master_id'] . '&substance=' . $row['filename'] . '">Delete</a>';
                         echo '</td>';
                     }

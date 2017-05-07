@@ -1,5 +1,9 @@
 <?php include('include/header.php') ?>
 <?php include('include/fetchref.php') ?>
+<?php
+$master_id = 0;
+$master_id = $_GET['id'];
+?>
 <!-- Design by Kandarp -->
 <html>
 <head> <?php include('include/links.php') ?>
@@ -24,7 +28,7 @@
                 <h1 class="title">Available References</h1>
                 <div class="entry">
 
-                    <form method="post" action="processRef.php?map=true&master_id=<?php echo $master_id ?>">
+                    <form method="post" action="processMapRef.php?id=<?php echo $master_id ?>">
                         <table id="example" class="display" cellspacing="0" width="100%">
 
                             <thead>
@@ -38,11 +42,11 @@
                             <tbody>
                             <?php foreach ($references as $r) {
                                 if ($r != null) {
-                                    $vol = '';
-                                    $jou = '';
-                                    $num = '';
-                                    $pg = '';
-                                    $year = '';
+                                    $vol = '-';
+                                    $jou = '-';
+                                    $num = '-';
+                                    $pg = '-';
+                                    $year = '-';
 
                                     if (isset($r['Volume'])) {
                                         $vol = $r['Volume'];
@@ -62,8 +66,7 @@
                                     ?>
                                     <tr>
                                         <td>
-                                            <?php $radval = $r['id'] . '-' . $r['bib_title'] ?>
-                                            <input type="radio" name="bib_key" value="<?php echo $radval ?>">
+                                            <input type="radio" name="bib_key" value="<?php echo $r['id'] ?>">
                                         </td>
                                         <td nowrap><?php echo '[ ' . $r['bib_title'] . ' ]'; ?> </td>
                                         <td><?php
@@ -71,13 +74,6 @@
                                                 . $r['Title'] . ', ' . $jou . $vol . ', '
                                                 . $num . ', ' . $pg . ' (' . $year . ')';
                                             ?></td>
-                                        <?php
-                                        //                                        if ($_SESSION['act'] == 'true') {
-                                        //
-                                        //                                            echo '<td><a class="a-success"  href="addref.php?id=' . $r['id'] . '&act=update">Update</a><br/>';
-                                        //                                            echo '<a  class="a-danger" href="addref.php?id=' . $r['id'] . '&act=delete">Delete</a>';
-                                        //                                            echo '</td>';
-                                        //                                        } ?>
                                     </tr>
                                 <?php }
                             } ?>
@@ -85,29 +81,44 @@
                         </table>
                         <button id="submit_button" name="submit_button" type="submit"> Map Reference</button>
                     </form>
-                </div>
-            </div>
+                    <?php
+                    $sParam = 'processMapRef';  /*page name of processor*/
+                    $sMsg = 'Reference Successfully Mapped !';
+                    if (isset($_SESSION[$sParam])) {
+                        if (!$_SESSION[$sParam]['success']) {
+                            echo '<p class="msg-err"> Errors [';
+                            foreach ($_SESSION[$sParam]['errors'] as $err) {
+                                echo $err . ', ';
+                            }
+                            echo ']</p>';
 
-            <!-- end #content -->
-        </div>
-        <div id="sidebar">
-            <div id="sidebar-content">
-                <div id="sidebar-bgbtm">
-                    <ul>
-
-                        <li id="search">
-                            <h2>Add New Reference</h2>
-                            <p style="text-align: center">
-                                <a class="a-button"
-                                   href="addref.php?map=true&master_id=<?php echo $master_id ?>&act=insert">Click
-                                    Here</a>
-                            </p>
-                        </li>
-                    </ul>
+                        } else {
+                            echo '<br/><br/><h3 class="msg-suc">' . $sMsg . ' </h3>';
+                        }
+                        unset($_SESSION[$sParam]);
+                    }
+                    ?>
                 </div>
             </div>
         </div>
-        <!-- end #sidebar -->
+        <!-- end #content -->
+        <?php if ($_SESSION['act'] == 'true') { ?>
+            <div id="sidebar">
+                <div id="sidebar-content">
+                    <div id="sidebar-bgbtm">
+                        <ul>
+                            <li id="s">
+                                <h2>Actions</h2>
+                                <p style="text-align: center">
+                                    <a class="a-button" href="addRef.php?id=<?php echo $master_id ?>">New Reference</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end #sidebar -->
+        <?php } ?>
         <div style="clear:both; margin:0;"></div>
 
     </div>
@@ -119,8 +130,4 @@
 <!-- end #footer -->
 </body>
 </html>
-<?php
-$pdo = Database::disconnect();
-?>
-
 

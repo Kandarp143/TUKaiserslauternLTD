@@ -18,7 +18,6 @@ if (isset($_POST['login-submit'])) {
 
         if (count($result) == 1) {
             $_SESSION['usr'] = $usr;
-
             $result2 = $pdo->query($query)->fetch();
             $_SESSION['usr_acc'] = $result2['usr_role'];
             $_SESSION['act'] = 'false';

@@ -62,7 +62,7 @@ if (empty($errors)) {
     //upload profile
     if (!empty($_FILES['profile']['tmp_name'])) {
         $profileName = $substance . $casno . '_profile' . getExt($_FILES['profile']['name']);
-        uploadFile($_FILES['profile']['tmp_name'], '../img/profile/', $profileName);
+        uploadFile($_FILES['profile']['tmp_name'], 'img/profile/', $profileName);
     }
     //get pm data
     $pmData = parsePMFile($_FILES['pmfile']['tmp_name']);
@@ -110,10 +110,8 @@ if (empty($errors)) {
     $data['id'] = 0;
 
 }
-//
-$_SESSION['processInsert'] = $data;
-//
 
+$_SESSION['processInsert'] = $data;
 $url = 'addmol.php';
 if (headers_sent()) {
     die("Redirect failed. Please click on this link: <a href= $url> CLICK HERE <a/>");

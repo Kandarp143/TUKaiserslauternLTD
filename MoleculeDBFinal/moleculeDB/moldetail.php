@@ -1,12 +1,23 @@
 <?php include('include/header.php') ?>
 <?php
-require 'database.php';
-require 'Vec.php';
+require_once 'Vec.php';
+require_once 'database.php';
 require_once 'funcation/othFunc.php';
-$master_id = $_GET['id'];
-$substance = '';
+$master_id = 0;
+$master_id = $_REQUEST['id'];
 $pdo = Database::connect();
-$xml = new XMLWriter();
+$db = new Database();
+$data = $db->selectRecords('select * from pm_master where master_id = ?', array($master_id));
+if (!empty($data)) {
+    $substance = $data[0]['filename'];
+    $casno = $data[0]['cas_no'];
+    $name = $data[0]['name'];
+    $modeltype = $data[0]['model_type'];
+    $description = $data[0]['description'];
+    $type = $data[0]['type'];
+    $ref = $data[0]['bibtex_key'];
+
+}
 ?>
 <!-- Design by Kandarp -->
 <html>
@@ -20,6 +31,7 @@ $xml = new XMLWriter();
         <div id="content">
             <div class="post">
                 <!--                molecule header part-->
+                <h1 class="title"><?php echo $name; ?></h1>
                 <?php include('include/detheader.php') ?>
                 <!--                molecule detail part-->
                 <h1 class="title">Force Field </h1>
@@ -40,6 +52,41 @@ $xml = new XMLWriter();
                             <?php echo referenceMessage($master_id) ?>
                         </strong>
                     </p>
+                    <!--if it comes from new reference-->
+                    <?php
+                    $sParam = 'processInsRef';  /*page name of processor*/
+                    $sMsg = 'Reference Successfully Created and Mapped !';
+                    if (isset($_SESSION[$sParam])) {
+                        if (!$_SESSION[$sParam]['success']) {
+                            echo '<p class="msg-err"> Errors [';
+                            foreach ($_SESSION[$sParam]['errors'] as $err) {
+                                echo $err . ', ';
+                            }
+                            echo ']</p>';
+
+                        } else {
+                            echo '<br/><br/><h3 class="msg-suc">' . $sMsg . ' </h3>';
+                        }
+                        unset($_SESSION[$sParam]);
+                    }
+                    ?>
+                    <?php
+                    $sParam = 'processMapRef';  /*page name of processor*/
+                    $sMsg = 'Reference Successfully Mapped !';
+                    if (isset($_SESSION[$sParam])) {
+                        if (!$_SESSION[$sParam]['success']) {
+                            echo '<p class="msg-err"> Errors [';
+                            foreach ($_SESSION[$sParam]['errors'] as $err) {
+                                echo $err . ', ';
+                            }
+                            echo ']</p>';
+
+                        } else {
+                            echo '<br/><br/><h3 class="msg-suc">' . $sMsg . ' </h3>';
+                        }
+                        unset($_SESSION[$sParam]);
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -51,7 +98,13 @@ $xml = new XMLWriter();
                             <li id="s">
                                 <h2>Actions</h2>
                                 <p style="text-align: center">
-                                    <a class="a-button" href="update.php?id=<?php echo $master_id ?>">Update
+                                    <a class="a-button" href="updatemol.php?id=<?php echo $master_id ?>">Update
+                                        Molecule</a>
+                                </p>
+                            </li>
+                            <li>
+                                <p style="text-align: center">
+                                    <a class="a-button a-danger" href="deletemol.php?id=<?php echo $master_id ?>">Delete
                                         Molecule</a>
                                 </p>
                             </li>
@@ -71,6 +124,3 @@ $xml = new XMLWriter();
 <!-- end #footer -->
 </body>
 </html>
-<?php
-$pdo = Database::disconnect();
-?>

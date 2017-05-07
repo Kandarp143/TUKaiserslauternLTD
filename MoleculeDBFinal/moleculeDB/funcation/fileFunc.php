@@ -15,7 +15,7 @@ function getExt($fileName)
 function validateSize($actual, $expected)
 {
 
-    echo '<br/><br/>validateSize' . $actual <= $expected;
+//    echo '<br/><br/>validateSize' . $actual <= $expected;
     return $actual <= $expected;
 }
 
@@ -23,12 +23,12 @@ function uploadFile($file, $path, $filename)
 {
     // Check if we can upload to the specified path, if not DIE and inform the user.
     if (!is_writable($path))
-        die('You cannot upload to the specified directory, please CHMOD it to 777.');
+        die('You cannot upload to the specified directory, ' . $path);
 
     // Upload the file to your specified path.
-    if (move_uploaded_file($file, $path . $filename))
-        echo 'Your file upload was successful'; // It worked.
-    else
+    if (move_uploaded_file($file, $path . $filename)) {
+        //        echo 'Your file upload was successful'; // It worked.
+    } else
         die ('There was an error during the file upload. Please try again.'); // It failed
 }
 
@@ -41,6 +41,17 @@ function parsePMFile($file)
         $members[] = fgets($f);
     }
 
+
+    //print filearray and file data
+//    var_dump($fileArray);
+//    var_dump($finalData);
+
+    fclose($f);
+    return parsePMArray($members);
+}
+
+function parsePMArray($members)
+{
     //trim and remove blank lines
     $trimmed_array = array_values(array_filter($members, "trim"));
     $fileArray = array_map('trim', $trimmed_array);
@@ -77,10 +88,6 @@ function parsePMFile($file)
             // echo "Key does not exist!<br>";
         }
     }
-    fclose($f);
-    //print filearray and file data
-//    var_dump($fileArray);
-//    var_dump($finalData);
 
     return $finalData;
 }

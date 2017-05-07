@@ -10,18 +10,24 @@ $data = array();      // array to pass back data
 
 $master_id = $_GET['id'];
 
+//pm file
+if (empty($_FILES['pmfile']['tmp_name'])) {//reqired file
+    $errors['pmfile'] = 'PM File not found ! Please upload again';
+} else {
+    if (getExt($_FILES['pmfile']['name']) !== '.pm')//should be pm
+        $errors['pmfileType'] = 'PM File should be .PM file';
+}
+
 if (empty($errors)) {
     try {
-        /* input pm file string */
-        $arr = explode("\n", $_POST['confirmationText']);
-        $pmData = parsePMArray($arr);
-
         $db = new Database();
         $db->beginTransaction();
         /* delete previous records*/
         $db->delete('DELETE FROM pm_detail WHERE master_id = ?', array($master_id));
 
-        /* insert new records*/
+        //get pm data
+        $pmData = parsePMFile($_FILES['pmfile']['tmp_name']);
+        //detail records;
         foreach ($pmData as $key => $value) {
             if (strpos($key, "#") === 0 || strpos($key, "SiteType") === 0) {
                 if (strpos($key, "SiteType") === 0) {
@@ -40,7 +46,6 @@ if (empty($errors)) {
         }
 
         $db->commitTransaction();
-
         $data['success'] = true;
         $data['message'] = 'Success!';
         $data['id'] = $master_id;
@@ -55,7 +60,7 @@ if (empty($errors)) {
 
 }
 
-$_SESSION['processOnlinePM'] = $data;
+$_SESSION['processUploadPM'] = $data;
 
 $url = 'updatemol.php?id=' . $master_id;
 if (headers_sent()) {
@@ -63,4 +68,5 @@ if (headers_sent()) {
 } else {
     exit(header('location:' . $url));
 }
+
 ?>

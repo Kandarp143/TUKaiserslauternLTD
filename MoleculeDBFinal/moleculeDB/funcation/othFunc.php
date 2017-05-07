@@ -48,16 +48,27 @@ function referenceMessage($masterId)
     $refs = $db->selectRecords('SELECT DISTINCT pm_bib.bib_type,pm_bib.bib_title,pm_bib.param,pm_bib.value 
 FROM pm_bib INNER JOIN pm_master on pm_master.bibtex_ref_key=pm_bib.bib_key 
 WHERE pm_master.master_id =?', array($masterId));
-    $Number = 0;
-    $Author = 0;
-    $Journal = 0;
+    return referenceMessageMsg($refs);
+}
+
+function referenceMessageKey($ref_id)
+{
+    $db = new Database();
+    $refs = $db->selectRecords('SELECT DISTINCT * FROM pm_bib WHERE  pm_bib.bib_key =?', array($ref_id));
+    return referenceMessageMsg($refs);
+}
+
+function referenceMessageMsg($refs)
+{
+    $Author = '-';
+    $Journal = '-';
     $Volume = 0;
     $Number = 0;
     $Pages = 0;
-    $Year = 0;
-    $tit = 0;
-    $doi = 0;
-    $url = 0;
+    $Year = '-';
+    $tit = '-';
+    $doi = '-';
+    $url = '-';
     if (!empty($refs)) {
         foreach ($refs as $row) {
             if ($row['param'] == 'Author') {
@@ -79,8 +90,6 @@ WHERE pm_master.master_id =?', array($masterId));
             } else if ($row['param'] == 'Url') {
                 $url = $row['value'];
             }
-
-            $bib_type = $row['bib_type'];
             $tit = $row['bib_title'];
         }
         return '[' . $tit . ']  ' . $Author . ' : '
@@ -91,6 +100,7 @@ WHERE pm_master.master_id =?', array($masterId));
         return 'No reference found !';
     }
 }
+
 
 function makeZmatrix($masterId)
 {
@@ -170,9 +180,9 @@ function makeZmatrix($masterId)
         $p->setOth($tmp);
     }
 
-//    echo '<pre>';
+//     '<pre>';
 //    var_dump($points);
-//    echo '</pre>';
+//     '</pre>';
 
 
 //making vector & distance
@@ -186,10 +196,10 @@ function makeZmatrix($masterId)
         $len = $vector->len();
         $vector->setLen($len);
         array_push($vectors, $vector);
-//    echo $vector->getId() . ' ' . $p2->getZ() . ' - '
+//     $vector->getId() . ' ' . $p2->getZ() . ' - '
 //        . $p1->getZ() . '=' . $vector->getZ() . ' & Length = ' . $vector->getLen() . '<br/>';
-//    echo 'Vector' . $vector->getId() . ': (' . $vector->getX() . ',' . $vector->getY() . ',' . $vector->getZ() . ')<br/>';
-//    echo 'Length :' . $vector->getLen() . '</br>';
+//     'Vector' . $vector->getId() . ': (' . $vector->getX() . ',' . $vector->getY() . ',' . $vector->getZ() . ')<br/>';
+//     'Length :' . $vector->getLen() . '</br>';
     }
 
 
@@ -199,7 +209,7 @@ function makeZmatrix($masterId)
             if ($p->getX() == $pp->getX() && $p->getY() == $pp->getY() && $p->getZ() == $pp->getZ() && $p != $pp
                 && $p->getId() > $pp->getId()
             ) {
-//                echo '<br/>' . $p->getName() . ' is same  ' . $pp->getName() . '<br/>';
+//                 '<br/>' . $p->getName() . ' is same  ' . $pp->getName() . '<br/>';
 
                 $p->setIsSame(true);
                 $p->setRef($pp->getId());
@@ -215,7 +225,7 @@ function makeZmatrix($masterId)
         $v2 = $vectors[$i + 1];
         $angle = $vector->angleXY($v1, $v2);
         array_push($angles, $angle);
-//    echo 'Angle : ' . $angle . '<br/>';
+//     'Angle : ' . $angle . '<br/>';
 
     }
 //fiangles
@@ -224,11 +234,11 @@ function makeZmatrix($masterId)
         $v1 = $vectors[$i];
         $v2 = $vectors[$i + 1];
         $v3 = $vectors[$i + 2];
-//    echo 'ARC Sine <br/>';
-//    echo 'Vector' . $vector->getId() . ': (' . $vector->getX() . ',' . $vector->getY() . ',' . $vector->getZ() . ')<br/>';
+//     'ARC Sine <br/>';
+//     'Vector' . $vector->getId() . ': (' . $vector->getX() . ',' . $vector->getY() . ',' . $vector->getZ() . ')<br/>';
         $fiangle = $vector->angleXYZ($v1, $v2, $v3);
         array_push($fiangles, $fiangle);
-//    echo 'FiAngle : ' . $fiangle . '<br/>';
+//     'FiAngle : ' . $fiangle . '<br/>';
 
     }
 
@@ -281,7 +291,7 @@ function makeZmatrix($masterId)
     for ($i = 0; $i <= sizeof($mk) - 2; $i++) {
         $key = $mk[$i];
         $val = $mk[$i + 1] - $mk[$i] + 1;
-//    echo 'Key : ' . $key . ' Value : ' . $val . '</br>';
+//     'Key : ' . $key . ' Value : ' . $val . '</br>';
         $maker[$key] = $val;
     }
 
@@ -327,6 +337,4 @@ function toCustomHeader($header)
     }
 }
 
-
 ?>
-

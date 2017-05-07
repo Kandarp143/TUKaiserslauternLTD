@@ -187,7 +187,6 @@ class Database
         try {
             $result = $this->executeSelect($query, $params)->fetchAll();
             return $result;
-
         } catch (Exception $e) {
             die($e->getMessage());
         }

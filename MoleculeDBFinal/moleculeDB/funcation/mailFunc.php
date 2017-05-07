@@ -1,52 +1,57 @@
 <?php
 
-//require_once '../class/Database.php';
-//require_once '../class/enum/Config.php';
-//require_once '../class/enum/Sqls.php';
-//require_once '../class/mailer/PHPMailerAutoload.php';
-//require_once '../function/refFunc.php';
-//require 'genFunc.php';
+
+//email configuration
+const  mailHost = 'smtp.gmail.com';
+const  mailPort = 587;
+const  mailUsername = "er.ikndp@gmail.com";
+const  mailPassword = "godwithmeking";
+const  mailAdmin = "er.ikndp@gmail.com";
+const  mailFromName = "Admin@MoleculeDB";
+const  mailFromAddress = "Admin@MoleculeDB";
+const  mailAltBody = "Plain ! No Content, Contact Admin";
+
 
 function sendMail($emails, $subject, $message)
 {
     date_default_timezone_set('Etc/UTC');
     $mail = new PHPMailer;
     $mail->isSMTP();
-    $mail->SMTPDebug = 2;
-    $mail->Debugoutput = 'html';
-    $mail->Host = Config::mailHost;
-    $mail->Port = Config::mailPort;
+    $mail->SMTPDebug = false;
+    $mail->do_debug = 0;
+    $mail->Host = mailHost;
+    $mail->Port = mailPort;
     $mail->SMTPSecure = 'tls';
     $mail->SMTPAuth = true;
-    $mail->Username = Config::mailUsername;
-    $mail->Password = Config::mailPassword;
-    $mail->setFrom(Config::mailFromAddress, Config::mailFromName);
+    $mail->Username = mailUsername;
+    $mail->Password = mailPassword;
+    $mail->setFrom(mailFromAddress, mailFromName);
     if ($emails > 0) {
         foreach ($emails as $email) {
             $mail->addAddress($email);
         }
     } else {
-        $mail->addAddress(Config::mailAdmin);
+        $mail->addAddress(mailAdmin);
     }
     $mail->Subject = $subject;
     $mail->Body = $message;
-    $mail->AltBody = Config::mailUsername;
+    $mail->AltBody = mailUsername;
     try {
         $mail->send();
-        echo 'Mail Sent';
         return true;
     } catch (Exception $e) {
-        echo 'Mail Error' . $e;
         return false;
     }
 }
 
-function genMessage($masterId)
+function genMessageMol($masterId)
 {
     $db = new Database();
-    $master = $db->selectRecords(Sqls::pm_master_by_master_id, array($masterId));
-    $detail = $db->selectRecords(Sqls::pm_datail_by_master_id, array($masterId));
-    $sitetypes = $db->selectRecords(Sqls::pm_master_siteType_with_count_by_master_id, array($masterId));
+    $master = $db->selectRecords('SELECT DISTINCT * FROM pm_master WHERE master_id =?', array($masterId));
+    $detail = $db->selectRecords('SELECT * FROM pm_detail WHERE master_id =?', array($masterId));
+    $sitetypes = $db->selectRecords('SELECT COUNT(b.site) nsite,b.site_type 
+          FROM ( SELECT DISTINCT a.site_type,a.site FROM pm_detail a WHERE a.master_id=?) b 
+          GROUP BY b.site_type', array($masterId));
 
     //string html
     $message = "<html><body>";
@@ -99,5 +104,6 @@ function genMessage($masterId)
     return $message;
 
 }
+
 
 ?>

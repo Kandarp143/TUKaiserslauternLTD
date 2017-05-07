@@ -58,8 +58,8 @@
         </tr>
         <tr>
             <td>Type</td>
-            <td><input type="radio" name="type" value="rigid"> Rigid&nbsp
-                <input type="radio" name="type" value="flexible"> Flexible
+            <td><input type="radio" name="type" value="Rigid" checked="checked"> Rigid&nbsp
+                <input type="radio" name="type" value="Flexible"> Flexible
             </td>
             <td>
                 <div class="tooltip">[i]

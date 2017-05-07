@@ -12,14 +12,14 @@
                 <h1 class="title">Add New Molecule</h1>
                 <div class="entry">
                     <?php
-                    if (!isset($_SESSION['processInsert'])) {
-                        include('include/addmst.php');
-                    } else if (!$_SESSION['processInsert']['success']) {
+                    if (!isset($_SESSION['processInsert']) || (isset($_SESSION['processInsert'])
+                            && !$_SESSION['processInsert']['success'])
+                    ) {
                         include('include/addmst.php');
                     }
                     ?>
                 </div>
-                <!--                display error-->
+                <!-- display error-->
                 <?php
                 if (isset($_SESSION['processInsert'])) {
                     if (!$_SESSION['processInsert']['success']) {
@@ -30,7 +30,7 @@
                         echo ']</p>';
 
                     } else {
-                        echo '<br/><br/><h3 class="msg-suc"> 
+                        echo '<br/><br/><h3 class="msg-suc">
                             Molecule Successfully Inserted ! with ID :' . $_SESSION['processInsert']['id'] . '</h3>';
                     }
                 }
