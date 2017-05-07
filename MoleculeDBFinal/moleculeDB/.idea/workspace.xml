@@ -18,7 +18,30 @@
     <favorites_list name="moleculeDB" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="contact.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/contact.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding>
+                <marker date="1494184224000" expanded="true" signature="3210:3250" ph="SELECT ${$co... ${$table}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -74,7 +97,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/xmlWrite.php" />
         <option value="$PROJECT_DIR$/include/detmatrix.php" />
         <option value="$PROJECT_DIR$/include/home.php" />
         <option value="$PROJECT_DIR$/js/mollist.js" />
@@ -88,7 +110,6 @@
         <option value="$PROJECT_DIR$/funcation/fileFunc.php" />
         <option value="$PROJECT_DIR$/processInsert.php" />
         <option value="$PROJECT_DIR$/template.txt" />
-        <option value="$PROJECT_DIR$/include/upheader.php" />
         <option value="$PROJECT_DIR$/update.php" />
         <option value="$PROJECT_DIR$/include/updet.php" />
         <option value="$PROJECT_DIR$/include/detheader.php" />
@@ -101,9 +122,6 @@
         <option value="$PROJECT_DIR$/include/formref.php" />
         <option value="$PROJECT_DIR$/template.php" />
         <option value="$PROJECT_DIR$/include/nav.php" />
-        <option value="$PROJECT_DIR$/addRef.php" />
-        <option value="$PROJECT_DIR$/addmol.php" />
-        <option value="$PROJECT_DIR$/updateRef.php" />
         <option value="$PROJECT_DIR$/processDelete.php" />
         <option value="$PROJECT_DIR$/funcation/mailFunc.php" />
         <option value="$PROJECT_DIR$/deleteRef.php" />
@@ -111,20 +129,25 @@
         <option value="$PROJECT_DIR$/processInsRef.php" />
         <option value="$PROJECT_DIR$/processUpRef.php" />
         <option value="$PROJECT_DIR$/processUpdateHead.php" />
-        <option value="$PROJECT_DIR$/include/addmst.php" />
         <option value="$PROJECT_DIR$/processUploadPM.php" />
         <option value="$PROJECT_DIR$/processOnlinePM.php" />
         <option value="$PROJECT_DIR$/deletemol.php" />
-        <option value="$PROJECT_DIR$/funcation/othFunc.php" />
-        <option value="$PROJECT_DIR$/database.php" />
         <option value="$PROJECT_DIR$/include/fetchref.php" />
         <option value="$PROJECT_DIR$/reflist.php" />
         <option value="$PROJECT_DIR$/moldetail.php" />
         <option value="$PROJECT_DIR$/mapref.php" />
         <option value="$PROJECT_DIR$/processMapRef.php" />
         <option value="$PROJECT_DIR$/xmlwriter.php" />
-        <option value="$PROJECT_DIR$/include/detDown.php" />
         <option value="$PROJECT_DIR$/include/generateLs.php" />
+        <option value="$PROJECT_DIR$/include/detDown.php" />
+        <option value="$PROJECT_DIR$/funcation/othFunc.php" />
+        <option value="$PROJECT_DIR$/addmol.php" />
+        <option value="$PROJECT_DIR$/include/addmst.php" />
+        <option value="$PROJECT_DIR$/addRef.php" />
+        <option value="$PROJECT_DIR$/include/upheader.php" />
+        <option value="$PROJECT_DIR$/updateRef.php" />
+        <option value="$PROJECT_DIR$/contact.php" />
+        <option value="$PROJECT_DIR$/database.php" />
       </list>
     </option>
   </component>
@@ -182,6 +205,30 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="moleculeDB" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -330,18 +377,18 @@
       <workItem from="1494069826346" duration="7830000" />
       <workItem from="1494137180118" duration="11356000" />
       <workItem from="1494158584999" duration="3725000" />
-      <workItem from="1494179749468" duration="1835000" />
+      <workItem from="1494179749468" duration="3769000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259307000" />
+    <option name="totallyTimeSpent" value="261241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -391,9 +438,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/email.php" />
-    <entry file="file://$PROJECT_DIR$/processUpdateRef.php" />
-    <entry file="file://$PROJECT_DIR$/insert.php" />
     <entry file="file://$PROJECT_DIR$/logout.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -428,28 +472,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/addref_backup.php" />
     <entry file="file://$PROJECT_DIR$/bibread.php" />
-    <entry file="file://$PROJECT_DIR$/contact.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/formref.php" />
-    <entry file="file://$PROJECT_DIR$/updatemol.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="73" column="18" selection-start-line="56" selection-start-column="7" selection-end-line="73" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/updateRef.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processDelete.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
@@ -478,13 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deletemol.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processOnlinePM.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="521">
@@ -506,24 +522,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/addmst.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="61" column="63" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processUpdateHead.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="37" column="9" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addmol.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -549,50 +551,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="187" column="61" selection-start-line="187" selection-start-column="61" selection-end-line="187" selection-end-column="71" />
-          <folding>
-            <marker date="1494161293000" expanded="true" signature="3210:3250" ph="SELECT ${$co... ${$table}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/funcation/othFunc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="n#toSubstanceTitle#0;n#!!top" expanded="false" />
-            <element signature="e#214#496#0#PHP" expanded="false" />
-            <element signature="n#referenceMessage#0;n#!!top" expanded="false" />
-            <element signature="n#referenceMessageKey#0;n#!!top" expanded="false" />
-            <element signature="n#referenceMessageMsg#0;n#!!top" expanded="false" />
-            <element signature="n#makeZmatrix#0;n#!!top" expanded="false" />
-            <element signature="n#timeStamp#0;n#!!top" expanded="false" />
-            <element signature="n#toCustomHeader#0;n#!!top" expanded="false" />
-            <marker date="1494160839000" expanded="true" signature="1421:1602" ph="SELECT DISTI... pm_bib" />
-            <marker date="1494160839000" expanded="true" signature="1764:1818" ph="SELECT DISTI... pm_bib" />
-            <marker date="1494160839000" expanded="true" signature="3575:3617" ph="SELECT * FRO... pm_detail" />
-            <marker date="1494160839000" expanded="true" signature="10392:10401" ph="ε" />
-            <marker date="1494160839000" expanded="true" signature="10459:10466" ph="Σ" />
-            <marker date="1494160839000" expanded="true" signature="10606:10613" ph="Θ" />
-            <marker date="1494160839000" expanded="true" signature="10629:10635" ph="..." />
-            <marker date="1494160839000" expanded="true" signature="10691:10696" ph="Φ" />
-            <marker date="1494160839000" expanded="true" signature="10712:10718" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processRef.php" />
-    <entry file="file://$PROJECT_DIR$/addRef.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="182" column="8" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processInsRef.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -691,14 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/detDown.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="108" selection-start-line="17" selection-start-column="108" selection-end-line="17" selection-end-column="108" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/generateLs.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -706,6 +657,22 @@
           <folding>
             <marker date="1494181853000" expanded="true" signature="268:310" ph="SELECT * FRO... pm_detail" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/ls/C3H6_a-7.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/detDown.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="128" selection-start-line="16" selection-start-column="128" selection-end-line="16" selection-end-column="128" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -720,11 +687,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gen/ls/C3H6_a-7.xml">
+    <entry file="file://$PROJECT_DIR$/funcation/othFunc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding>
+            <element signature="e#563#845#0#PHP" expanded="false" />
+            <element signature="n#referenceMessage#0;n#!!top" expanded="false" />
+            <element signature="n#referenceMessageKey#0;n#!!top" expanded="false" />
+            <element signature="n#referenceMessageMsg#0;n#!!top" expanded="false" />
+            <element signature="n#makeZmatrix#0;n#!!top" expanded="false" />
+            <element signature="n#timeStamp#0;n#!!top" expanded="false" />
+            <element signature="n#toCustomHeader#0;n#!!top" expanded="false" />
+            <marker date="1494182791000" expanded="true" signature="1772:1953" ph="SELECT DISTI... pm_bib" />
+            <marker date="1494182791000" expanded="true" signature="2115:2169" ph="SELECT DISTI... pm_bib" />
+            <marker date="1494182791000" expanded="true" signature="3926:3968" ph="SELECT * FRO... pm_detail" />
+            <marker date="1494182791000" expanded="true" signature="10743:10752" ph="ε" />
+            <marker date="1494182791000" expanded="true" signature="10810:10817" ph="Σ" />
+            <marker date="1494182791000" expanded="true" signature="10957:10964" ph="Θ" />
+            <marker date="1494182791000" expanded="true" signature="10980:10986" ph="..." />
+            <marker date="1494182791000" expanded="true" signature="11042:11047" ph="Φ" />
+            <marker date="1494182791000" expanded="true" signature="11063:11069" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updateRef.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="176" column="72" selection-start-line="176" selection-start-column="72" selection-end-line="176" selection-end-column="72" />
+          <folding>
+            <marker date="1494183167000" expanded="true" signature="396:450" ph="SELECT DISTI... pm_bib" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/upheader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="60" column="57" selection-start-line="60" selection-start-column="57" selection-end-line="60" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updatemol.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+          <folding>
+            <marker date="1494064526000" expanded="true" signature="237:280" ph="select * fro... pm_master" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deletemol.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="626">
+          <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+          <folding>
+            <marker date="1494160494000" expanded="true" signature="208:251" ph="select * fro... pm_master" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addRef.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-139">
+          <caret line="148" column="72" selection-start-line="148" selection-start-column="72" selection-end-line="148" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/addmst.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="84" column="65" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addmol.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding>
+            <marker date="1494182861000" expanded="true" signature="1201:1262" ph="..." />
+            <marker date="1494182861000" expanded="true" signature="1201:1317" ph="..." />
+            <marker date="1494182861000" expanded="true" signature="1523:1654" ph="..." />
+            <marker date="1494182861000" expanded="true" signature="2519:2538" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/molecule.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/contact.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <marker date="1494184224000" expanded="true" signature="3210:3250" ph="SELECT ${$co... ${$table}" />
+          </folding>
         </state>
       </provider>
     </entry>

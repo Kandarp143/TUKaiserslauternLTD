@@ -13,7 +13,7 @@
                 <form action="processInsRef.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : 0; ?>" method="post">
                     <table>
                         <tr>
-                            <td>Shorthand Title</td>
+                            <td>Shorthand Title<span class="msg-err"><b>*</b></span></td>
                             <td><input name="bib_title" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -24,7 +24,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Title of Publication</td>
+                            <td>Title of Publication<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Title" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -35,7 +35,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Author</td>
+                            <td>Author<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Author" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -46,7 +46,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Journal</td>
+                            <td>Journal<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Journal" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -57,7 +57,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Publisher</td>
+                            <td>Publisher<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Publisher" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -68,7 +68,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Volume</td>
+                            <td>Volume<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Volume" type="text"
                                        placeholder=""
 
@@ -80,7 +80,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Number</td>
+                            <td>Number<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Number" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -91,7 +91,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Pages</td>
+                            <td>Pages<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Pages" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -102,7 +102,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Year</td>
+                            <td>Year<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Year" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -113,7 +113,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>DOI</td>
+                            <td>DOI<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Doi" type="text"
                                        placeholder=""
                                        size="50"></td>
@@ -146,7 +146,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Url</td>
+                            <td>Url<span class="msg-err"><b>*</b></span></td>
                             <td><input name="Url" type="text"
                                        placeholder=""
                                        size="50"></td>

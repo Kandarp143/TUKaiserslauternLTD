@@ -2,7 +2,7 @@
 <form action="processUpdateHead.php?id=<?php echo $master_id ?>" method="post">
     <table width="50%" class="beta">
         <tr>
-            <td>Substance</td>
+            <td>Substance<span class="msg-err"><b>*</b></span></td>
             <td><input name="substance" type="text"
                        value="<?php echo !empty($substance) ? $substance : ''; ?>"
                        size="10"></td>
@@ -13,7 +13,7 @@
             </td>
         </tr>
         <tr>
-            <td>CAS-No</td>
+            <td>CAS-No<span class="msg-err"><b>*</b></span></td>
             <td><input name="casno" type="text"
                        value="<?php echo !empty($casno) ? $casno : ''; ?>"
                        size="10"></td>
@@ -25,7 +25,7 @@
 
         </tr>
         <tr>
-            <td>Name</td>
+            <td>Name<span class="msg-err"><b>*</b></span></td>
             <td><input name="name" type="text"
                        value="<?php echo !empty($name) ? $name : ''; ?>"
                        size="10"></td>
@@ -36,7 +36,7 @@
             </td>
         </tr>
         <tr>
-            <td>Model Type</td>
+            <td>Model Type<span class="msg-err"><b>*</b></span></td>
             <td><input name="modeltype" type="text"
                        value="<?php echo !empty($modeltype) ? $modeltype : ''; ?>"
                        size="10"></td>
@@ -58,7 +58,7 @@
             </td>
         </tr>
         <tr>
-            <td>Type</td>
+            <td>Type<span class="msg-err"><b>*</b></span></td>
             <td><input type="radio" name="type"
                        value="Rigid" <?php echo $type == "Rigid" || empty($type) ? 'checked' : '' ?>>
                 Rigid &nbsp

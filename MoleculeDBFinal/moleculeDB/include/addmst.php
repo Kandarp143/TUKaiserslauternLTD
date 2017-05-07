@@ -5,7 +5,7 @@
             <th colspan="3">Step 1 : Insert master data</th>
         </tr>
         <tr>
-            <td>Substance</td>
+            <td>Substance<span class="msg-err"><b>*</b></span></td>
             <td><input name="substance" type="text"
 
                        size="10"></td>
@@ -16,7 +16,7 @@
             </td>
         </tr>
         <tr>
-            <td>CAS-No</td>
+            <td>CAS-No<span class="msg-err"><b>*</b></span></td>
             <td><input name="casno" type="text"
                        size="10"></td>
             <td>
@@ -27,7 +27,7 @@
 
         </tr>
         <tr>
-            <td>Name</td>
+            <td>Name<span class="msg-err"><b>*</b></span></td>
             <td><input name="name" type="text"
                        size="10"></td>
             <td>
@@ -37,7 +37,7 @@
             </td>
         </tr>
         <tr>
-            <td>Model Type</td>
+            <td>Model Type<span class="msg-err"><b>*</b></span></td>
             <td><input name="modeltype" type="text"
                        size="10"></td>
             <td>
@@ -57,7 +57,7 @@
             </td>
         </tr>
         <tr>
-            <td>Type</td>
+            <td>Type<span class="msg-err"><b>*</b></span></td>
             <td><input type="radio" name="type" value="Rigid" checked="checked"> Rigid&nbsp
                 <input type="radio" name="type" value="Flexible"> Flexible
             </td>
@@ -82,7 +82,7 @@
         </tr>
         <tr>
             <td nowrap="">
-                Force Fields <br/>(PM File)
+                Force Fields<span class="msg-err"><b>*</b></span> <br/>(PM File)
             </td>
             <td>
                 <input type="file" name="pmfile" id="pmfile">

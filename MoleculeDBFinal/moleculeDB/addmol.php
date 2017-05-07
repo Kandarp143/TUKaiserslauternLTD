@@ -33,6 +33,7 @@
                         echo '<br/><br/><h3 class="msg-suc">
                             Molecule Successfully Inserted ! with ID :' . $_SESSION['processInsert']['id'] . '</h3>';
                     }
+                    unset($_SESSION['processInsert']);
                 }
                 ?>
                 <h1 class="title">Add References</h1>

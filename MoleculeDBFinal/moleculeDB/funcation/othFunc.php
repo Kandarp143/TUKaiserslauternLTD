@@ -8,6 +8,14 @@
 
 function toSubstanceTitle($substance)
 {
+    //1.if {} - remove and make it <i>
+    //2.if start with R next number should be upstring
+    //3.if () should be in upstring
+    //4.if (+,-) one number before sign should be upstring
+    //5.all remain string up and number substring
+
+    $substance = str_replace('{', '<i>', $substance);
+    $substance = str_replace('}', '</i>', $substance);
     $left = '';
     $mid = '';
     $right = '';
@@ -39,6 +47,8 @@ function toSubstanceTitle($substance)
     }
     //make numaric subscript
     $substance = $left . preg_replace('/[0-9]+/', '<sub>$0</sub>', $substance) . $mid . $right;
+
+
     return trim($substance);
 }
 
