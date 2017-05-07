@@ -5,7 +5,7 @@
         </th>
         <td>
             <a class="a-button"
-               href="generatePm.php?id=<?php echo $master_id ?>"><?php echo toSubstanceTitle($substance) ?></a>
+               href="include/generatePm.php?id=<?php echo $master_id ?>"><?php echo toSubstanceTitle($substance) . '.pm' ?></a>
         </td>
     </tr>
     <tr>
@@ -14,7 +14,10 @@
         </th>
         <td>
             <a class="a-button"
-               href="generateLs.php?id=<?php echo $master_id ?>"><?php echo toSubstanceTitle($substance) ?></a>
+               href="include/generateLs.php?id=<?php echo $master_id ?>"><?php echo toSubstanceTitle($substance) . '.xml' ?></a>
+            <button type="button" onclick="location.href='include/generateLs.php?id=<?php echo $master_id ?>'">Download
+                All Your Keys On A .txt
+            </button>
         </td>
     </tr>
 </table>

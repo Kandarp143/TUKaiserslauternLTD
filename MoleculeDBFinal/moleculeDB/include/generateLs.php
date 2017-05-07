@@ -2,7 +2,7 @@
 /*
  * PHP XMLWriter - How to create a simple xml
  */
-require 'database.php';
+require_once '../database.php';
 
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
 $result = '';
@@ -15,15 +15,15 @@ $db = new Database();
 $result = $db->selectRecords('SELECT * FROM pm_detail WHERE master_id =?', array($id));
 $filename = $db->selectValue('filename', 'pm_master', 'master_id', $id);
 
-////Generating file on the fly
-header("Content-type: text/xml");
-header("Content-Disposition: attachment; filename=" . $filename . '.xml');
-
+/*file to be generate*/
+$file = '../gen/ls/' . $filename . '-' . $id . '.xml';
 
 //create a new xmlwriter object
 $xml = new XMLWriter();
-//using memory for string output
-$xml->openMemory();
+//Define File loc
+$xml->openURI($file);
+////using memory for string output
+//$xml->openMemory();
 //set the indentation to true (if false all the xml will be written on one line)
 $xml->setIndent(true);
 //create the document tag, you can specify the version and encoding here
@@ -72,7 +72,22 @@ $xml->writeElement('Iyy', '1');
 $xml->endElement(); //End momentsofinertia
 $xml->endElement(); //End moleculetype
 $xml->endElement(); //End components
-//output the xml (obviosly this output could be written to a file)
-$s = htmlentities($xml->outputMemory());
-echo $s;
+$xml->endDocument();
+$xml->flush();
+////output the xml (obviosly this output could be written to a file)
+//echo htmlentities($xml->outputMemory());
+if (!file_exists($file)) die("I'm sorry, the file doesn't seem to exist.");
+$type = filetype($file);
+// Send file headers
+header("Content-type: $type");
+header("Content-Disposition: attachment;filename=" . $filename . '-' . $id . '.xml');
+header("Content-Transfer-Encoding: binary");
+header('Pragma: no-cache');
+header('Expires: 0');
+// Send the file contents.
+set_time_limit(0);
+readfile($file);
+////Generating file on the fly
+//header("Content-type: text/plain");
+//header("Content-Disposition: attachment; filename=" . $file);
 ?>
