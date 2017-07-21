@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="UniServer">
+    <serverData>
+      <paths name="UniServer">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/www/html/moleculeDB" local="$PROJECT_DIR$" web="/moleculeDB/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/img/profile" />
+            <excludedPath local="true" path="$PROJECT_DIR$/gen" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

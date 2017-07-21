@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components version="03072017">
+ <moleculetype id="1" name="Br2">
+  <y>0.0</y>
+  <z>0.0</z>
+ </moleculetype>
+ <theta>0.0</theta>
+ <phi>0.0</phi>
+ <quadrupole>4.8954</quadrupole>
+ <mass>0.0</mass>
+ <site type="LJ126" id="1">
+  <coords><x>0.0</x><y>0.0</y><z>-1.08885</z>  </coords>
+  <sigma>3.5546</sigma>
+  <epsilon>236.76</epsilon>
+  <mass>79.904</mass>
+ </site>
+ <site type="LJ126" id="2">
+  <coords><x>0.0</x><y>0.0</y><z>1.08885</z>  </coords>
+  <sigma>3.5546</sigma>
+  <epsilon>236.76</epsilon>
+  <mass>79.904</mass>
+ </site>
+ <site type="Quadrupole" id="3">
+  <coords><x>0.0</x></coords><momentsofinertia rotaxes="xyz"><Ixx>0</Ixx><Iyy>0</Iyy><Izz>0</Izz></momentsofinertia></site></components>

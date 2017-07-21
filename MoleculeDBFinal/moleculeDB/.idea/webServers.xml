@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="db55e2f3-ce28-40be-97b6-fa48f8b0ff44" name="UniServer" url="http://thermovm.mv.uni-kl.de">
+        <fileTransfer host="thermovm.mv.uni-kl.de" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
