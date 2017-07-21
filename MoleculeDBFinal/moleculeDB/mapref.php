@@ -1,6 +1,6 @@
-<?php include('include/header.php') ?>
-<?php include('include/fetchref.php') ?>
-<?php
+<?php include('include/header.php');
+require_once('database.php');
+require_once 'funcation/othFunc.php';
 $master_id = 0;
 $master_id = $_GET['id'];
 ?>
@@ -30,53 +30,27 @@ $master_id = $_GET['id'];
 
                     <form method="post" action="processMapRef.php?id=<?php echo $master_id ?>">
                         <table id="example" class="display" cellspacing="0" width="100%">
-
                             <thead>
                             <tr>
                                 <th>Select</th>
-                                <th nowrap>Reference</th>
+                                <!--                                <th nowrap>Reference</th>-->
                                 <th>Title</th>
-                                <!--                                <th>Action</th>-->
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($references as $r) {
-                                if ($r != null) {
-                                    $vol = '-';
-                                    $jou = '-';
-                                    $num = '-';
-                                    $pg = '-';
-                                    $year = '-';
-
-                                    if (isset($r['Volume'])) {
-                                        $vol = $r['Volume'];
-                                    }
-                                    if (isset($r['Journal'])) {
-                                        $jou = $r['Journal'];
-                                    }
-                                    if (isset($r['Number'])) {
-                                        $num = $r['Number'];
-                                    }
-                                    if (isset($r['Pages'])) {
-                                        $pg = $r['Pages'];
-                                    }
-                                    if (isset($r['Year'])) {
-                                        $year = $r['Year'];
-                                    }
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <input type="radio" name="bib_key" value="<?php echo $r['id'] ?>">
-                                        </td>
-                                        <td nowrap><?php echo '[ ' . $r['bib_title'] . ' ]'; ?> </td>
-                                        <td><?php
-                                            echo $r['Author'] . ' : '
-                                                . $r['Title'] . ', ' . $jou . $vol . ', '
-                                                . $num . ', ' . $pg . ' (' . $year . ')';
-                                            ?></td>
-                                    </tr>
-                                <?php }
-                            } ?>
+                            <?php
+                            $references = referenceList();
+                            foreach ($references as $r) {
+                                $ref_id = referenceParameter($r, 'bib_key');
+                                if (!empty($r)) {
+                                    echo '<tr>';
+                                    echo '<td><input type="radio" name="bib_key" value="' . $ref_id . '"></td>';
+//                                    echo '<td>' . referenceParameter($r, 'bib_title') . '</td>';
+                                    echo '<td>' . referenceMessageMsg($r) . '</td>';
+                                    echo '</tr>';
+                                }
+                            }
+                            ?>
                             </tbody>
                         </table>
                         <button id="submit_button" name="submit_button" type="submit"> Map Reference</button>

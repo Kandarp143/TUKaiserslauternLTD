@@ -10,7 +10,7 @@ $data = array();      // array to pass back data
 
 
 /* Validation */
-
+var_dump($_POST);
 //inputdata
 if (!empty($_POST)) {
     if (empty($_POST['substance']))
@@ -57,13 +57,9 @@ if (empty($errors)) {
     $description = $_POST['description'];
     $type = $_POST['type'];
     $profileName = '';
+    $disp_sh = isset($_POST['disp_sh']) ? 1 : 0;
 
 
-    //upload profile
-    if (!empty($_FILES['profile']['tmp_name'])) {
-        $profileName = $substance . $casno . '_profile' . getExt($_FILES['profile']['name']);
-        uploadFile($_FILES['profile']['tmp_name'], 'img/profile/', $profileName);
-    }
     //get pm data
     $pmData = parsePMFile($_FILES['pmfile']['tmp_name']);
 
@@ -72,9 +68,9 @@ if (empty($errors)) {
         $db = new Database();
         $db->beginTransaction();
         //master record
-        $masterid = $db->insert('INSERT INTO pm_master (filename,cas_no,name,bibtex_ref_key,bibtex_key,bibtex_year,model_type,memory_loc,description,type) 
-                VALUES (?,?,?,?,?,?,?,?,?,?)',
-            array($substance, $casno, $name, 0, '-', 0, $modeltype, 'img/profile/' . $profileName, $description, $type));
+        $masterid = $db->insert('INSERT INTO pm_master (filename,cas_no,name,bibtex_ref_key,bibtex_key,bibtex_year,model_type,memory_loc,description,type,disp_sh) 
+                VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+            array($substance, $casno, $name, 0, '-', 0, $modeltype, 'img/profile/' . $profileName, $description, $type, $disp_sh));
         //detail records;
         foreach ($pmData as $key => $value) {
             if (strpos($key, "#") === 0 || strpos($key, "SiteType") === 0) {
@@ -93,6 +89,11 @@ if (empty($errors)) {
         }
         $db->commitTransaction();
 
+        //upload profile
+        if (!empty($_FILES['profile']['tmp_name'])) {
+            $profileName = 'PM-' . $masterid . '.png';
+            uploadFile($_FILES['profile']['tmp_name'], 'img/profile/', $profileName);
+        }
 
         $data['success'] = true;
         $data['message'] = 'Success!';

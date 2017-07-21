@@ -68,6 +68,19 @@
             </td>
         </tr>
         <tr>
+            <td colspan="2">Display Shielding <input type="checkbox" name="disp_sh"></td>
+            <td>
+                <div class="tooltip">[i]
+                    <span class="tooltiptext">Tooltip text</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
             <th colspan="3">Step 2 : Upload Files</th>
         </tr>
         <tr>

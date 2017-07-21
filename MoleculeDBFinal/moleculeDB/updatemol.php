@@ -15,7 +15,7 @@ if (!empty($data)) {
     $modeltype = $data[0]['model_type'];
     $description = $data[0]['description'];
     $type = $data[0]['type'];
-
+    $disp_sh = $data[0]['disp_sh'];
 }
 ?>
 <!-- Design by Kandarp -->

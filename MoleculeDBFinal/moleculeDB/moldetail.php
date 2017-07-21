@@ -16,6 +16,7 @@ if (!empty($data)) {
     $description = $data[0]['description'];
     $type = $data[0]['type'];
     $ref = $data[0]['bibtex_key'];
+    $disp_sh = $data[0]['disp_sh'];
 
 }
 ?>
@@ -23,6 +24,37 @@ if (!empty($data)) {
 <html>
 <head>
     <?php include('include/links.php') ?>
+    <script>
+
+        function nextMol() {
+            var $_GET = <?php echo json_encode($_GET); ?>;
+            var curr_id = $_GET['id'];
+            var storedNames = JSON.parse(localStorage.getItem("stored_ids"));
+            if (storedNames.indexOf(curr_id) != storedNames.length - 1) {
+                var next_id = storedNames[storedNames.indexOf(curr_id) + 1];
+                window.location = "moldetail.php?id=" + next_id;
+                //            alert(storedNames);
+            } else {
+                alert('This is the last molecule');
+            }
+//            alert(storedNames);
+//            alert('NEXT' + next_id);
+
+        }
+        function prevMol() {
+            var $_GET = <?php echo json_encode($_GET); ?>;
+            var curr_id = $_GET['id'];
+            var storedNames = JSON.parse(localStorage.getItem("stored_ids"));
+            if (storedNames.indexOf(curr_id) != 0) {
+                var prev_id = storedNames[storedNames.indexOf(curr_id) - 1];
+                window.location = "moldetail.php?id=" + prev_id;
+            } else {
+                alert('This is the first molecule');
+            }
+//            alert(storedNames);
+//            alert('PREV' + prev_id);
+        }
+    </script>
 </head>
 <body>
 <div id="wrapper">
@@ -31,6 +63,10 @@ if (!empty($data)) {
         <div id="content">
             <div class="post">
                 <!--                molecule header part-->
+                <button onclick="nextMol()">Next</button>
+                <button onclick="prevMol()">Back</button>
+
+
                 <h1 class="title"><?php echo $name; ?></h1>
                 <?php include('include/detheader.php') ?>
                 <!--                molecule detail part-->

@@ -1,3 +1,9 @@
+/*custom font for special site*/
+@font-face {
+    font-family: myFirstFont;
+    src: url(../font/monotype_corsiva.TTF);
+}
+
 body {
     margin: 0;
     padding: 0;

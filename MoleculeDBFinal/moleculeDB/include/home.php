@@ -1,5 +1,5 @@
 <div class="post">
-    <h1 class="title">Welcome to the database of "Molecular Models of Boltzmann Zuse Society" </h1>
+    <h1 class="title">Welcome to the database of "Molecular Models of Boltzmann-Zuse Society" </h1>
     <div class="entry">
         <p>Database "Molecular Models of Boltzmann-Zuse Society" developed by:</p>
         <div>
@@ -40,10 +40,14 @@
             The models which are documented here are rigid classical mechanical
             force fields for low-molecular fluids, consisting of 12-6 Lennard-Jones
             interaction sites, point charges, dipoles and qadrupoles.
-            They can be used with moleculer simultion tools like <a href="http://www.ms-2.de"
+            They can be used with molecular simultion tools like <a href="http://www.ms-2.de"
                                                                     target="_blank"><b><i>ms2</i></b></a>
             and <a
-                href="http://www.ls1-mardyn.de/home.html" target="_blank"><b>ls1 mardyn</b></a>
+                    href="http://www.ls1-mardyn.de/home.html" target="_blank"><b>ls1 mardyn</b></a>
+        </p>
+        <p>
+            The entire database can be downloaded in multiple formats <a href="downAll.php"><b>HERE</b></a>. A
+            detailed search functionality in the <a href="mollist.php"><b>list of modeled fluids</b></a> is implemented.
         </p>
     </div>
 </div>

@@ -28,7 +28,7 @@
         <h2><a href="welcome.php">Molecular Models of Boltzmann-Zuse Society</a></h2>
         <?php if (isset($_SESSION['usr'])) { ?>
             <p><strong>&nbsp;<span
-                        style="color: #32CD32">&nbsp;&nbsp;Welcome <b><?php echo $_SESSION['usr'] ?></b></span>
+                            style="color: #32CD32">&nbsp;&nbsp;Welcome <b><?php echo $_SESSION['usr'] ?></b></span>
                     <a href="logout.php">( Logout )</a></strong></p>
         <?php } else { ?>
             <p>&nbsp;&nbsp;<strong>&nbsp;<a href="index.php" style="text-decoration: underline;">[Sign In]</a> </strong>(Public
@@ -52,7 +52,7 @@
                 <li><a href="welcome.php">Home</a></li>
                 <li><a href="mollist.php">Molecule List</a></li>
                 <li><a href="reflist.php">References</a></li>
-                <li><a href="inter.php">Normenclature</a></li>
+                <li><a href="normen.php">Nomenclature</a></li>
                 <li><a href="contact.php">Contact</a></li>
             </ul>
         </div>

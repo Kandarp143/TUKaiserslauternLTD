@@ -1,4 +1,4 @@
-<?
+<?php
 require '../database.php';
 $db = new Database();
 
@@ -40,7 +40,7 @@ $result = $db->selectRecords('SELECT * FROM pm_detail WHERE master_id =?', array
 
 
 //print content
-print  "NSiteTypes" . "\t = " . $NSiteTypes . "\n\n";
+print  "NSiteTypes" . "  =  " . $NSiteTypes . "\n\n";
 foreach ($result as $row) {
     if ($sitetype != $row['site_type']) {
         print "\n" . "SiteType" . "   =  " . $row['site_type'] . "\n";
@@ -53,9 +53,10 @@ foreach ($result as $row) {
         $site = $row['site'];
     }
 
-    print  $row['param'] . "\t =  " . $row['val'] . "\n";
+    print  $row['param'] . "   =  " . $row['val'] . "\n";
 
 }
+print "\nNRotAxes   =   auto";
 
 
 //print xml

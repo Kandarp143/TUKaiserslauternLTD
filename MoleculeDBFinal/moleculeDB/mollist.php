@@ -10,7 +10,6 @@ require_once 'funcation/othFunc.php'; ?>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/plug-ins/1.10.15/pagination/input.js"></script>
     <script src="js/mollist.js"></script>
-
 </head>
 <body>
 
@@ -25,13 +24,11 @@ require_once 'funcation/othFunc.php'; ?>
     <div id="page">
         <div style="width: 98%;margin: 0 auto;">
             <table id="listmol" class="display" cellspacing="0" width="95%">
-
                 <thead>
                 <tr>
 
                     <td colspan="4" style="border: none;">
                         <a id="reload" href="#" class="a-button">Restore View</a>
-                        <!--                        <input type="button" id="reloadd" value="Restore View" class="btn btn-primary">-->
                     </td>
                 </tr>
                 <tr>
@@ -70,15 +67,23 @@ require_once 'funcation/othFunc.php'; ?>
                 <?php
                 foreach ($pdo->query($tbl_sql) as $row) {
                     if ($_SESSION['act'] == 'true') {
-                        echo "<tr style='text-align: left'>";
+                        if (isSubstanceIonic($row['filename'])) {
+                            echo "<tr style='text-align: left;color: #008CBA;'>";
+                        } else {
+                            echo "<tr style='text-align: left;'>";
+                        }
 
                     } else {
-
-                        echo "<tr style='text-align: left;line-height: 23px;'>";
+                        if (isSubstanceIonic($row['filename'])) {
+                            echo "<tr style='text-align: left;line-height: 23px;color: #008CBA;'>";
+                        } else {
+                            echo "<tr style='text-align: left;line-height: 23px;'>";
+                        }
                     }
                     echo "<td>" . $row['master_id'] . "</td>";
                     $substance = toSubstanceTitle($row['filename']);
-                    echo "<td><a href='moldetail.php?id=" . $row['master_id'] . "'>"
+
+                    echo "<td><a onclick='setState()' href='moldetail.php?id=" . $row['master_id'] . "'>"
                         . $substance
                         . "</a></td>";
                     echo "<td nowrap>" . $row['cas_no'] . "</td>";
@@ -88,7 +93,7 @@ require_once 'funcation/othFunc.php'; ?>
                     echo "<td>" . $row['type'] . "</td>";
                     if ($_SESSION['act'] == 'true') {
                         echo '<td><a class="a-success"  href="updatemol.php?id=' . $row['master_id'] . '">Update</a><br/>';
-                        echo '<a  class="a-danger" href="delete.php?id=' . $row['master_id'] . '&substance=' . $row['filename'] . '">Delete</a>';
+                        echo '<a  class="a-danger" href="deletemol.php?id=' . $row['master_id'] . '">Delete</a>';
                         echo '</td>';
                     }
                     echo "</tr>";

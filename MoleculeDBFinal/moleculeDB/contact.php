@@ -20,7 +20,7 @@
                     <b>Address:</b>
                     <p>
                         University of Kaiserslautern <br/>
-                        Computational Molecular Engineering <br/>
+                        Laboratory of Engineering Thermodynamics <br/>
                         Erwin-Schrödinger-Straße 44<br/>
                         D-67663 Kaiserslautern, Germany
                     </p>
@@ -36,8 +36,19 @@
             </div>
         </div>
         <!-- end #content -->
-        <div id="sidebar" style="display:table-cell; vertical-align:middle; text-align:center">
-            <img src="img/contact.png" height="400px" alt=""/>
+        <style>
+            .contact-pic {
+
+                /*background: url(../img/img06.jpg) no-repeat left top;*/
+                background: url(img/contact2.png);
+                background-size: cover;
+                opacity: 0.9;
+                filter: alpha(opacity=90); /* For IE8 and earlier */
+                min-height: 390px;
+                margin: 0 0 0 10px;
+            }
+        </style>
+        <div id="sidebar" class="contact-pic">
         </div>
         <!-- end #sidebar -->
         <div style="clear:both; margin:0;"></div>

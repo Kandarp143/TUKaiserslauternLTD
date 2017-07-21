@@ -1,19 +1,8 @@
 <?php
+require_once 'config.php';
 
 class Database
 {
-    //bplaced server
-//    private static $dbName = 'kpatel';
-//    private static $dbHost = 'localhost';
-//    private static $dbUsername = 'kpatel';
-//    private static $dbUserPassword = 'xrStwTwRjzdWAcSX';
-
-    //for localhost
-    private static $dbName = 'molecule_db';
-    private static $dbHost = 'localhost';
-    private static $dbUsername = 'root';
-    private static $dbUserPassword = 'root';
-
 
     private static $cont = null;
 
@@ -44,7 +33,8 @@ class Database
         // One connection through whole application
         if (null == self::$cont) {
             try {
-                self::$cont = new PDO("mysql:host=" . self::$dbHost . ";" . "dbname=" . self::$dbName, self::$dbUsername, self::$dbUserPassword);
+                self::$cont =
+                    new PDO("mysql:host=" . dbHost . ";" . "dbname=" . dbName, dbUsername, dbUserPassword);
             } catch (PDOException $e) {
                 die($e->getMessage());
             }

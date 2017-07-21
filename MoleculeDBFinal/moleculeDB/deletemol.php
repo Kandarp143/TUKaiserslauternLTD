@@ -73,13 +73,12 @@ $sMsg = 'Molecule deleted successfully !';
                                 <h2>Actions</h2>
                                 <?php if (isset($_SESSION[$sParam]) && !$_SESSION[$sParam]['success'] || !isset($_SESSION[$sParam])) { ?>
                                     <p style="text-align: center">
-                                        <a class="a-button" href="moldetail.php?id=<?php echo $master_id ?>">
-                                            Back to Molecule Detail</a>
+                                        <a class="a-button" href="moldetail.php?id=<?php echo $master_id ?>">Back to
+                                            Molecule Detail</a>
                                     </p>
                                 <?php } else { ?>
                                     <p style="text-align: center">
-                                        <a class="a-button" href="mollist.php" ?>">
-                                            Back to Molecule List</a>
+                                        <a class="a-button" href="mollist.php">Back to Molecule List</a>
                                     </p>
                                 <?php }
                                 unset($_SESSION[$sParam]); ?>

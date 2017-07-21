@@ -69,7 +69,7 @@ if (empty($errors)) {
 }
 
 $_SESSION['processUpRef'] = $data;
-$url = 'updateref.php?id=' . $ref_id;
+$url = 'updateRef.php?id=' . $ref_id;
 
 if (headers_sent()) {
     die("Redirect failed. Please click on this link: <a href= $url> CLICK HERE <a/>");

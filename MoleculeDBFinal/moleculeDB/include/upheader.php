@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="css/tooltip.css" media="screen"/>
-<form action="processUpdateHead.php?id=<?php echo $master_id ?>" method="post">
-    <table width="50%" class="beta">
+<form action="processUpdateHead.php?id=<?php echo $master_id ?>" method="post" enctype="multipart/form-data">
+    <table width="100%" class="beta">
         <tr>
             <td>Substance<span class="msg-err"><b>*</b></span></td>
             <td><input name="substance" type="text"
@@ -10,6 +10,19 @@
                 <div class="tooltip">[i]
                     <span class="tooltiptext">Tooltip text</span>
                 </div>
+            </td>
+            <td rowspan="5" width="50%">
+                <div style="margin-left: 50%">
+                    <b>Update Picture</b><br/><br/>
+                    <input type="file" name="profile" id="profile"><br/><br/>
+                    <img height="150px"
+                         src="<?php echo 'img/profile/PM-' . $master_id . '.png' ?>"
+                         alt="Image not found"
+                         onerror="this.onerror=null;this.src='img/NoImgFound.gif';"
+                    />
+                </div>
+
+            </td>
             </td>
         </tr>
         <tr>
@@ -72,15 +85,36 @@
             </td>
         </tr>
         <tr>
+            <td colspan="2">Display Shielding <input type="checkbox" name="disp_sh"
+                <?php
+                echo $disp_sh == 0 ? '' : 'checked'
+                ?>
+            </td>
+            <td>
+                <div class="tooltip"> [i]
+                    <span class="tooltiptext"> Tooltip text </span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
             <td>
             </td>
             <td colspan="2">
-                <button>Update Master Data</button>
+                <button> Update Master Data</button>
             </td>
         </tr>
+
     </table>
+
 </form>
-<!-- Display error -->
+
+
+<!--Display error-->
 <?php
 $sParam = 'processUpdateHead';  /*page name of processor*/
 $sMsg = 'Master data updated successfully !';

@@ -1,4 +1,4 @@
-<?
+<?php
 
 //var
 $id = $master_id;
