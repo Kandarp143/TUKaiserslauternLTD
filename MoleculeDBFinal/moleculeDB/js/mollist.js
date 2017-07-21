@@ -4,6 +4,7 @@
 /*for saved data retrive*/
 var data = null;
 $(document).ready(function () {
+
     /* apply datatable to table */
     var table = $('#listmol').DataTable({
         stateSave: true,
@@ -52,8 +53,8 @@ $(document).ready(function () {
         });
 
     });
-    /*getting filtered data for default state*/
-    data = table.rows().data();
+    /* initially once store */
+    data = table.rows({filter: 'applied'}).data();
     /*getting filtered data for save state*/
     table.on('search.dt', function () {
         //number of filtered rows
@@ -65,6 +66,8 @@ $(document).ready(function () {
     });
     /* reload button - state refresh*/
     $("#reload").click(function () {
+        /*getting filtered data for default state*/
+        data = table.rows().data();
         table.state.clear();
         window.location.reload();
     });
@@ -83,3 +86,4 @@ function setState() {
     localStorage.setItem("stored_ids", JSON.stringify(ids));
     // alert(ids);
 }
+

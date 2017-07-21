@@ -25,7 +25,6 @@ if (!empty($data)) {
 <head>
     <?php include('include/links.php') ?>
     <script>
-
         function nextMol() {
             var $_GET = <?php echo json_encode($_GET); ?>;
             var curr_id = $_GET['id'];
@@ -41,6 +40,7 @@ if (!empty($data)) {
 //            alert('NEXT' + next_id);
 
         }
+
         function prevMol() {
             var $_GET = <?php echo json_encode($_GET); ?>;
             var curr_id = $_GET['id'];
@@ -63,11 +63,13 @@ if (!empty($data)) {
         <div id="content">
             <div class="post">
                 <!--                molecule header part-->
-                <button onclick="nextMol()">Next</button>
-                <button onclick="prevMol()">Back</button>
-
-
-                <h1 class="title"><?php echo $name; ?></h1>
+                <h1 class="title">
+                    <?php echo $name; ?>
+                    <span style="float: right;">
+                    <input type="button" onclick="prevMol()" value="<"/>
+                    <input type="button" onclick="nextMol()" value=">"/>
+                    </span>
+                </h1>
                 <?php include('include/detheader.php') ?>
                 <!--                molecule detail part-->
                 <h1 class="title">Force Field </h1>
