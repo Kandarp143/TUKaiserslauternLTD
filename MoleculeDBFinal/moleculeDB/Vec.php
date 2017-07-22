@@ -103,13 +103,13 @@ class Vec
         $theta = $v->getOth()['Theta'];
         $phi = $v->getOth()['Phi'];
 
-        $this->x = sin($theta) * cos($phi) + $v->getX();
-        $this->y = sin($theta) * sin($phi) + $v->getY();
-        $this->z = cos($theta) + $v->getZ();
-//        echo 'Printing Co-ordinates<br/>';
-//        echo 'X from :' . $v->getX() . '  -  ' . $theta . '  -  ' . $phi . '         X  :' . $this->x . '<br/>';
-//        echo 'Y from :' . $v->getY() . '  -  ' . $theta . '  -  ' . $phi . '         Y  :' . $this->y . '<br/>';
-//        echo 'Z from :' . $v->getZ() . '  -  ' . $theta . '  -  ' . $phi . '         Z  :' . $this->z . '<br/><br/><br/><br/>';
+        $this->x = sin(deg2rad($theta)) * cos(deg2rad($phi)) + $v->getX();
+        $this->y = sin(deg2rad($theta)) * sin(deg2rad($phi)) + $v->getY();
+        $this->z = cos(deg2rad($theta)) + $v->getZ();
+        echo 'Printing Co-ordinates<br/>';
+        echo 'X from :' . $v->getX() . '  |  ' . sin(deg2rad($theta)) . '  |  ' . cos($phi) . '         X  :' . $this->x . '<br/>';
+        echo 'Y from :' . $v->getY() . '  -  ' . $theta . '  -  ' . $phi . '         Y  :' . $this->y . '<br/>';
+        echo 'Z from :' . $v->getZ() . '  -  ' . $theta . '  -  ' . $phi . '         Z  :' . $this->z . '<br/><br/><br/><br/>';
     }
 
     public
