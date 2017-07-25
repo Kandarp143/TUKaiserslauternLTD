@@ -45,9 +45,11 @@
             and <a
                     href="http://www.ls1-mardyn.de/home.html" target="_blank"><b>ls1 mardyn</b></a>
         </p>
+<?php	if( isset($_SESSION["act"]) ){?>
         <p>
             The entire database can be downloaded in multiple formats <a href="downAll.php"><b>HERE</b></a>. A
             detailed search functionality in the <a href="mollist.php"><b>list of modeled fluids</b></a> is implemented.
         </p>
+		<?php } ?>
     </div>
 </div>
