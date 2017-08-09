@@ -1,70 +1,27 @@
 <?php
 require '../database.php';
-$db = new Database();
+require_once '../funcation/fileFunc.php';
 
-//var
+//getting master id
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
-$filename = 'Error';
-$sitetype = null;
-$site = null;
-$NSite = null;
-$result = null;
 
+//file require fields
+$db = new Database();
+$filePath = '../' . rootGenPM;
+$fileName = $db->selectValue('filename', 'pm_master', 'master_id', $id);
+$fileName = $fileName . '.pm';
+$actualFile = $filePath . $fileName;
+$db = Database::disconnect();
 
-//getting file name
-$filename = $db->selectValue('filename', 'pm_master', 'master_id', $id);
+//generating PMFile
+genPMFile($id, $filePath, $fileName);
 
-//Generating file on the fly
+//exsistance check
+if (!file_exists($actualFile)) die("I'm sorry, the file doesn't seem to exist. at following location : " . $actualFile);
+
+//popup_ attachment
+header("Content-disposition: attachment; filename=" . $fileName);
 header("Content-type: text/plain");
-header("Content-Disposition: attachment; filename=" . $filename . '.pm');
+readfile($actualFile);
 
-//getting total sitetype
-$result = $db->selectRecords('SELECT COUNT(b.site_type) FROM 
-(                       SELECT DISTINCT a.site_type FROM pm_detail a WHERE a.master_id= ?) b', array($id));
-$NSiteTypes = $result[0][0];
-
-//getting  total site group by sitetype
-
-$result = $db->selectRecords('SELECT COUNT(b.site) nsite,b.site_type 
-FROM (SELECT DISTINCT a.site_type,a.site 
-FROM pm_detail a WHERE a.master_id= ?)b 
-GROUP BY b.site_type', array($id));
-//get content of Number of types
-foreach ($result as $row) {
-    $NSite[$row['site_type']] = $row['nsite'];
-}
-
-
-$cout = 1;
-$result = $db->selectRecords('SELECT * FROM pm_detail WHERE master_id =?', array($id));
-
-
-//print content
-print  "NSiteTypes" . "  =  " . $NSiteTypes . "\n\n";
-foreach ($result as $row) {
-    if ($sitetype != $row['site_type']) {
-        print "\n" . "SiteType" . "   =  " . $row['site_type'] . "\n";
-        print  "NSites" . "   =  " . $NSite[$row['site_type']] . "\n\n";
-        $sitetype = $row['site_type'];
-        $cout += 1;
-    }
-    if ($site != $row['site']) {
-        print "\n" . "# " . $row['site'] . "\n";
-        $site = $row['site'];
-    }
-
-    print  $row['param'] . "   =  " . $row['val'] . "\n";
-
-}
-print "\nNRotAxes   =   auto";
-
-
-//print xml
-
-
-//for print content into file
-$content = '';
-print $content;
-
-$pdo = Database::disconnect();
 ?>

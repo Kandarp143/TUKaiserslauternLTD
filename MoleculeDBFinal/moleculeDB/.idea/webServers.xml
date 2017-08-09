@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="db55e2f3-ce28-40be-97b6-fa48f8b0ff44" name="UniServer" url="http://thermovm.mv.uni-kl.de">
-        <fileTransfer host="thermovm.mv.uni-kl.de" port="22" accessType="SFTP">
+      <webServer id="19f4d664-a4e9-4765-89b6-6a6de0cd884f" name="UniHost" url="http://thermovm.mv.uni-kl.de">
+        <fileTransfer host="thermovm.mv.uni-kl.de" port="22" rootFolder="/var/www/html/" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

@@ -54,11 +54,12 @@ $maker = $returnArray['maker'];
     <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });
+
     </script>
     <script type="text/javascript" async
             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
     </script>
-	
+
 </head>
 <body>
 <div id="wrapper">
@@ -361,17 +362,20 @@ $maker = $returnArray['maker'];
                         at a
                         distance $r$ is modelled throughout the database by the standard Lennard-Jones 12-6
                         potential
-                        <div class="nomen_eq" style="margin-left: -50%"> 
-						\begin{equation}
-						u_{ij}^\mathrm{LJ}(r)=4\varepsilon\left[
+                        <div class="nomen_eq" style="margin-left: -50%">
+                            \begin{equation}
+                            u_{ij}^\mathrm{LJ}(r)=4\varepsilon\left[
                             \left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^6\right]
-                        \end{equation}
-						
-						<!--	</span><span style="float: right">(2)</span> -->
+                            \end{equation}
+
+                            <!--	</span><span style="float: right">(2)</span> -->
                         </div>
                         The potential model itself consists of two parts – the ﬁrst part with the positive sing
-                        represents the repulsion and the negative the attraction. The potential has two parameters: The size parameter $\sigma$ with a dimension of length deﬁnes the distance where the potential energy is zero and the energy-parameter $\varepsilon$, which deﬁnes the depth of the potential and thereby sets the dispersion energy.<br/>
-						<img src="img/nomen/LJ.PNG"/><br/>
+                        represents the repulsion and the negative the attraction. The potential has two parameters: The
+                        size parameter $\sigma$ with a dimension of length deﬁnes the distance where the potential
+                        energy is zero and the energy-parameter $\varepsilon$, which deﬁnes the depth of the potential
+                        and thereby sets the dispersion energy.<br/>
+                        <img src="img/nomen/LJ.PNG"/><br/>
 
                     </p>
                     <p style="text-align: center">Figure 2: Lennard-Jones potential between two particles.</p>
@@ -394,16 +398,16 @@ $maker = $returnArray['maker'];
 
                     <div class="nomen_eq" style="margin-left: -50%">
                         \begin{equation}
-						\sigma_{kl}=\eta_{kl}\frac{\sigma_k+\sigma_l}{2}\label{eq:sigma_combination}
-						\end{equation}
-						
-						<!-- <span style="float: right;margin-top: -5%">(3)</span> -->
+                        \sigma_{kl}=\eta_{kl}\frac{\sigma_k+\sigma_l}{2}\label{eq:sigma_combination}
+                        \end{equation}
+
+                        <!-- <span style="float: right;margin-top: -5%">(3)</span> -->
                     </div>
                     <div class="nomen_eq" style="margin-left: -50%">
                         \begin{equation}
-						\varepsilon_{kl}=\xi_{kl}\sqrt{\varepsilon_k\varepsilon_l}
-						\end{equation}
-						<!-- <span style="float: right">(4)</span> -->
+                        \varepsilon_{kl}=\xi_{kl}\sqrt{\varepsilon_k\varepsilon_l}
+                        \end{equation}
+                        <!-- <span style="float: right">(4)</span> -->
                     </div>
                     <br/>
                     <img src="img/nomen/coulomb.PNG"/><br/>
@@ -418,10 +422,10 @@ $maker = $returnArray['maker'];
                     database with an ’e’. The electrostatic interaction between two point charges $q_i$ and $q_j$ is
                     given by Coulomb’s law:
                     <div class="nomen_eq" style="margin-left: -50%">
-						\begin{equation}
+                        \begin{equation}
                         u^\mathrm{ee}_{ij}(r_{ij})=\frac{1}{4\epsilon_0\pi}\frac{q_iq_j}{r_{ij}}
-						\end{equation}
-                       <!-- <span style="float: right">(5)</span> -->
+                        \end{equation}
+                        <!-- <span style="float: right">(5)</span> -->
                     </div>
                     with $q$ beeing the magnitude of the charge and $r_{ij}$ the distance between tow charges.
                 </div>
@@ -431,13 +435,14 @@ $maker = $returnArray['maker'];
                 <div style="margin-left: 3%">
                     A point dipole describes the electrostatic ﬁeld of two point charges with equal
                     magnitude, but opposite sign at a mutual distance $a\to 0$. It is labelled throughout the
-                    database with a ’d’. The magnitude of a dipole moment is deﬁned by $\mu=qa$. The electrostatic interaction
+                    database with a ’d’. The magnitude of a dipole moment is deﬁned by $\mu=qa$. The electrostatic
+                    interaction
                     between two point dipoles with the moments $\mu_i$ and $\mu_j$ at a distance $r_{ij}$ is given by:
                     <div class="nomen_eq" style="margin-left: -30%">
-						\begin{equation}
-						u_{ij}^\mathrm{dd}(r_{ij},\theta_i,\theta_j,\Phi_{ij},\mu_i,\mu_j)=\frac{1}{4\pi\epsilon_0}\frac{\mu_i\mu_j}{r^3_{ij}}\left[(\sin(\theta_i)\sin(\theta_j)\cos(\phi_{ij})-2\cos(\theta_i)\cos(\theta_j)\right],
-						\end{equation}
-						<!-- <span style="float: right">(6)</span> -->
+                        \begin{equation}
+                        u_{ij}^\mathrm{dd}(r_{ij},\theta_i,\theta_j,\Phi_{ij},\mu_i,\mu_j)=\frac{1}{4\pi\epsilon_0}\frac{\mu_i\mu_j}{r^3_{ij}}\left[(\sin(\theta_i)\sin(\theta_j)\cos(\phi_{ij})-2\cos(\theta_i)\cos(\theta_j)\right],
+                        \end{equation}
+                        <!-- <span style="float: right">(6)</span> -->
                     </div>
                     where the angles $\theta_i$, $\theta_j$ and $\phi_{ij}$ indicate the relative angular
                     orientation of the two point dipoles.
@@ -453,9 +458,10 @@ $maker = $returnArray['maker'];
                     point-quadrupole $Q$ is deﬁned as $Q = 2qd2$, where $q$ is the magnitude of the three similar
                     charges and $d$ their distance. The interaction potential is given by:
                     <div class="nomen_eq">
-                       \begin{equation} u_{ij}^\mathrm{qq}(r_{ij},\theta_i,\theta_j,\Phi_{ij},Q_i,Q_j)=\frac{1}{4\pi\epsilon_0}\frac{3}{4}\frac{Q_iQ_j}{r^5_{ij}}\left[1-5((\cos(\theta_i)^2+\cos(\theta_i)^2)-15(\cos(\theta_i))^2(\cos(\theta_j))^2+2(\sin(\theta_i)\sin(\theta_j)\cos(\phi_{ij})-4\cos(\theta_i)\cos(\theta_j))^2\right],
-					   \end{equation}
-					   <!-- <span style="float: right">(7)</span> -->
+                        \begin{equation}
+                        u_{ij}^\mathrm{qq}(r_{ij},\theta_i,\theta_j,\Phi_{ij},Q_i,Q_j)=\frac{1}{4\pi\epsilon_0}\frac{3}{4}\frac{Q_iQ_j}{r^5_{ij}}\left[1-5((\cos(\theta_i)^2+\cos(\theta_i)^2)-15(\cos(\theta_i))^2(\cos(\theta_j))^2+2(\sin(\theta_i)\sin(\theta_j)\cos(\phi_{ij})-4\cos(\theta_i)\cos(\theta_j))^2\right],
+                        \end{equation}
+                        <!-- <span style="float: right">(7)</span> -->
                     </div>
                     where the angles $\theta_i$, $\theta_j$ and $\phi_{ij}$ indicate the relative angular
                     orientation of

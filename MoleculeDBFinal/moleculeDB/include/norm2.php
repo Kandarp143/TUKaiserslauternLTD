@@ -33,7 +33,7 @@
     </tr>
     <tr>
         <td>angle</td>
-        <td><span >$\theta$</span>,$\phi$</td>
+        <td><span>$\theta$</span>,$\phi$</td>
         <td><span>&#xb0;</span></td>
         <td>degree</td>
     </tr>
@@ -50,4 +50,4 @@
         <td>Buckingham</td>
     </tr>
 </table>
-	<p> </p>
+<p></p>

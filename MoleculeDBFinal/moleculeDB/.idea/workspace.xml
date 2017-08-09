@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2bc3e07-50fc-45e4-bddf-ed939377d7fa" name="Default" comment="" />
-    <ignored path=".idea/dataSources.local.xml" />
+    <list default="true" id="39ec850c-a9e9-438d-afe8-d7dcad3463ff" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,121 +9,39 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
-  <component name="FavoritesManager">
-    <favorites_list name="moleculeDB" />
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="CSS File" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>echo</find>
-      <find>Repulsion</find>
-      <find>var_du</find>
-      <find>$references</find>
-      <find>nomen_content</find>
-      <find>$</find>
-      <find>$zip_file_name</find>
-      <find>cord</find>
-      <find>$sitecount</find>
-      <find>$file</find>
-      <find>disp_sh</find>
-      <find>nbsp</find>
-      <find>&amp;nbsp</find>
-      <find>img</find>
-      <find>nomen</find>
-      <find>class=&quot;nomen_pera</find>
-      <find>angle of -21.6121</find>
-      <find>Distance</find>
-      <find>\t</find>
-      <find>$fileName</find>
+      <find>id</find>
+      <find>$typ</find>
       <find>$the_folder</find>
-      <find>put lin</find>
-      <find>Overlapping sites: if a site lies at the same spot like an other</find>
-      <find>The potential has of two parameters:</find>
-      <find>hide_page</find>
-      <find>87.9092◦</find>
-      <find>labelled as</find>
-      <find>normen_equa</find>
-      <find>Phi</find>
-      <find>$r1</find>
+      <find>$fileName</find>
+      <find>$sitetype</find>
+      <find>$today</find>
+      <find>$zip_file_name</find>
+      <find>$db</find>
     </findStrings>
     <replaceStrings>
-      <replace>dumval</replace>
-      <replace>$del_val</replace>
-      <replace>data-tooltip=&quot;No information !&quot;</replace>
-      <replace>size=&quot;10&quot;</replace>
-      <replace>[i]</replace>
-      <replace>getLen</replace>
+      <replace>$zipName</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/z_working.php" />
-        <option value="$PROJECT_DIR$/include/home.php" />
-        <option value="$PROJECT_DIR$/include/detDown.php" />
-        <option value="$PROJECT_DIR$/processLogin.php" />
-        <option value="$PROJECT_DIR$/css/elements.css" />
         <option value="$PROJECT_DIR$/css/general.css" />
-        <option value="$PROJECT_DIR$/../../phpMyAdmin/config.inc.php" />
-        <option value="$PROJECT_DIR$/downAll.php" />
-        <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/contact.php" />
-        <option value="$PROJECT_DIR$/inter.php" />
-        <option value="$PROJECT_DIR$/include/updateonlineWorking.php" />
-        <option value="$PROJECT_DIR$/include/updet.php" />
-        <option value="$PROJECT_DIR$/include/updetonline.php" />
-        <option value="$PROJECT_DIR$/include/nav.php" />
-        <option value="$PROJECT_DIR$/include/addmst.php" />
-        <option value="$PROJECT_DIR$/updatemol.php" />
-        <option value="$PROJECT_DIR$/include/upheader.php" />
-        <option value="$PROJECT_DIR$/../moleculeDB_Done/database.php" />
-        <option value="$PROJECT_DIR$/database.php" />
-        <option value="$PROJECT_DIR$/processInsert.php" />
-        <option value="$PROJECT_DIR$/funcation/fileFunc.php" />
-        <option value="$PROJECT_DIR$/processUpdateHead.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/include/detmatrix.php" />
-        <option value="$PROJECT_DIR$/mapref.php" />
-        <option value="$PROJECT_DIR$/testRound.php" />
-        <option value="$PROJECT_DIR$/processDelete.php" />
-        <option value="$PROJECT_DIR$/processDelRef.php" />
-        <option value="$PROJECT_DIR$/include/generateLs.php" />
-        <option value="$PROJECT_DIR$/clearDir.php" />
-        <option value="$PROJECT_DIR$/processDownAll.php" />
-        <option value="$PROJECT_DIR$/include/generatePm.php" />
-        <option value="$PROJECT_DIR$/reflist.php" />
-        <option value="$PROJECT_DIR$/config.php" />
-        <option value="$PROJECT_DIR$/normen_working.php" />
-        <option value="$PROJECT_DIR$/include/norm1.php" />
-        <option value="$PROJECT_DIR$/js/nomen.js" />
-        <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/normen.php" />
-        <option value="$PROJECT_DIR$/css/norman.css" />
-        <option value="$PROJECT_DIR$/include/norm3.php" />
-        <option value="$PROJECT_DIR$/include/mathJaxConfig.php" />
-        <option value="$PROJECT_DIR$/include/norm4.php" />
-        <option value="$PROJECT_DIR$/include/norm2.php" />
-        <option value="$PROJECT_DIR$/mollist.php" />
-        <option value="$PROJECT_DIR$/moldetail.php" />
-        <option value="$PROJECT_DIR$/js/mollist.js" />
         <option value="$PROJECT_DIR$/Vec.php" />
+        <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/funcation/othFunc.php" />
-        <option value="$PROJECT_DIR$/wip.php" />
+        <option value="$PROJECT_DIR$/processDownAll.php" />
+        <option value="$PROJECT_DIR$/funcation/fileFunc.php" />
+        <option value="$PROJECT_DIR$/include/generateLs.php" />
+        <option value="$PROJECT_DIR$/include/generatePm.php" />
+        <option value="$PROJECT_DIR$/include/generateFile.php" />
+        <option value="$PROJECT_DIR$/include/detDown.php" />
       </list>
     </option>
   </component>
@@ -134,17 +51,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="PHPCodeSnifferBlackList">
-    <option name="filePaths">
-      <list>
-        <option value="$PROJECT_DIR$/mapref.php" />
-      </list>
-    </option>
-  </component>
   <component name="PhpServers">
-    <servers>
-      <server host="localhost" id="e057fbac-c6ae-4947-996e-a8bc837db4ad" name="localhost" />
-    </servers>
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -154,7 +62,7 @@
     <option name="height" value="744" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -168,20 +76,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="moleculeDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="moleculeDB" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -208,78 +103,79 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="moleculeDB">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="img">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="moleculeDB">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="font">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="moleculeDB">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="css">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gen" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="moleculeDB" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gen" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ls" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/gen" />
-    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="js.eslint.eslintPackage" value="" />
-    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\moleculeDB\img" />
-      <recent name="C:\xampp\htdocs\moleculeDB\bracket" />
-      <recent name="$PROJECT_DIR$/img" />
-      <recent name="$PROJECT_DIR$/include" />
-      <recent name="C:\wamp64\www\moleculeDB\img" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\moleculeDB" />
-      <recent name="C:\xampp\htdocs\moleculeDB\gen\ls" />
-      <recent name="C:\xampp\htdocs\moleculeDB\gen\pm" />
-      <recent name="$PROJECT_DIR$/img/profile" />
-      <recent name="C:\wamp64\www\moleculeDB\funcation" />
+      <recent name="C:\xampp\htdocs\moleculeDB\js" />
+      <recent name="C:\xampp\htdocs\moleculeDB\funcation" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -294,7 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Web Application.localhost">
+  <component name="RunManager">
     <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings />
       <method />
@@ -333,9 +229,6 @@
       <PhpTestRunnerSettings />
       <method />
     </configuration>
-    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -365,12 +258,6 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <configuration default="false" name="localhost" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="localhost" start_url="/moleculeDB/">
-      <method />
-    </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="PHP Web Application.localhost" />
-    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -380,171 +267,42 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a2bc3e07-50fc-45e4-bddf-ed939377d7fa" name="Default" comment="" />
-      <created>1489651843332</created>
+      <changelist id="39ec850c-a9e9-438d-afe8-d7dcad3463ff" name="Default" comment="" />
+      <created>1500733942290</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1489651843332</updated>
-      <workItem from="1489651849139" duration="87000" />
-      <workItem from="1489655129692" duration="610000" />
-      <workItem from="1490030977533" duration="6386000" />
-      <workItem from="1490066998367" duration="6986000" />
-      <workItem from="1490091306826" duration="6068000" />
-      <workItem from="1490100660698" duration="4441000" />
-      <workItem from="1490126110295" duration="9413000" />
-      <workItem from="1490187314525" duration="7106000" />
-      <workItem from="1490216671224" duration="2843000" />
-      <workItem from="1490256456628" duration="9870000" />
-      <workItem from="1490267333120" duration="442000" />
-      <workItem from="1490269949249" duration="4108000" />
-      <workItem from="1490304929817" duration="5103000" />
-      <workItem from="1490370384052" duration="3723000" />
-      <workItem from="1490374402807" duration="2001000" />
-      <workItem from="1490464304538" duration="18917000" />
-      <workItem from="1490561731279" duration="4076000" />
-      <workItem from="1490718818894" duration="1928000" />
-      <workItem from="1490721225518" duration="348000" />
-      <workItem from="1490722489846" duration="153000" />
-      <workItem from="1490802504477" duration="296000" />
-      <workItem from="1490815246193" duration="7773000" />
-      <workItem from="1490900310999" duration="112000" />
-      <workItem from="1492614888522" duration="410000" />
-      <workItem from="1492615432598" duration="11276000" />
-      <workItem from="1492684202164" duration="19272000" />
-      <workItem from="1492804126962" duration="6198000" />
-      <workItem from="1492845990551" duration="6462000" />
-      <workItem from="1492866392915" duration="1851000" />
-      <workItem from="1492883604651" duration="6243000" />
-      <workItem from="1492931835028" duration="7135000" />
-      <workItem from="1492975068269" duration="1717000" />
-      <workItem from="1493031056134" duration="403000" />
-      <workItem from="1493060580467" duration="3833000" />
-      <workItem from="1493095903294" duration="6005000" />
-      <workItem from="1493105896189" duration="6084000" />
-      <workItem from="1493112727455" duration="8937000" />
-      <workItem from="1493215712943" duration="12629000" />
-      <workItem from="1493289230856" duration="6547000" />
-      <workItem from="1493657128770" duration="8706000" />
-      <workItem from="1493877992238" duration="5528000" />
-      <workItem from="1494002870555" duration="12535000" />
-      <workItem from="1494069826346" duration="7830000" />
-      <workItem from="1494137180118" duration="11356000" />
-      <workItem from="1494158584999" duration="3725000" />
-      <workItem from="1494179749468" duration="3769000" />
-      <workItem from="1494189236782" duration="1841000" />
-      <workItem from="1494364543832" duration="2887000" />
-      <workItem from="1494416567965" duration="2125000" />
-      <workItem from="1494422375081" duration="2068000" />
-      <workItem from="1494424660942" duration="158000" />
-      <workItem from="1494497812557" duration="1764000" />
-      <workItem from="1494583966765" duration="1791000" />
-      <workItem from="1494588517413" duration="4874000" />
-      <workItem from="1494702650637" duration="142000" />
-      <workItem from="1494703363879" duration="7737000" />
-      <workItem from="1494753994441" duration="4059000" />
-      <workItem from="1494759277560" duration="1297000" />
-      <workItem from="1494761972520" duration="3413000" />
-      <workItem from="1494833766233" duration="111000" />
-      <workItem from="1494872560349" duration="7144000" />
-      <workItem from="1495036640247" duration="6128000" />
-      <workItem from="1495124716947" duration="304000" />
-      <workItem from="1495388821893" duration="1683000" />
-      <workItem from="1495442448149" duration="6619000" />
-      <workItem from="1495455252527" duration="8536000" />
-      <workItem from="1495630299139" duration="116000" />
-      <workItem from="1495877569718" duration="1581000" />
-      <workItem from="1495981397354" duration="1719000" />
-      <workItem from="1496056828480" duration="13599000" />
-      <workItem from="1496157995094" duration="2591000" />
-      <workItem from="1496205390160" duration="4280000" />
-      <workItem from="1496242052390" duration="381000" />
-      <workItem from="1496257438316" duration="2398000" />
-      <workItem from="1496330378827" duration="1663000" />
-      <workItem from="1496668698647" duration="1847000" />
-      <workItem from="1496678980535" duration="386000" />
-      <workItem from="1496776116932" duration="4889000" />
-      <workItem from="1496828441254" duration="1331000" />
-      <workItem from="1496831204433" duration="1210000" />
-      <workItem from="1496841395336" duration="1054000" />
-      <workItem from="1496843379118" duration="111000" />
-      <workItem from="1496862969609" duration="9944000" />
-      <workItem from="1496915132969" duration="10555000" />
-      <workItem from="1496934316067" duration="3654000" />
-      <workItem from="1497001969509" duration="105000" />
-      <workItem from="1497017432339" duration="3715000" />
-      <workItem from="1497101303719" duration="5953000" />
-      <workItem from="1497262324747" duration="2046000" />
-      <workItem from="1497277612724" duration="5787000" />
-      <workItem from="1497331887776" duration="3882000" />
-      <workItem from="1497344109318" duration="3901000" />
-      <workItem from="1497349524960" duration="140000" />
-      <workItem from="1497443020312" duration="2209000" />
-      <workItem from="1497447387627" duration="1615000" />
-      <workItem from="1497449914272" duration="943000" />
-      <workItem from="1497461914261" duration="6808000" />
-      <workItem from="1497518474775" duration="2951000" />
-      <workItem from="1497550548827" duration="1464000" />
-      <workItem from="1497560101362" duration="1224000" />
-      <workItem from="1497602086202" duration="2361000" />
-      <workItem from="1497822558891" duration="4504000" />
-      <workItem from="1497868690551" duration="7508000" />
-      <workItem from="1497883667613" duration="217000" />
-      <workItem from="1497977585702" duration="624000" />
-      <workItem from="1498030060555" duration="1339000" />
-      <workItem from="1498235746065" duration="2228000" />
-      <workItem from="1498243798753" duration="570000" />
-      <workItem from="1498244425254" duration="165000" />
-      <workItem from="1498300396606" duration="4689000" />
-      <workItem from="1498502997037" duration="6972000" />
-      <workItem from="1498559645758" duration="6508000" />
-      <workItem from="1498648373054" duration="133000" />
-      <workItem from="1498648507878" duration="5685000" />
-      <workItem from="1498677575131" duration="849000" />
-      <workItem from="1498678521568" duration="4262000" />
-      <workItem from="1498711899885" duration="3303000" />
-      <workItem from="1498725650426" duration="799000" />
-      <workItem from="1500552470038" duration="172000" />
-      <workItem from="1500553323369" duration="1814000" />
-      <workItem from="1500555545390" duration="1260000" />
-      <workItem from="1500570624979" duration="10046000" />
-      <workItem from="1500707932125" duration="2677000" />
-      <workItem from="1500731733276" duration="1788000" />
+      <updated>1500733942290</updated>
+      <workItem from="1500733950879" duration="3070000" />
+      <workItem from="1500737119274" duration="725000" />
+      <workItem from="1500738533692" duration="12723000" />
+      <workItem from="1500796714642" duration="1752000" />
+      <workItem from="1500798515010" duration="2065000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="502447000" />
-  </component>
-  <component name="TodoView" selected-index="2">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="20335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18381241" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2647504" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3420622" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649842" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -554,15 +312,14 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1727672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25718608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649842" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -572,13 +329,8 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
   </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.pm" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -588,281 +340,285 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/funcation/fileFunc.php</url>
-          <line>21</line>
-          <option name="timeStamp" value="12" />
+          <line>94</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/processUpdateHead.php</url>
-          <line>61</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/database.php</url>
+          <line>48</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/Vec.php</url>
-          <line>292</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/Vec.php</url>
-          <line>144</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/Vec.php</url>
-          <line>99</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/funcation/othFunc.php</url>
-          <line>497</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/processDownAll.php</url>
-          <line>17</line>
-          <option name="timeStamp" value="31" />
+          <url>file://$PROJECT_DIR$/funcation/fileFunc.php</url>
+          <line>160</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
-      <breakpoints-dialog>
-        <breakpoints-dialog />
-      </breakpoints-dialog>
-      <option name="time" value="36" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/processInsert.php" />
-    <entry file="file://$PROJECT_DIR$/processUpdateHead.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="64" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/zip/zip.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php" />
-    <entry file="file://$PROJECT_DIR$/addmol.php" />
-    <entry file="file://$PROJECT_DIR$/img/nomen/angle_defi.PNG" />
-    <entry file="file://$PROJECT_DIR$/testRound.php" />
-    <entry file="file://$PROJECT_DIR$/downAll.php" />
-    <entry file="file://$PROJECT_DIR$/gen/log/test.txt" />
-    <entry file="file://$PROJECT_DIR$/processDelete.php" />
-    <entry file="file://$PROJECT_DIR$/processDelRef.php" />
-    <entry file="file://$PROJECT_DIR$/template.php" />
-    <entry file="file://$PROJECT_DIR$/gen/pm/mol147-log-.txt" />
-    <entry file="file://$PROJECT_DIR$/gen/ls/mol147-log-.txt" />
-    <entry file="file://$PROJECT_DIR$/processUploadPM.php" />
-    <entry file="file://$PROJECT_DIR$/FlxZipArchive.php" />
     <entry file="file://$PROJECT_DIR$/funcation/fileFunc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="94" column="9" lean-forward="false" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/generateLs.php" />
-    <entry file="file://$PROJECT_DIR$/clearDir.php" />
-    <entry file="file://$PROJECT_DIR$/processDownAll.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="84" column="2" lean-forward="false" selection-start-line="84" selection-start-column="2" selection-end-line="85" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/generatePm.php" />
-    <entry file="file://$PROJECT_DIR$/mapref.php" />
-    <entry file="file://$PROJECT_DIR$/reflist.php" />
-    <entry file="file://$PROJECT_DIR$/css/style.css" />
-    <entry file="file://$PROJECT_DIR$/config.php" />
-    <entry file="file://$PROJECT_DIR$/include/detheader.php" />
-    <entry file="file://$PROJECT_DIR$/include/norm1.php" />
-    <entry file="file://$PROJECT_DIR$/normen_working.php" />
-    <entry file="file://$PROJECT_DIR$/js/nomen.js" />
-    <entry file="file://$PROJECT_DIR$/test.php" />
-    <entry file="file://$PROJECT_DIR$/include/links.php" />
-    <entry file="file://$PROJECT_DIR$/css/general.css" />
-    <entry file="file://$PROJECT_DIR$/css/norman.css" />
-    <entry file="file://$PROJECT_DIR$/include/nav.php" />
-    <entry file="file://$PROJECT_DIR$/include/norm3.php" />
-    <entry file="file://$PROJECT_DIR$/normen.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="66" column="46" lean-forward="false" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/normen_backed.php" />
-    <entry file="file://$PROJECT_DIR$/include/mathJaxConfig.php" />
-    <entry file="file://$PROJECT_DIR$/include/norm2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="35" column="40" lean-forward="false" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/norm4.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="72" column="63" lean-forward="true" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/bracket_small_b.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/bracket.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/bracket_b.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/mollist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mollist.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="85" column="77" lean-forward="false" selection-start-line="85" selection-start-column="60" selection-end-line="85" selection-end-column="77" />
-          <folding>
-            <marker date="1500576602325" expanded="true" signature="718:799" ph="SELECT maste... pm_master" />
-            <marker date="1500576602325" expanded="true" signature="2486:2518" ph="..." />
-            <marker date="1500576602325" expanded="true" signature="2601:2618" ph="..." />
-            <marker date="1500576602325" expanded="true" signature="2790:2840" ph="..." />
-            <marker date="1500576602325" expanded="true" signature="2923:2958" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Vec.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="67" column="18" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#93#0#PHP" expanded="false" />
-            <element signature="n#getAngleSign#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setCordinate#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#unitVec#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#len#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="e#10262#10355#0#PHP" expanded="false" />
-            <element signature="e#10723#10886#0#PHP" expanded="false" />
-            <element signature="e#10848#10886#0#PHP" expanded="false" />
-            <element signature="n#normVec#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getX#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setX#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getY#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setY#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getZ#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setZ#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getRef#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setRef#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getLen#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setLen#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getOth#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setOth#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getSitetype#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setSitetype#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getName#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setName#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#getId#0;n#Vec#0;n#!!top" expanded="false" />
-            <element signature="n#setId#0;n#Vec#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/detmatrix.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#getExt#0;n#!!top" expanded="false" />
+            <element signature="n#validateSize#0;n#!!top" expanded="false" />
+            <element signature="n#uploadFile#0;n#!!top" expanded="false" />
+            <element signature="n#parsePMFile#0;n#!!top" expanded="false" />
+            <element signature="n#parsePMArray#0;n#!!top" expanded="false" />
+            <element signature="n#clearDirectory#0;n#!!top" expanded="false" />
+            <element signature="n#genPMFile#0;n#!!top" expanded="false" />
+            <marker date="1500798371066" expanded="true" signature="3013:3137" ph="SELECT COUNT... site_type" />
+            <marker date="1500798371066" expanded="true" signature="3069:3134" ph="SELECT DISTI... pm_detail" />
+            <marker date="1500798371066" expanded="true" signature="3271:3412" ph="SELECT COUNT... site_type" />
+            <marker date="1500798371066" expanded="true" signature="3316:3389" ph="SELECT DISTI... pm_detail" />
+            <marker date="1500798371066" expanded="true" signature="3611:3653" ph="SELECT * FRO... pm_detail" />
+            <marker date="1500798371066" expanded="true" signature="4661:4703" ph="SELECT * FRO... pm_detail" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/generateLs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/generatePm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processDownAll.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="33" lean-forward="true" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+          <folding>
+            <marker date="1500759419677" expanded="true" signature="556:629" ph="select DISTI... pm_master" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/funcation/othFunc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1237">
-          <caret line="422" column="32" lean-forward="false" selection-start-line="422" selection-start-column="29" selection-end-line="422" selection-end-column="32" />
-          <folding>
-            <element signature="n#isSubstanceIonic#0;n#!!top" expanded="false" />
-            <element signature="n#toFormatSiteType#0;n#!!top" expanded="false" />
-            <element signature="n#referenceMessage#0;n#!!top" expanded="false" />
-            <element signature="n#referenceMessageMsg#0;n#!!top" expanded="false" />
-            <element signature="n#referenceParameter#0;n#!!top" expanded="false" />
-            <element signature="n#referenceTitle#0;n#!!top" expanded="false" />
-            <element signature="n#referenceMessageKey#0;n#!!top" expanded="false" />
-            <element signature="n#referenceList#0;n#!!top" expanded="false" />
-            <element signature="n#toCustomHeader#0;n#!!top" expanded="false" />
-            <marker date="1500710173841" expanded="true" signature="504:528" ph="..." />
-            <marker date="1500710173841" expanded="true" signature="2445:2626" ph="SELECT DISTI... pm_bib" />
-            <marker date="1500710173841" expanded="true" signature="6116:6170" ph="SELECT DISTI... pm_bib" />
-            <marker date="1500710173841" expanded="true" signature="6317:6443" ph="SELECT DISTI... pm_bib" />
-            <marker date="1500710173841" expanded="true" signature="7218:7260" ph="SELECT * FRO... pm_detail" />
-            <marker date="1500710173841" expanded="true" signature="17124:17133" ph="ε" />
-            <marker date="1500710173841" expanded="true" signature="17163:17170" ph="..." />
-            <marker date="1500710173841" expanded="true" signature="17228:17235" ph="σ" />
-            <marker date="1500710173841" expanded="true" signature="17251:17258" ph="..." />
-            <marker date="1500710173841" expanded="true" signature="17326:17333" ph="..." />
-            <marker date="1500710173841" expanded="true" signature="17391:17398" ph="Θ" />
-            <marker date="1500710173841" expanded="true" signature="17414:17420" ph="..." />
-            <marker date="1500710173841" expanded="true" signature="17476:17481" ph="Φ" />
-            <marker date="1500710173841" expanded="true" signature="17497:17503" ph="..." />
-            <marker date="1500710173841" expanded="true" signature="17562:17566" ph="μ" />
-            <marker date="1500710173841" expanded="true" signature="17645:17652" ph="..." />
-          </folding>
+        <state relative-caret-position="6630">
+          <caret line="390" column="10" lean-forward="false" selection-start-line="390" selection-start-column="10" selection-end-line="390" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/Git/MoleculeDBFinal/moleculeDB/mollist.php">
+    <entry file="file://$PROJECT_DIR$/Vec.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="112" column="5" lean-forward="false" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/general.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="59" column="17" lean-forward="false" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mollist.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mollist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vec.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="112" column="5" lean-forward="false" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funcation/othFunc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5882">
+          <caret line="397" column="25" lean-forward="true" selection-start-line="397" selection-start-column="25" selection-end-line="397" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funcation/mailFunc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/pm/test.pm" />
+    <entry file="file://$PROJECT_DIR$/funcation/phplatex.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1738">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="219" column="2" lean-forward="false" selection-start-line="219" selection-start-column="2" selection-end-line="219" selection-end-column="2" />
           <folding>
-            <marker date="1500576602325" expanded="true" signature="718:799" ph="SELECT maste... pm_master" />
-            <marker date="1500576602325" expanded="true" signature="2486:2518" ph="..." />
-            <marker date="1500576602325" expanded="true" signature="2601:2618" ph="..." />
-            <marker date="1500576602325" expanded="true" signature="2790:2840" ph="..." />
-            <marker date="1500576602325" expanded="true" signature="2923:2958" ph="..." />
+            <element signature="n#disconnect#0;n#Database#0;n#!!top" expanded="false" />
+            <element signature="n#beginTransaction#0;n#Database#0;n#!!top" expanded="false" />
+            <element signature="n#connect#0;n#Database#0;n#!!top" expanded="false" />
+            <element signature="n#commitTransaction#0;n#Database#0;n#!!top" expanded="false" />
+            <element signature="n#insert#0;n#Database#0;n#!!top" expanded="false" />
+            <marker date="1498716053000" expanded="true" signature="2825:2865" ph="SELECT ${$co... ${$table}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wip.php">
+    <entry file="file://$PROJECT_DIR$/gen/pm/20170722104438/TestC2ClF3.pm" />
+    <entry file="file://$PROJECT_DIR$/gen/pm/20170722104438/TestC2Br2F4.pm" />
+    <entry file="file://$PROJECT_DIR$/gen/pm/20170722104438/TestBe2+.pm" />
+    <entry file="file://$PROJECT_DIR$/gen/pm/20170722104438/TestAr_II.pm" />
+    <entry file="file://$PROJECT_DIR$/gen/pm/20170722104438/TestAr_I.pm" />
+    <entry file="file://$PROJECT_DIR$/gen/ls/C5H10_dfg-136.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="97" lean-forward="false" selection-start-line="14" selection-start-column="97" selection-end-line="14" selection-end-column="97" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funcation/fileFunc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="191" column="53" lean-forward="false" selection-start-line="191" selection-start-column="53" selection-end-line="191" selection-end-column="53" />
           <folding>
-            <element signature="e#404#411#0#HTML" expanded="true" />
-            <element signature="e#542#549#0#HTML" expanded="true" />
-            <element signature="e#591#598#0#HTML" expanded="true" />
+            <element signature="n#getExt#0;n#!!top" expanded="false" />
+            <element signature="n#validateSize#0;n#!!top" expanded="false" />
+            <element signature="n#uploadFile#0;n#!!top" expanded="false" />
+            <element signature="n#parsePMFile#0;n#!!top" expanded="false" />
+            <element signature="n#parsePMArray#0;n#!!top" expanded="false" />
+            <element signature="n#clearDirectory#0;n#!!top" expanded="false" />
+            <element signature="n#genPMFile#0;n#!!top" expanded="false" />
+            <marker date="1500798371066" expanded="true" signature="3013:3137" ph="SELECT COUNT... site_type" />
+            <marker date="1500798371066" expanded="true" signature="3069:3134" ph="SELECT DISTI... pm_detail" />
+            <marker date="1500798371066" expanded="true" signature="3271:3412" ph="SELECT COUNT... site_type" />
+            <marker date="1500798371066" expanded="true" signature="3316:3389" ph="SELECT DISTI... pm_detail" />
+            <marker date="1500798371066" expanded="true" signature="3611:3653" ph="SELECT * FRO... pm_detail" />
+            <marker date="1500798371066" expanded="true" signature="4661:4703" ph="SELECT * FRO... pm_detail" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clearDir.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="40" column="29" lean-forward="false" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processInsert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1302">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1498716053000" expanded="true" signature="2257:2434" ph="INSERT INTO pm_master... " />
+            <marker date="1498716053000" expanded="true" signature="3091:3169" ph="INSERT INTO pm_detail... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/moldetail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="74" column="51" lean-forward="false" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
+        <state relative-caret-position="309">
+          <caret line="81" column="53" lean-forward="false" selection-start-line="81" selection-start-column="53" selection-end-line="81" selection-end-column="53" />
           <folding>
             <marker date="1500731929887" expanded="true" signature="260:303" ph="select * fro... pm_master" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/welcome.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/detDown.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/downAll.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="28" column="67" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/generateLs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="28" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/generateFile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processDownAll.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="48" column="5" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="48" selection-end-column="5" />
+          <folding>
+            <marker date="1500759419677" expanded="true" signature="556:629" ph="select DISTI... pm_master" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/generatePm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

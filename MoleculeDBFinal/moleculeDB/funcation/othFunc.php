@@ -387,7 +387,7 @@ function makeZmatrix($masterId, $disp_sh)
             $p1 = new Vec();
             $p1->setCordinatefromVec($p2);
             $p1->setName('dir.');
-            echo 'I' . $i . 'Dir' . '</br>';
+//            echo 'I' . $i . 'Dir' . '</br>';
             if ($i > 0) {
                 $r1 = $i + 1;
             }

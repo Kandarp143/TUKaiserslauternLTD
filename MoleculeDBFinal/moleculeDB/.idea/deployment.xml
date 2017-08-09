@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="UniServer">
+  <component name="PublishConfigData" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="UniHost">
     <serverData>
-      <paths name="UniServer">
+      <paths name="UniHost">
         <serverdata>
           <mappings>
-            <mapping deploy="/var/www/html/moleculeDB" local="$PROJECT_DIR$" web="/moleculeDB/" />
+            <mapping deploy="/moleculeDB" local="$PROJECT_DIR$" web="/moleculeDB/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/img/profile" />
-            <excludedPath local="true" path="$PROJECT_DIR$/gen" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

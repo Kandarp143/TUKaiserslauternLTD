@@ -8,7 +8,7 @@
         </th>
         <td>
             <a class="a-button"
-               href="include/generatePm.php?id=<?php echo $master_id ?>"><?php echo toSubstanceTitle($substance) . '.pm' ?></a>
+               href="include/generateFile.php?id=<?php echo $master_id ?>&typ=ms2"><?php echo toSubstanceTitle($substance) . '.pm' ?></a>
         </td>
     </tr>
     <tr>
@@ -18,7 +18,7 @@
         <th>:</th>
         <td>
             <a class="a-button"
-               href="include/generateLs.php?id=<?php echo $master_id ?>"><?php echo toSubstanceTitle($substance) . '.xml' ?></a>
+               href="include/generateFile.php?id=<?php echo $master_id ?>&typ=ls1"><?php echo toSubstanceTitle($substance) . '.xml' ?></a>
         </td>
     </tr>
 </table>

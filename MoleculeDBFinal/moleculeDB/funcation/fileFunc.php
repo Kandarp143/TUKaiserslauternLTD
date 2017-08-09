@@ -102,3 +102,128 @@ function clearDirectory($path)
             unlink($file); // delete file
     }
 }
+
+function genPMFile($masterId, $filePath, $fileName)
+{
+    $sitetype = null;
+    $site = null;
+    $NSite = null;
+    $result = null;
+
+    $db = new Database();
+    //getting total sitetype
+    $result = $db->selectRecords('SELECT COUNT(b.site_type) FROM 
+(                       SELECT DISTINCT a.site_type FROM pm_detail a WHERE a.master_id= ?) b', array($masterId));
+    $NSiteTypes = $result[0][0];
+
+    //getting  total site group by sitetype
+    $result = $db->selectRecords('SELECT COUNT(b.site) nsite,b.site_type FROM (SELECT DISTINCT a.site_type,a.site 
+FROM pm_detail a WHERE a.master_id= ?)b GROUP BY b.site_type', array($masterId));
+
+    //get content of Number of types
+    foreach ($result as $row) {
+        $NSite[$row['site_type']] = $row['nsite'];
+    }
+
+    $cout = 1;
+    $result = $db->selectRecords('SELECT * FROM pm_detail WHERE master_id =?', array($masterId));
+
+
+    ob_start();
+    //print content
+    print  "NSiteTypes" . "  =  " . $NSiteTypes . "\n\n";
+    foreach ($result as $row) {
+        if ($sitetype != $row['site_type']) {
+            print "\n" . "SiteType" . "   =  " . $row['site_type'] . "\n";
+            print  "NSites" . "   =  " . $NSite[$row['site_type']] . "\n\n";
+            $sitetype = $row['site_type'];
+            $cout += 1;
+        }
+        if ($site != $row['site']) {
+            print "\n" . "# " . $row['site'] . "\n";
+            $site = $row['site'];
+        }
+
+        print  $row['param'] . "   =  " . $row['val'] . "\n";
+
+    }
+    print "\nNRotAxes   =   auto";
+
+    $content = ob_get_contents();
+    ob_end_clean();
+
+    $actualFile = $filePath . $fileName;
+    file_put_contents($actualFile, $content);
+
+    $db = Database::disconnect();
+}
+
+function genLsFile($masterId, $filePath, $fileName)
+{
+
+    $today = date("dmY");
+
+    /*Getting Data*/
+    $db = new Database();
+    $result = $db->selectRecords('SELECT * FROM pm_detail WHERE master_id =?', array($masterId));
+
+    /*file to be generate*/
+    $actualFile = $filePath . $fileName;
+
+    /* needed for latest php */
+    touch($actualFile);
+    $actualFile = realpath($actualFile);
+
+    /*create a new xmlwriter object*/
+    $xml = new XMLWriter();
+    //Define File loc
+    $xml->openURI($actualFile);
+    //using memory for string output
+    //$xml->openMemory();
+    //set the indentation to true (if false all the xml will be written on one line)
+    $xml->setIndent(true);
+    //create the document tag, you can specify the version and encoding here
+    $xml->startDocument('1.0', 'UTF-8');
+    //Create an element
+    $xml->startElement("components");
+    $xml->writeAttribute('version', $today);
+    $xml->startElement("moleculetype");
+    $xml->writeAttribute('id', 1);
+    $xml->writeAttribute('name', substr($fileName, 0, strrpos($fileName, ".")));
+    $c = 0;
+    foreach ($result as $row) {
+        if (trim($row['param']) == 'x') {
+            $c += 1;
+            if ($c > 1) {
+                $xml->endElement();
+            }
+            $xml->startElement("site");
+            $xml->writeAttribute('type', $row['site_type']);
+            $xml->writeAttribute('id', $c);
+            $xml->startElement("coords");
+            $xml->setIndent(false);
+            $xml->writeElement($row['param'], $row['val']);
+        } else if (trim($row['param']) == 'y') {
+            $xml->writeElement($row['param'], $row['val']);
+        } else if (trim($row['param']) == 'z') {
+            $xml->writeElement($row['param'], $row['val']);
+            $xml->setIndent(true);
+            $xml->endElement(); //end cord
+
+        } else {
+            if ($row['param'] != 'shielding')
+                $xml->writeElement($row['param'], $row['val']);
+        }
+    }
+    $xml->endElement(); //end last site
+    $xml->startElement("momentsofinertia");
+    $xml->writeAttribute('rotaxes', 'xyz');
+    $xml->writeElement('Ixx', '0');
+    $xml->writeElement('Iyy', '0');
+    $xml->writeElement('Izz', '0');
+    $xml->endElement(); //End momentsofinertia
+    $xml->endElement(); //End moleculetype
+    $xml->endElement(); //End components
+    $xml->endDocument();
+    $xml->flush();
+}
